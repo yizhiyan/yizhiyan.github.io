@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>C#DataGridView常用属性 | 易支烟</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="只读属性设定 datagridview.ReadOnly = True 行自动追加 datagridview.AllowUserToAddRows = False 删除行允许 datagridview.AllowUserToDeleteRows = False 行幅设置 datagridview.AllowUserToResizeRows = False datagridview.ColumnH">
+<meta name="keywords" content="易支烟、支烟类库">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C#DataGridView常用属性">
+<meta property="og:url" content="http://www.1zyan.cc/2017/08/19/cdatagridview-e5-b8-b8-e7-94-a8-e5-b1-9e-e6-80-a7/index.html">
+<meta property="og:site_name" content="易支烟">
+<meta property="og:description" content="只读属性设定 datagridview.ReadOnly = True 行自动追加 datagridview.AllowUserToAddRows = False 删除行允许 datagridview.AllowUserToDeleteRows = False 行幅设置 datagridview.AllowUserToResizeRows = False datagridview.ColumnH">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://img3.imgtn.bdimg.com/it/u=3242709860,2221903223&fm=214&gp=0.jpg">
+<meta property="og:updated_time" content="2019-03-16T17:42:37.710Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="C#DataGridView常用属性">
+<meta name="twitter:description" content="只读属性设定 datagridview.ReadOnly = True 行自动追加 datagridview.AllowUserToAddRows = False 删除行允许 datagridview.AllowUserToDeleteRows = False 行幅设置 datagridview.AllowUserToResizeRows = False datagridview.ColumnH">
+<meta name="twitter:image" content="http://img3.imgtn.bdimg.com/it/u=3242709860,2221903223&fm=214&gp=0.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="易支烟" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">易支烟</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">易支烟</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://www.1zyan.cc"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-cdatagridview-e5-b8-b8-e7-94-a8-e5-b1-9e-e6-80-a7" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/08/19/cdatagridview-e5-b8-b8-e7-94-a8-e5-b1-9e-e6-80-a7/" class="article-date">
+  <time datetime="2017-08-19T15:09:10.000Z" itemprop="datePublished">2017-08-19</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/C/">C#</a>►<a class="article-category-link" href="/categories/C/软件开发/">软件开发</a>►<a class="article-category-link" href="/categories/C/软件开发/首页/">首页</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      C#DataGridView常用属性
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="http://img3.imgtn.bdimg.com/it/u=3242709860,2221903223&amp;fm=214&amp;gp=0.jpg" alt></p>
+<p>只读属性设定</p>
+<p>datagridview.ReadOnly = True</p>
+<p>行自动追加</p>
+<p>datagridview.AllowUserToAddRows = False</p>
+<p>删除行允许</p>
+<p>datagridview.AllowUserToDeleteRows = False</p>
+<p>行幅设置</p>
+<p>datagridview.AllowUserToResizeRows = False</p>
+<p>datagridview.ColumnHeadersHeightSizeMode =DataGridViewColumnHeadersHeightSizeMode.DisableResizing</p>
+<p>行表示</p>
+<p>datagridview.RowHeadersVisible = False</p>
+<p>行选择模式</p>
+<p>datagridview.SelectionMode = DataGridViewSelectionMode.FullRowSelect</p>
+<p>复数行选择</p>
+<p>datagridview.MultiSelect = True</p>
+<p>选择状态解除</p>
+<p>datagridview.ClearSelection()</p>
+<p>文字设置位置</p>
+<p>datagridview.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter</p>
+<p>选择后行的颜色</p>
+<p>datagridview.DefaultCellStyle.SelectionBackColor = Color.GreenYellow</p>
+<p>datagridview.DefaultCellStyle.SelectionForeColor = Color.Black</p>
+<p>行幅自动调整</p>
+<p>datagridview.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill</p>
+<p>DataGridView常用属性、方法</p>
+<p>1、自定义列</p>
+<p>Customize Cells and Columns in the Windows Forms DataGridView Control by Extending Their</p>
+<p>Behavior and Appearance</p>
+<p>Host Controls in Windows Forms DataGridView Cells</p>
+<p>继承 DataGridViewTextBoxCell 类生成新的Cell类，然后再继承 DataGridViewColumn 生成新的Column类，并指定</p>
+<p>CellTemplate为新的Cell类。新生成的Column便可以增加到DataGridView中去。</p>
+<p>2、自动适应列宽</p>
+<p>Programmatically Resize Cells to Fit Content in the Windows Forms DataGridView Control</p>
+<p>Samples：</p>
+<p>DataGridView.AutoSizeColumns(</p>
+<p>DataGridViewAutoSizeColumnCriteria.HeaderAndDisplayedRows);</p>
+<p>DataGridView.AutoSizeColumn(</p>
+<p>DataGridViewAutoSizeColumnCriteria.HeaderOnly,</p>
+<p>2, false);</p>
+<p>DataGridView.AutoSizeRow(</p>
+<p>DataGridViewAutoSizeRowCriteria.Columns,</p>
+<p>2, false);</p>
+<p>DataGridView.AutoSizeRows(</p>
+<p>DataGridViewAutoSizeRowCriteria.HeaderAndColumns,</p>
+<p>0, dataGridView1.Rows.Count, false);</p>
+<p>3、可以绑定并显示对象</p>
+<p>Bind Objects to Windows Forms DataGridView Controls</p>
+<p>4、可以改变表格线条风格</p>
+<p>Change the Border and Gridline Styles in the Windows Forms DataGridView Control</p>
+<p>Samples:</p>
+<p>this.dataGridView1.GridColor = Color.BlueViolet;</p>
+<p>this.dataGridView1.BorderStyle = BorderStyle.Fixed3D;</p>
+<p>this.dataGridView1.CellBorderStyle = DataGridViewCellBorderStyle.None;</p>
+<p>this.dataGridView1.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;</p>
+<p>this.dataGridView1.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;</p>
+<p>5、动态改变列是否显示，和动态改变列的显示顺序</p>
+<p>Change the Order of the Columns in the Windows Forms DataGridView Control</p>
+<p>Samples：</p>
+<p>customersDataGridView.Columns[“CustomerID”].Visible = false;</p>
+<p>customersDataGridView.Columns[“ContactName”].DisplayIndex = 0;</p>
+<p>customersDataGridView.Columns[“ContactTitle”].DisplayIndex = 1;</p>
+<p>customers</p>
+<p>DataGridView.Columns[“City”].DisplayIndex = 2;</p>
+<p>customersDataGridView.Columns[“Country”].DisplayIndex = 3;</p>
+<p>customersDataGridView.Columns[“CompanyName”].DisplayIndex = 4;</p>
+<p>6、可以在列中显示图像</p>
+<p>Display Images in Cells of the Windows Forms DataGridView Control</p>
+<p>Samples：</p>
+<p>Icon treeIcon = new Icon(this.GetType(), “tree.ico”);</p>
+<p>DataGridViewImageColumn iconColumn = new DataGridViewImageColumn ();</p>
+<p>iconColumn.Image = treeIcon.ToBitmap();</p>
+<p>iconColumn.Name = “Tree”;</p>
+<p>iconColumn.HeaderText = “Nice tree”;</p>
+<p>dataGridView1.Columns.Insert(2, iconColumn);</p>
+<p>7、格式化显示内容:</p>
+<p>Format Data in the Windows Forms DataGridView Control</p>
+<p>Samples:</p>
+<p>this.dataGridView1.Columns[“UnitPrice”].DefaultCellStyle.Format = “c”;</p>
+<p>this.dataGridView1.Columns[“ShipDate”].DefaultCellStyle.Format = “d”;</p>
+<p>this.dataGridView1.DefaultCellStyle.NullValue = “no entry”;</p>
+<p>this.dataGridView1.DefaultCellStyle.WrapMode = DataGridViewWrapMode.Wrap;</p>
+<p>this.dataGridView1.Columns[“CustomerName”].DefaultCellStyle.Alignment =</p>
+<p>DataGridViewContentAlignment.MiddleRight;</p>
+<p>8、在拖动列的滚动条时可以将指定的列冻结</p>
+<p>Freeze Columns in the Windows Forms DataGridView Control</p>
+<p>Samples：将指定列及以前的列固定不动</p>
+<p>this.dataGridView1.Columns[“AddToCartButton”].Frozen = true;</p>
+<p>9、获取选择的单元格,行,列</p>
+<p>Get the Selected Cells, Rows, and Columns in the Windows Forms DataGridView Control</p>
+<p>Samples:</p>
+<p>见msdn。</p>
+<p>10、显示录入时出现的错误信息</p>
+<p>Handle Errors that Occur During Data Entry in the Windows Forms DataGridView Control</p>
+<p>Samples：</p>
+<p>private void dataGridView1_DataError(object sender,</p>
+<p>DataGridViewDataErrorEventArgs e)</p>
+<p>{</p>
+<p>// If the data source raises an exception when a cell value is</p>
+<p>// commited, display an error message.</p>
+<p>if (e.Exception != null &amp;&amp;</p>
+<p>e.Context == DataGridViewDataErrorContext.Commit)</p>
+<p>{</p>
+<p>MessageBox.Show(“CustomerID value must be unique.”);</p>
+<p>}</p>
+<p>}</p>
+<p>11、大数据量显示采用Virtual Mode</p>
+<p>Implement Virtual Mode in the Windows Forms DataGridView Control</p>
+<p>12、设置指定的列只读</p>
+<p>Make Columns in the Windows Forms DataGridView Control Read-Only</p>
+<p>Samples：</p>
+<p>dataGridView1.Columns[“CompanyName”].ReadOnly = true;</p>
+<p>13、移去自动生成的列</p>
+<p>Remove Autogenerated Columns from a Windows Forms DataGridView Control</p>
+<p>Sample:</p>
+<p>dataGridView1.AutoGenerateColumns = true;</p>
+<p>dataGridView1.DataSource = customerDataSet;</p>
+<p>dataGridView1.Columns.Remove (“Fax”);</p>
+<p>或：</p>
+<p>dataGridView1.Columns[“CustomerID”].Visible = false;</p>
+<p>14、自定义选择模式</p>
+<p>Set the Selection Mode of the Windows Forms DataGridView Control</p>
+<p>Sample：</p>
+<p>this.dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;</p>
+<p>this.dataGridView1.MultiSelect = false;</p>
+<p>15、自定义设定光标进入单元格是否编辑模式（编辑模式）</p>
+<p>Specify the Edit Mode for the Windows Forms DataGridView Control</p>
+<p>this.dataGridView1.EditMode = DataGridViewEditMode.EditOnEnter;</p>
+<p>16、新行指定默认值</p>
+<p>Specify Default Values for New Rows in the Windows Forms DataG</p>
+<p>ridView Control</p>
+<p>Sample：</p>
+<p>private void dataGridView1_DefaultValuesNeeded(object sender, System.Windows.Forms.DataGridViewRowEventArgs e)</p>
+<p>{</p>
+<p>e.Row.Cells[“Region”].Value = “WA”;</p>
+<p>e.Row.Cells[“City”].Value = “Redmond”;</p>
+<p>e.Row.Cells[“PostalCode”].Value = “98052-6399”;</p>
+<p>e.Row.Cells[“Region”].Value = “NA”;</p>
+<p>e.Row.Cells[“Country”].Value = “USA”;</p>
+<p>e.Row.Cells[“CustomerID”].Value = NewCustomerId();</p>
+<p>}</p>
+<p>17、数据验证</p>
+<p>Validate Data in the Windows Forms DataGridView Control</p>
+<p>Samples：</p>
+<p>private void dataGridView1_CellValidating(object sender,</p>
+<p>DataGridViewCellValidatingEventArgs e)</p>
+<p>{</p>
+<p>// Validate the CompanyName entry by disallowing empty strings.</p>
+<p>if (dataGridView1.Columns[e.ColumnIndex].Name == “CompanyName”)</p>
+<p>{</p>
+<p>if (e.FormattedValue.ToString() == String.Empty)</p>
+<p>{</p>
+<p>dataGridView1.Rows[e.RowIndex].ErrorText =</p>
+<p>“Company Name must not be empty”;</p>
+<p>e.Cancel = true;</p>
+<p>}</p>
+<p>}</p>
+<p>}</p>
+<p>1） 行、列的隐藏</p>
+<p>[VB.NET]</p>
+<p>‘ DataGridView1的第一列隐藏</p>
+<p>DataGridView1.Columns(0).Visible = False</p>
+<p>‘ DataGridView1的第一行隐藏</p>
+<p>DataGridView1.Rows(0).Visible = False</p>
+<p>2） 行头、列头的隐藏</p>
+<p>[VB.NET]</p>
+<p>‘ 列头隐藏</p>
+<p>DataGridView1.ColumnHeadersVisible = False</p>
+<p>‘ 行头隐藏</p>
+<p>DataGridView1.RowHeadersVisible = False</p>
+<p>3） 行和列的删除</p>
+<p>[VB.NET]</p>
+<p>‘ 删除名为”Column1”的列</p>
+<p>DataGridView1.Columns.Remove(“Column1”)</p>
+<p>‘ 删除第一列</p>
+<p>DataGridView1.Columns.RemoveAt(0)</p>
+<p>‘ 删除第一行</p>
+<p>DataGridView1.Rows.RemoveAt(0)</p>
+<p>4） 删除选中行</p>
+<p>[VB.NET]</p>
+<p>For Each r As DataGridViewRow In DataGridView1.SelectedRows</p>
+<p>If Not r.IsNewRow Then</p>
+<p>DataGridView1.Rows.Remove(r)</p>
+<p>End If</p>
+<p>Next</p>
+<p>⑦ DataGridView 禁止列或者行的Resize：</p>
+<p>1） 禁止所有的列或者行的Resize</p>
+<p>[VB.NET]</p>
+<p>‘ 禁止用户改变DataGridView1的所有列的列宽</p>
+<p>DataGridView1.AllowUserToResizeColumns = False</p>
+<p>‘禁止用户改变DataGridView1の所有行的行高</p>
+<p>DataGridView1.AllowUserToResizeRows = False</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.1zyan.cc/2017/08/19/cdatagridview-e5-b8-b8-e7-94-a8-e5-b1-9e-e6-80-a7/" data-id="cjtbs4mdm000se05subwkf3gz" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/08/19/c-listview-e6-8e-a7-e4-bb-b6-e7-9a-84-e5-b8-b8-e7-94-a8-e5-b1-9e-e6-80-a7/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          c# ListView控件的常用属性
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/08/12/margin-e8-ae-be-e7-bd-ae-e4-b8-ba-e8-b4-9f-e6-95-b0/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">margin设置为负数</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/C/">C#</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/C/JAVA/">JAVA</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/C/JAVA/软件开发/">软件开发</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/C/SqlServer/">SqlServer</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/C/SqlServer/数据库/">数据库</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/C/SqlServer/数据库/软件开发/">软件开发</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/C/原创/">原创</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/C/原创/视频/">视频</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/C/原创/软件开发/">软件开发</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/C/原创/软件开发/首页/">首页</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/C/原创/首页/">首页</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/C/软件开发/">软件开发</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/C/软件开发/首页/">首页</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/C/首页/">首页</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/HTML/">HTML</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/HTML/WEB/">WEB</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/HTML/WEB/前端/">前端</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/HTML/WEB/前端/原创/">原创</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/HTML/前端/">前端</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/JAVA/">JAVA</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/JAVA/原创/">原创</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/JAVA/软件开发/">软件开发</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/JAVA/首页/">首页</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Mysql/">Mysql</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Mysql/SqlServer/">SqlServer</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Mysql/SqlServer/数据库/">数据库</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/SqlServer/">SqlServer</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/SqlServer/数据库/">数据库</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/WEB/">WEB</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/WEB/其他/">其他</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/WEB/前端/">前端</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/WEB/前端/首页/">首页</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/WordPress/">WordPress</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/WordPress/其他/">其他</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/其他/">其他</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/其他/娱乐/">娱乐</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/其他/娱乐/视频/">视频</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/其他/娱乐/视频/音乐/">音乐</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/其他/娱乐/视频/音乐/首页/">首页</a></li></ul></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/其他/首页/">首页</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/">前端</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/娱乐/">娱乐</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/娱乐/视频/">视频</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/娱乐/视频/首页/">首页</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/首页/">首页</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C#</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/EXCEL写数据/">EXCEL写数据</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JAVA/">JAVA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jquery/">Jquery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MV/">MV</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MyBatis/">MyBatis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/">PHP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PS/">PS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SqlServer/">SqlServer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WEB/">WEB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Webpack/">Webpack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WordPress/">WordPress</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/aop/">aop</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/app/">app</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c-未将对象引用设置到对象的实例/">c#未将对象引用设置到对象的实例</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6/">es6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/">html</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/idea/">idea</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ioc/">ioc</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javaGui/">javaGui</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/junit/">junit</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/">nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rem插件/">rem插件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spring/">spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sql/">sql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sql-server/">sql server</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sqlse/">sqlse</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue-cli/">vue-cli</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/中文乱码/">中文乱码</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/中文类库/">中文类库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/入栈/">入栈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/公司模板/">公司模板</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/其他主题/">其他主题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/冒泡排序/">冒泡排序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/分布式/">分布式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端/">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/单例模式/">单例模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/原创/">原创</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/古风/">古风</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/图片/">图片</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/多线程/">多线程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/好听/">好听</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/娱乐/">娱乐</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小米/">小米</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工具/">工具</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/情书/">情书</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/支烟IP扫描器/">支烟IP扫描器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/支烟类库/">支烟类库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/教程/">教程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/新技术/">新技术</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/易代码转换/">易代码转换</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/枚举/">枚举</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/社团管理系统/">社团管理系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/程序/">程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/系统/">系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网络/">网络</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/美图/">美图</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/荒野行动/">荒野行动</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/视频软件/">视频软件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/语音合成/">语音合成</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/超级CS/">超级CS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/超级类库/">超级类库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/软件/">软件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/软件开发/">软件开发</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/逻辑思维训练/">逻辑思维训练</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面试题/">面试题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/音乐/">音乐</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/C/" style="font-size: 20px;">C#</a> <a href="/tags/EXCEL写数据/" style="font-size: 10px;">EXCEL写数据</a> <a href="/tags/JAVA/" style="font-size: 19px;">JAVA</a> <a href="/tags/Jquery/" style="font-size: 10px;">Jquery</a> <a href="/tags/MV/" style="font-size: 10px;">MV</a> <a href="/tags/MyBatis/" style="font-size: 15px;">MyBatis</a> <a href="/tags/PHP/" style="font-size: 10px;">PHP</a> <a href="/tags/PS/" style="font-size: 10px;">PS</a> <a href="/tags/SqlServer/" style="font-size: 11px;">SqlServer</a> <a href="/tags/WEB/" style="font-size: 13px;">WEB</a> <a href="/tags/Webpack/" style="font-size: 17px;">Webpack</a> <a href="/tags/WordPress/" style="font-size: 13px;">WordPress</a> <a href="/tags/aop/" style="font-size: 10px;">aop</a> <a href="/tags/app/" style="font-size: 10px;">app</a> <a href="/tags/c-未将对象引用设置到对象的实例/" style="font-size: 10px;">c#未将对象引用设置到对象的实例</a> <a href="/tags/es6/" style="font-size: 16px;">es6</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/idea/" style="font-size: 11px;">idea</a> <a href="/tags/ioc/" style="font-size: 10px;">ioc</a> <a href="/tags/javaGui/" style="font-size: 10px;">javaGui</a> <a href="/tags/junit/" style="font-size: 10px;">junit</a> <a href="/tags/linux/" style="font-size: 11px;">linux</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/rem插件/" style="font-size: 10px;">rem插件</a> <a href="/tags/spring/" style="font-size: 17px;">spring</a> <a href="/tags/sql/" style="font-size: 10px;">sql</a> <a href="/tags/sql-server/" style="font-size: 10px;">sql server</a> <a href="/tags/sqlse/" style="font-size: 10px;">sqlse</a> <a href="/tags/vue/" style="font-size: 18px;">vue</a> <a href="/tags/vue-cli/" style="font-size: 16px;">vue-cli</a> <a href="/tags/中文乱码/" style="font-size: 10px;">中文乱码</a> <a href="/tags/中文类库/" style="font-size: 10px;">中文类库</a> <a href="/tags/入栈/" style="font-size: 10px;">入栈</a> <a href="/tags/公司模板/" style="font-size: 10px;">公司模板</a> <a href="/tags/其他主题/" style="font-size: 10px;">其他主题</a> <a href="/tags/冒泡排序/" style="font-size: 10px;">冒泡排序</a> <a href="/tags/分布式/" style="font-size: 10px;">分布式</a> <a href="/tags/前端/" style="font-size: 11px;">前端</a> <a href="/tags/单例模式/" style="font-size: 10px;">单例模式</a> <a href="/tags/原创/" style="font-size: 14px;">原创</a> <a href="/tags/古风/" style="font-size: 10px;">古风</a> <a href="/tags/图片/" style="font-size: 10px;">图片</a> <a href="/tags/多线程/" style="font-size: 11px;">多线程</a> <a href="/tags/好听/" style="font-size: 10px;">好听</a> <a href="/tags/娱乐/" style="font-size: 10px;">娱乐</a> <a href="/tags/小米/" style="font-size: 10px;">小米</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a> <a href="/tags/情书/" style="font-size: 10px;">情书</a> <a href="/tags/支烟IP扫描器/" style="font-size: 10px;">支烟IP扫描器</a> <a href="/tags/支烟类库/" style="font-size: 10px;">支烟类库</a> <a href="/tags/教程/" style="font-size: 11px;">教程</a> <a href="/tags/数据库/" style="font-size: 12px;">数据库</a> <a href="/tags/新技术/" style="font-size: 10px;">新技术</a> <a href="/tags/易代码转换/" style="font-size: 10px;">易代码转换</a> <a href="/tags/枚举/" style="font-size: 10px;">枚举</a> <a href="/tags/社团管理系统/" style="font-size: 10px;">社团管理系统</a> <a href="/tags/程序/" style="font-size: 10px;">程序</a> <a href="/tags/系统/" style="font-size: 10px;">系统</a> <a href="/tags/网络/" style="font-size: 10px;">网络</a> <a href="/tags/美图/" style="font-size: 10px;">美图</a> <a href="/tags/荒野行动/" style="font-size: 10px;">荒野行动</a> <a href="/tags/视频软件/" style="font-size: 10px;">视频软件</a> <a href="/tags/语音合成/" style="font-size: 10px;">语音合成</a> <a href="/tags/超级CS/" style="font-size: 10px;">超级CS</a> <a href="/tags/超级类库/" style="font-size: 10px;">超级类库</a> <a href="/tags/软件/" style="font-size: 13px;">软件</a> <a href="/tags/软件开发/" style="font-size: 11px;">软件开发</a> <a href="/tags/逻辑思维训练/" style="font-size: 10px;">逻辑思维训练</a> <a href="/tags/面试题/" style="font-size: 13px;">面试题</a> <a href="/tags/音乐/" style="font-size: 11px;">音乐</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/02/28/测试文件/">测试文件</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/27/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/25/10-e5-88-86-e9-92-9f-e5-ad-a6-e4-bc-9aes7es8/">10分钟学会ES7+ES8</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/18/vue-e6-93-8d-e4-bd-9cdom/">vue操作dom</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/24/springmybatis-e6-95-b4-e5-90-88-e7-ac-94-e8-ae-b0-e4-bd-bf-e7-94-a8-e6-b3-a8-e8-a7-a3-e6-a0-87-e7-ad-be-e5-ae-9e-e7-8e-b0-e4-ba-8b-e5-8a-a1-e5-92-8c-e4-ba-8b-e5-8a-a1-e7-9a-84-e5-8f-82-e6-95-b0/">Spring+Mybatis整合笔记-使用注解标签实现事务和事务的参数</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 yizhiyan<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

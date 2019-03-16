@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>show()与showDialog()的区别 | 易支烟</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="A.WinForm中窗体显示  显示窗体可以有以下2种方法：  Form.ShowDialog方法 （窗体显示为模式窗体）  Form.Show方法 （窗体显示为无模式窗体）  2者具体区别如下：  1.在调用Form.Show方法后,Show方法后面的代码会立即执行  2.在调用Form.ShowDialog方法后,直到关闭对话框后，才执行此方法后面的代码  3.当窗体显示为模式窗体时，单击“">
+<meta name="keywords" content="易支烟、支烟类库">
+<meta property="og:type" content="article">
+<meta property="og:title" content="show()与showDialog()的区别">
+<meta property="og:url" content="http://www.1zyan.cc/2017/08/06/show-e4-b8-8eshowdialog-e7-9a-84-e5-8c-ba-e5-88-ab/index.html">
+<meta property="og:site_name" content="易支烟">
+<meta property="og:description" content="A.WinForm中窗体显示  显示窗体可以有以下2种方法：  Form.ShowDialog方法 （窗体显示为模式窗体）  Form.Show方法 （窗体显示为无模式窗体）  2者具体区别如下：  1.在调用Form.Show方法后,Show方法后面的代码会立即执行  2.在调用Form.ShowDialog方法后,直到关闭对话框后，才执行此方法后面的代码  3.当窗体显示为模式窗体时，单击“">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1501993518460&di=3f56e5300e35b16e728608c964af1a94&imgtype=0&src=http%3A%2F%2Fdesk.fd.zol-img.com.cn%2Fg5%2FM00%2F08%2F0B%2FChMkJlbZOjeIJeSWAAQ0UHAbG58AAMhnAEb8z0ABDRo256.jpg">
+<meta property="og:updated_time" content="2019-03-16T17:42:37.710Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="show()与showDialog()的区别">
+<meta name="twitter:description" content="A.WinForm中窗体显示  显示窗体可以有以下2种方法：  Form.ShowDialog方法 （窗体显示为模式窗体）  Form.Show方法 （窗体显示为无模式窗体）  2者具体区别如下：  1.在调用Form.Show方法后,Show方法后面的代码会立即执行  2.在调用Form.ShowDialog方法后,直到关闭对话框后，才执行此方法后面的代码  3.当窗体显示为模式窗体时，单击“">
+<meta name="twitter:image" content="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1501993518460&di=3f56e5300e35b16e728608c964af1a94&imgtype=0&src=http%3A%2F%2Fdesk.fd.zol-img.com.cn%2Fg5%2FM00%2F08%2F0B%2FChMkJlbZOjeIJeSWAAQ0UHAbG58AAMhnAEb8z0ABDRo256.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="易支烟" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">易支烟</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">易支烟</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://www.1zyan.cc"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-show-e4-b8-8eshowdialog-e7-9a-84-e5-8c-ba-e5-88-ab" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/08/06/show-e4-b8-8eshowdialog-e7-9a-84-e5-8c-ba-e5-88-ab/" class="article-date">
+  <time datetime="2017-08-06T01:38:31.000Z" itemprop="datePublished">2017-08-06</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/C/">C#</a>►<a class="article-category-link" href="/categories/C/软件开发/">软件开发</a>►<a class="article-category-link" href="/categories/C/软件开发/首页/">首页</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      show()与showDialog()的区别
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1501993518460&amp;di=3f56e5300e35b16e728608c964af1a94&amp;imgtype=0&amp;src=http%3A%2F%2Fdesk.fd.zol-img.com.cn%2Fg5%2FM00%2F08%2F0B%2FChMkJlbZOjeIJeSWAAQ0UHAbG58AAMhnAEb8z0ABDRo256.jpg" alt> A.WinForm中窗体显示  显示窗体可以有以下2种方法：  Form.ShowDialog方法 （窗体显示为模式窗体）  Form.Show方法 （窗体显示为无模式窗体）  2者具体区别如下：  1.在调用Form.Show方法后,Show方法后面的代码会立即执行  2.在调用Form.ShowDialog方法后,直到关闭对话框后，才执行此方法后面的代码  3.当窗体显示为模式窗体时，单击“关闭”按钮会隐藏窗体，并将DialogResult属性设置为DialogResult.Cancel  与无模式窗体不同，当用户单击对话框的关闭窗体按钮或设置DialogResult属性的值时,不调用窗体的Close方法  实际上是把窗体的Visible属性赋值为false,隐藏窗体了  这样隐藏的窗体是可以重新显示，而不用创建该对话框的新实例  因为未关闭窗体,所以在应用程序不再需要该窗体时,请调用该窗体的Dispose方法  怎么判断一个窗体是模式窗体呢？  利用Form.Modal属性,如果该窗体是模式显示，则为true,否则为false  根据通过Show和ShowDialog而显示出来的窗体的Modal属性分别对应false和true  特别注意：  由于在窗体创建之前是无法得知显示方式的,所以在窗体构造函数中,Modal属性总是对应false,所以我们只能在Load事件中或者之后利用Modal属性值  怎么确定窗体间的所有者关系?  Form类的Owner属性:窗体的所有者  当一个窗体归另一窗体所有时，它便随着所有者窗体最小化和关闭。  例如，如果Form2归窗体Form1所有，则关闭或最小化Form1时，Form2也会关闭或最小化。  例如在窗体Form1中  Form2 f2 = new Form2 ( );  f2.ShowDialog ( this );  //或者  f2.Show ( this );  //或者  f2.Owner = this;  f2.ShowDialog( );  这样f2的所有者就是Form1  B.WinForm窗体传值  了解了窗体的显示相关知识，接着总结一下窗体的传值方法：  1.通过构造函数  特点：传值是单向的（不可以互相传值），实现简单  实现代码如下：  在窗体Form2中  int value1;  string value2;  public Form2 ( int value1 , string value2 )  {  InitializeComponent ( );  this.value1 = value1;  this.value2 = value2;  }  在窗体Form1中这样调用  new Form2 ( 111 , “222” ).Show ( ); //这样就把111,”222”,这2个值传送给了Form2  2.通过静态变量  特点：传值是双向的，实现简单  实现代码如下：  在一个app类中定义一个静态成员value  public class app  {  public static string value;  }  在窗体Form1中这样调用  app.value = “f2”; //给静态成员赋值  new Form2 ( ).Show ( ); //显示Form2  在窗体Form2中  this.Text = app.value; //取回app.value的值  app.value = “Form2”; //给app.value赋值，以便其他窗体调用  3.通过窗体的公有属性值  特点：实现简单  实现代码如下：  在窗体Form2中定义一个公有属性Form2Value,获取和设置textBox1的文本值  public string Form2Value  {  get  {  return this.textBox1.Text;  }  set  {  this.textBox1.Text = value;  }  }  在窗体Form1中这样调用  Form2 f2 = new Form2 ( );  f2.Form2Value = “Ok”; //给Form2的textBox1赋值Ok  f2.ShowDialog ( );  4.通过窗体的公有属性值和Owner属性  特点：实现简单,灵活  实现代码如下：  在窗体Form1中  public int Form1Value = 1;  Form2 f2 = new Form2 ( );  f2.ShowDialog ( this ); //把Form1作为Form2的所有者传递给Form2  在窗体Form2中  //Form2的所有者是Form1  Form1 f1 = ( Form1 ) this.Owner;  //取到Form1的值是1  MessageBox.Show ( f1.Form1Value .ToString ( ) );  //给Form1的Form1Value赋值222  f1.Form1Value = 222;  5.通过窗体的公有属性值和Application.OpenForms属性  说明：Application.OpenForms属性：获取属于应用程序的打开窗体的集合。(此属性在 .NET Framework2.0版中)  实现代码如下：  在窗体Form1中  public int Form1Value = 1;  Form2 f2 = new Form2 ( );  f2.Show ( );  在窗体Form2中  string formName = “Form1”;  Form fr = Application.OpenForms [ formName ];  if ( fr != null )  {  Form1 f1 = ( Form1 ) fr;  //取到Form1的值是1  MessageBox.Show ( f1.Form1Value.ToString ( ) );  //给Form1的Form1Value赋值222  f1.Form1Value = 222;  }  6.通过事件  实现代码如下：  在窗体Form2中定义公有属性Form2Value,获取和设置textBox1的文本值  并且还定义一个accept事件  public string Form2Value  {  get  {  return this.textBox1.Text;  }  set  {  this.textBox1.Text = value;  }  }  public event EventHandler accept;  private void button1_Click ( object sender , EventArgs e )  {  if ( accept != null )  {  accept ( this , EventArgs.Empty ); //当窗体触发事件，传递自身引用  }  }  在窗体Form1中  Form2 f2 = new Form2 ( );  f2.accept += new EventHandler ( f2_accept );  f2.Show ( );  void f2_accept ( object sender , EventArgs e )  {  //事件的接收者通过一个简单的类型转换得到Form2的引用  Form2 f2 = (Form2) sender;  //接收到Form2的textBox1.Text  this.textBox1.Text = f2.Form2Value;  }</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.1zyan.cc/2017/08/06/show-e4-b8-8eshowdialog-e7-9a-84-e5-8c-ba-e5-88-ab/" data-id="cjtbs4mhy006be05s727ybypy" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/08/07/sqlserver-e6-97-b6-e9-97-b4-e6-a0-bc-e5-bc-8f-e5-87-bd-e6-95-b0-e8-af-a6-e7-bb-86/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          sqlserver 时间格式函数详细
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/08/05/e6-88-91-e6-9c-89-e4-b8-80-e4-b8-aa-e9-81-93-e5-a7-91-e6-9c-8b-e5-8f-8b-mv-e6-8e-a8-e4-bb-8b/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">我有一个道姑朋友——MV推介</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/C/">C#</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/C/JAVA/">JAVA</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/C/JAVA/软件开发/">软件开发</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/C/SqlServer/">SqlServer</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/C/SqlServer/数据库/">数据库</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/C/SqlServer/数据库/软件开发/">软件开发</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/C/原创/">原创</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/C/原创/视频/">视频</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/C/原创/软件开发/">软件开发</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/C/原创/软件开发/首页/">首页</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/C/原创/首页/">首页</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/C/软件开发/">软件开发</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/C/软件开发/首页/">首页</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/C/首页/">首页</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/HTML/">HTML</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/HTML/WEB/">WEB</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/HTML/WEB/前端/">前端</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/HTML/WEB/前端/原创/">原创</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/HTML/前端/">前端</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/JAVA/">JAVA</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/JAVA/原创/">原创</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/JAVA/软件开发/">软件开发</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/JAVA/首页/">首页</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Mysql/">Mysql</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Mysql/SqlServer/">SqlServer</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Mysql/SqlServer/数据库/">数据库</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/SqlServer/">SqlServer</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/SqlServer/数据库/">数据库</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/WEB/">WEB</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/WEB/其他/">其他</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/WEB/前端/">前端</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/WEB/前端/首页/">首页</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/WordPress/">WordPress</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/WordPress/其他/">其他</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/其他/">其他</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/其他/娱乐/">娱乐</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/其他/娱乐/视频/">视频</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/其他/娱乐/视频/音乐/">音乐</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/其他/娱乐/视频/音乐/首页/">首页</a></li></ul></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/其他/首页/">首页</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/">前端</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/娱乐/">娱乐</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/娱乐/视频/">视频</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/娱乐/视频/首页/">首页</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/首页/">首页</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C#</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/EXCEL写数据/">EXCEL写数据</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JAVA/">JAVA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jquery/">Jquery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MV/">MV</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MyBatis/">MyBatis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/">PHP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PS/">PS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SqlServer/">SqlServer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WEB/">WEB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Webpack/">Webpack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WordPress/">WordPress</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/aop/">aop</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/app/">app</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c-未将对象引用设置到对象的实例/">c#未将对象引用设置到对象的实例</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6/">es6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/">html</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/idea/">idea</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ioc/">ioc</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javaGui/">javaGui</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/junit/">junit</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/">nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rem插件/">rem插件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spring/">spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sql/">sql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sql-server/">sql server</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sqlse/">sqlse</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue-cli/">vue-cli</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/中文乱码/">中文乱码</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/中文类库/">中文类库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/入栈/">入栈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/公司模板/">公司模板</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/其他主题/">其他主题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/冒泡排序/">冒泡排序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/分布式/">分布式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端/">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/单例模式/">单例模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/原创/">原创</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/古风/">古风</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/图片/">图片</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/多线程/">多线程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/好听/">好听</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/娱乐/">娱乐</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小米/">小米</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工具/">工具</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/情书/">情书</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/支烟IP扫描器/">支烟IP扫描器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/支烟类库/">支烟类库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/教程/">教程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/新技术/">新技术</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/易代码转换/">易代码转换</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/枚举/">枚举</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/社团管理系统/">社团管理系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/程序/">程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/系统/">系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网络/">网络</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/美图/">美图</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/荒野行动/">荒野行动</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/视频软件/">视频软件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/语音合成/">语音合成</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/超级CS/">超级CS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/超级类库/">超级类库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/软件/">软件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/软件开发/">软件开发</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/逻辑思维训练/">逻辑思维训练</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面试题/">面试题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/音乐/">音乐</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/C/" style="font-size: 20px;">C#</a> <a href="/tags/EXCEL写数据/" style="font-size: 10px;">EXCEL写数据</a> <a href="/tags/JAVA/" style="font-size: 19px;">JAVA</a> <a href="/tags/Jquery/" style="font-size: 10px;">Jquery</a> <a href="/tags/MV/" style="font-size: 10px;">MV</a> <a href="/tags/MyBatis/" style="font-size: 15px;">MyBatis</a> <a href="/tags/PHP/" style="font-size: 10px;">PHP</a> <a href="/tags/PS/" style="font-size: 10px;">PS</a> <a href="/tags/SqlServer/" style="font-size: 11px;">SqlServer</a> <a href="/tags/WEB/" style="font-size: 13px;">WEB</a> <a href="/tags/Webpack/" style="font-size: 17px;">Webpack</a> <a href="/tags/WordPress/" style="font-size: 13px;">WordPress</a> <a href="/tags/aop/" style="font-size: 10px;">aop</a> <a href="/tags/app/" style="font-size: 10px;">app</a> <a href="/tags/c-未将对象引用设置到对象的实例/" style="font-size: 10px;">c#未将对象引用设置到对象的实例</a> <a href="/tags/es6/" style="font-size: 16px;">es6</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/idea/" style="font-size: 11px;">idea</a> <a href="/tags/ioc/" style="font-size: 10px;">ioc</a> <a href="/tags/javaGui/" style="font-size: 10px;">javaGui</a> <a href="/tags/junit/" style="font-size: 10px;">junit</a> <a href="/tags/linux/" style="font-size: 11px;">linux</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/rem插件/" style="font-size: 10px;">rem插件</a> <a href="/tags/spring/" style="font-size: 17px;">spring</a> <a href="/tags/sql/" style="font-size: 10px;">sql</a> <a href="/tags/sql-server/" style="font-size: 10px;">sql server</a> <a href="/tags/sqlse/" style="font-size: 10px;">sqlse</a> <a href="/tags/vue/" style="font-size: 18px;">vue</a> <a href="/tags/vue-cli/" style="font-size: 16px;">vue-cli</a> <a href="/tags/中文乱码/" style="font-size: 10px;">中文乱码</a> <a href="/tags/中文类库/" style="font-size: 10px;">中文类库</a> <a href="/tags/入栈/" style="font-size: 10px;">入栈</a> <a href="/tags/公司模板/" style="font-size: 10px;">公司模板</a> <a href="/tags/其他主题/" style="font-size: 10px;">其他主题</a> <a href="/tags/冒泡排序/" style="font-size: 10px;">冒泡排序</a> <a href="/tags/分布式/" style="font-size: 10px;">分布式</a> <a href="/tags/前端/" style="font-size: 11px;">前端</a> <a href="/tags/单例模式/" style="font-size: 10px;">单例模式</a> <a href="/tags/原创/" style="font-size: 14px;">原创</a> <a href="/tags/古风/" style="font-size: 10px;">古风</a> <a href="/tags/图片/" style="font-size: 10px;">图片</a> <a href="/tags/多线程/" style="font-size: 11px;">多线程</a> <a href="/tags/好听/" style="font-size: 10px;">好听</a> <a href="/tags/娱乐/" style="font-size: 10px;">娱乐</a> <a href="/tags/小米/" style="font-size: 10px;">小米</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a> <a href="/tags/情书/" style="font-size: 10px;">情书</a> <a href="/tags/支烟IP扫描器/" style="font-size: 10px;">支烟IP扫描器</a> <a href="/tags/支烟类库/" style="font-size: 10px;">支烟类库</a> <a href="/tags/教程/" style="font-size: 11px;">教程</a> <a href="/tags/数据库/" style="font-size: 12px;">数据库</a> <a href="/tags/新技术/" style="font-size: 10px;">新技术</a> <a href="/tags/易代码转换/" style="font-size: 10px;">易代码转换</a> <a href="/tags/枚举/" style="font-size: 10px;">枚举</a> <a href="/tags/社团管理系统/" style="font-size: 10px;">社团管理系统</a> <a href="/tags/程序/" style="font-size: 10px;">程序</a> <a href="/tags/系统/" style="font-size: 10px;">系统</a> <a href="/tags/网络/" style="font-size: 10px;">网络</a> <a href="/tags/美图/" style="font-size: 10px;">美图</a> <a href="/tags/荒野行动/" style="font-size: 10px;">荒野行动</a> <a href="/tags/视频软件/" style="font-size: 10px;">视频软件</a> <a href="/tags/语音合成/" style="font-size: 10px;">语音合成</a> <a href="/tags/超级CS/" style="font-size: 10px;">超级CS</a> <a href="/tags/超级类库/" style="font-size: 10px;">超级类库</a> <a href="/tags/软件/" style="font-size: 13px;">软件</a> <a href="/tags/软件开发/" style="font-size: 11px;">软件开发</a> <a href="/tags/逻辑思维训练/" style="font-size: 10px;">逻辑思维训练</a> <a href="/tags/面试题/" style="font-size: 13px;">面试题</a> <a href="/tags/音乐/" style="font-size: 11px;">音乐</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/02/28/测试文件/">测试文件</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/27/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/25/10-e5-88-86-e9-92-9f-e5-ad-a6-e4-bc-9aes7es8/">10分钟学会ES7+ES8</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/18/vue-e6-93-8d-e4-bd-9cdom/">vue操作dom</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/24/springmybatis-e6-95-b4-e5-90-88-e7-ac-94-e8-ae-b0-e4-bd-bf-e7-94-a8-e6-b3-a8-e8-a7-a3-e6-a0-87-e7-ad-be-e5-ae-9e-e7-8e-b0-e4-ba-8b-e5-8a-a1-e5-92-8c-e4-ba-8b-e5-8a-a1-e7-9a-84-e5-8f-82-e6-95-b0/">Spring+Mybatis整合笔记-使用注解标签实现事务和事务的参数</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 yizhiyan<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

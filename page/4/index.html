@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>易支烟</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="博主熟悉前后端操作，爬虫。喜欢交朋友，欢迎各位进来坐坐">
+<meta name="keywords" content="易支烟、支烟类库">
+<meta property="og:type" content="website">
+<meta property="og:title" content="易支烟">
+<meta property="og:url" content="http://www.1zyan.cc/page/4/index.html">
+<meta property="og:site_name" content="易支烟">
+<meta property="og:description" content="博主熟悉前后端操作，爬虫。喜欢交朋友，欢迎各位进来坐坐">
+<meta property="og:locale" content="default">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="易支烟">
+<meta name="twitter:description" content="博主熟悉前后端操作，爬虫。喜欢交朋友，欢迎各位进来坐坐">
+  
+    <link rel="alternate" href="/atom.xml" title="易支烟" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">易支烟</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">易支烟</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://www.1zyan.cc"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-webpack-e5-ad-a6-e4-b9-a0-e7-ac-94-e8-ae-b0-e9-85-8d-e7-bd-aewebpack-e8-bf-9b-e8-a1-8ccss-e5-85-bc-e5-ae-b9-e5-a4-84-e7-90-86" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/01/08/webpack-e5-ad-a6-e4-b9-a0-e7-ac-94-e8-ae-b0-e9-85-8d-e7-bd-aewebpack-e8-bf-9b-e8-a1-8ccss-e5-85-bc-e5-ae-b9-e5-a4-84-e7-90-86/" class="article-date">
+  <time datetime="2019-01-08T09:56:59.000Z" itemprop="datePublished">2019-01-08</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/WEB/">WEB</a>►<a class="article-category-link" href="/categories/WEB/前端/">前端</a>►<a class="article-category-link" href="/categories/WEB/前端/首页/">首页</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/01/08/webpack-e5-ad-a6-e4-b9-a0-e7-ac-94-e8-ae-b0-e9-85-8d-e7-bd-aewebpack-e8-bf-9b-e8-a1-8ccss-e5-85-bc-e5-ae-b9-e5-a4-84-e7-90-86/">webpack学习笔记-配置webpack进行css兼容处理</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="http://www.1zyan.cn/wp-content/uploads/2019/01/b1-3.png" alt></p>
+<p>配置文件：</p>
+<p>module.exports = {<br>    entry: ‘’,               // 入口文件<br>    output: {},              // 出口文件<br>    module: {},              // 处理对应模块<br>    plugins: [],             // 对应的插件<br>    devServer: {},           // 开发服务器配置<br>    mode: ‘development’      // 模式配置<br>}</p>
+<hr>
+<p>1.安装插件postcss-loader和autoprefixer</p>
+<p>npm install –save-dev postcss-loader autoprefixer</p>
+<p>2.编写webpack.config.xml，这里特别注意postcss的配置，在这里博主搞了一下午才搞懂这个。</p>
+<p>module.exports={<br>    //<strong>dirname是nodejs中的一个全局变量,它指向我们项目的根目录<br>    //入口文件的位置<br>    entry:</strong>dirname+’/app/main.js’,<br>    //出口文件<br>    output:{<br>        //打包后的文件放置的位置<br>        path:__dirname+’/public’,<br>        //打包后文件名<br>        filename:’webpack.js’<br>    },<br>    module: {<br>        rules: [<br>            {<br>                test: /\.json$/,<br>                type:’javascript/auto’,<br>                use: ‘json-loader’<br>            },<br>            {<br>                test:/\.css$/,<br>                loader:[<br>                    ‘style-loader’,<br>                    ‘css-loader’,<br>                    {<br>                        loader:’postcss-loader’,<br>                        options:{<br>                            sourceMap:true,<br>                            //设置配置postcss配置文件<br>                            config:{<br>                                path:’./postcss.config.js’<br>                            }<br>                        }<br>                    }<br>                ]<br>            }<br>        ]<br>    },<br>};</p>
+<p>3.编写postcss.config.js</p>
+<p>module.exports = {<br>    plugins: [<br>        //注意这里的参数，如果不传参数是不会做任何处理<br>        require(‘autoprefixer’)({<br>            “browsers”: [<br>                “defaults”,<br>                “not ie &lt; 11”,<br>                “last 2 versions”,<br>                “> 1%”,<br>                “iOS 7”, “last 3 iOS versions”<br>            ]<br>        })<br>    ]<br>};</p>
+<p>4.编译，编译和以前一样</p>
+<p>5.看效果</p>
+<p><img src="http://www.1zyan.cn/wp-content/uploads/2019/01/a1-10.png" alt></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.1zyan.cc/2019/01/08/webpack-e5-ad-a6-e4-b9-a0-e7-ac-94-e8-ae-b0-e9-85-8d-e7-bd-aewebpack-e8-bf-9b-e8-a1-8ccss-e5-85-bc-e5-ae-b9-e5-a4-84-e7-90-86/" data-id="cjtbs4mj90092e05sg6lu3v32" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Webpack/">Webpack</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-webpack-e5-ad-a6-e4-b9-a0-e7-ac-94-e8-ae-b0-style-loader-e5-92-8ccss-loader-e4-bd-bf-e7-94-a8" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/01/08/webpack-e5-ad-a6-e4-b9-a0-e7-ac-94-e8-ae-b0-style-loader-e5-92-8ccss-loader-e4-bd-bf-e7-94-a8/" class="article-date">
+  <time datetime="2019-01-08T07:08:57.000Z" itemprop="datePublished">2019-01-08</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/WEB/">WEB</a>►<a class="article-category-link" href="/categories/WEB/前端/">前端</a>►<a class="article-category-link" href="/categories/WEB/前端/首页/">首页</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/01/08/webpack-e5-ad-a6-e4-b9-a0-e7-ac-94-e8-ae-b0-style-loader-e5-92-8ccss-loader-e4-bd-bf-e7-94-a8/">webpack学习笔记-style-loader和css-loader使用</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="http://www.1zyan.cn/wp-content/uploads/2019/01/a1-9.png" alt></p>
+<p>1.安装，安装多个loader用空格分开</p>
+<p>npm install –save-dev style-loader css-loader</p>
+<p>2.写配置文件</p>
+<p>module: {<br>        rules: [<br>            {<br>                test:/\.css$/,<br>                loader:”style-loader!css-loader”<br>            }<br>        ]<br>    }<br>//注意多个loader之间用!号分割，webpack执行loader是从右向左执行</p>
+<p>3.写css文件</p>
+<p><img src="http://www.1zyan.cn/wp-content/uploads/2019/01/a2-7.png" alt></p>
+<p>4.在main.js中引入css文件，代码如下</p>
+<p>require(‘./css.css’);</p>
+<p><img src="http://www.1zyan.cn/wp-content/uploads/2019/01/a3-5.png" alt></p>
+<p>5.编译webpack，浏览</p>
+<p>npm run hd</p>
+<p>好了，这就是对样式的操作。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.1zyan.cc/2019/01/08/webpack-e5-ad-a6-e4-b9-a0-e7-ac-94-e8-ae-b0-style-loader-e5-92-8ccss-loader-e4-bd-bf-e7-94-a8/" data-id="cjtbs4mj90095e05s9qjslk82" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Webpack/">Webpack</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-webpack-e5-ad-a6-e4-b9-a0-e7-ac-94-e8-ae-b0-e4-bd-bf-e7-94-a8json-loader" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/01/08/webpack-e5-ad-a6-e4-b9-a0-e7-ac-94-e8-ae-b0-e4-bd-bf-e7-94-a8json-loader/" class="article-date">
+  <time datetime="2019-01-08T06:47:31.000Z" itemprop="datePublished">2019-01-08</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/WEB/">WEB</a>►<a class="article-category-link" href="/categories/WEB/前端/">前端</a>►<a class="article-category-link" href="/categories/WEB/前端/首页/">首页</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/01/08/webpack-e5-ad-a6-e4-b9-a0-e7-ac-94-e8-ae-b0-e4-bd-bf-e7-94-a8json-loader/">webpack学习笔记-使用json-loader</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="http://www.1zyan.cn/wp-content/uploads/2019/01/a1-8.png" alt></p>
+<p>1.安装loader</p>
+<p>npm install -save-dev json-loader</p>
+<p>2.在webpack.config.js中创建个model</p>
+<p> module: {<br>        rules: [<br>            {<br>                test: /\.json$/,<br>                type:’javascript/auto’,<br>                loader: ‘json-loader’<br>            }<br>        ]<br>    }<br>//注意我这里加了个type，具体什么原因我也不太清楚，根据字面意思应该是类型。不加我会报错，博主使用的是json-loader 0.5.7</p>
+<p>3.创建config.json</p>
+<p>{<br>  “text”:”this is loader”<br>}</p>
+<p>4.在js中写入以下代码</p>
+<p>const config=require(‘./config.json’);<br>console.log(config.text);</p>
+<p>5.运行即可看到结果</p>
+<p>小结：在学这个的时候根据视频上使用的以下代码配置webpack.config.js时会出现loaders报错，百度了2中解法</p>
+<p>//第一种，视频上面的<br>module: {<br>    loaders: [<br>      {<br>        test: /\.json$/,<br>        loader: ‘json-loader’<br>      }<br>    ]<br>  }<br>//第一种报错后改代码为一下内容<br>module: {<br>    rules: [<br>      {<br>        test: /\.json$/,<br>        loader: ‘json-loader’<br>      }<br>    ]<br>  }<br>//改完之后一值json报错，但是仔细一看没有任何错误。然后百度了很久都没有找到解决方案，然后在群里面问了很多人，终于找到一个大牛的解决方案。加上type类型，改最终代码如下<br> module: {<br>        rules: [<br>            {<br>                test: /\.json$/,<br>                type:’javascript/auto’,<br>                loader: ‘json-loader’<br>            }<br>        ]<br>    }</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.1zyan.cc/2019/01/08/webpack-e5-ad-a6-e4-b9-a0-e7-ac-94-e8-ae-b0-e4-bd-bf-e7-94-a8json-loader/" data-id="cjtbs4mj9008pe05s73bm9d26" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Webpack/">Webpack</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-webpack-e5-ad-a6-e4-b9-a0-e7-ac-94-e8-ae-b0-e4-bd-bf-e7-94-a8webpack-config-js-e8-bf-9b-e8-a1-8c-e7-bc-96-e8-af-91" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/01/07/webpack-e5-ad-a6-e4-b9-a0-e7-ac-94-e8-ae-b0-e4-bd-bf-e7-94-a8webpack-config-js-e8-bf-9b-e8-a1-8c-e7-bc-96-e8-af-91/" class="article-date">
+  <time datetime="2019-01-07T05:58:32.000Z" itemprop="datePublished">2019-01-07</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/WEB/">WEB</a>►<a class="article-category-link" href="/categories/WEB/前端/">前端</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/01/07/webpack-e5-ad-a6-e4-b9-a0-e7-ac-94-e8-ae-b0-e4-bd-bf-e7-94-a8webpack-config-js-e8-bf-9b-e8-a1-8c-e7-bc-96-e8-af-91/">webpack学习笔记-使用webpack.config.js进行编译</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="1-在项目目录下创建webpack-config-js"><a href="#1-在项目目录下创建webpack-config-js" class="headerlink" title="1.在项目目录下创建webpack.config.js"></a>1.在项目目录下创建webpack.config.js</h3><h3 id="2-在文件中写入以下内容"><a href="#2-在文件中写入以下内容" class="headerlink" title="2.在文件中写入以下内容"></a>2.在文件中写入以下内容</h3><p>module.exports={<br>    //<strong>dirname是nodejs中的一个全局变量,它指向我们项目的根目录<br>    //入口文件的位置<br>    entry:</strong>dirname+’/app/main.js’,<br>    //出口文件<br>    output:{<br>        //打包后的文件放置的位置<br>        path:__dirname+’/public’,<br>        //打包后文件名<br>        filename:’webpack.js’<br>    }<br>};</p>
+<h3 id="3-在控制台中输入以下命令进行编译-注意需要在项目目录下"><a href="#3-在控制台中输入以下命令进行编译-注意需要在项目目录下" class="headerlink" title="3.在控制台中输入以下命令进行编译(注意需要在项目目录下)"></a>3.在控制台中输入以下命令进行编译(注意需要在项目目录下)</h3><p>webpack<br>webpack 配置文件路径</p>
+<h3 id="注意需要安装全局的webpack才能直接写webpack命令否则需要加上配置文件路径！！！"><a href="#注意需要安装全局的webpack才能直接写webpack命令否则需要加上配置文件路径！！！" class="headerlink" title="注意需要安装全局的webpack才能直接写webpack命令否则需要加上配置文件路径！！！"></a>注意需要安装全局的webpack才能直接写webpack命令否则需要加上配置文件路径！！！</h3><p>—以下简绍一种不需要安装全局webpack也可以直接输入webpack进行编译的方法-</p>
+<p>修改package.json文件内容为一下</p>
+<p>{<br>  “name”: “demo”,<br>  “version”: “1.0.0”,<br>  “description”: “”,<br>  “scripts”: {<br>    “start”:”webpack”,<br>    “test”: “echo \“Error: no test specified\“ &amp;&amp; exit 1”<br>  },<br>  “author”: “”,<br>  “license”: “ISC”,<br>  “dependencies”: {<br>    “webpack”: “^4.28.3”<br>  },<br>  “devDependencies”: {<br>    “webpack-cli”: “^3.2.0”<br>  }<br>}</p>
+<p>注意添加的是</p>
+<p>“start”:”webpack”</p>
+<p>这里的start的node中的一个内置变量不可更改为其他名字</p>
+<p>json文件修改完成之后在控制台输入以下内容进行编译</p>
+<p>npm start</p>
+<p>—有没有一种方法不需要用start的呢？当然有的，下面操作</p>
+<p>//如果将start改成其他如hd<br>“hd”:”webpack”</p>
+<p>那么运行的时候控制台应输入</p>
+<p>//注意这里的hd则是上面的名字<br>npm run hd</p>
+<p>好了今天的内容就到这里吧，有什么不对的地方，欢迎指出</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.1zyan.cc/2019/01/07/webpack-e5-ad-a6-e4-b9-a0-e7-ac-94-e8-ae-b0-e4-bd-bf-e7-94-a8webpack-config-js-e8-bf-9b-e8-a1-8c-e7-bc-96-e8-af-91/" data-id="cjtbs4mj9008ue05sdlyj7a1z" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Webpack/">Webpack</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-webpack-e5-ad-a6-e4-b9-a0-e7-ac-94-e8-ae-b0-e5-88-9d-e4-bd-93-e9-aa-8c" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/01/07/webpack-e5-ad-a6-e4-b9-a0-e7-ac-94-e8-ae-b0-e5-88-9d-e4-bd-93-e9-aa-8c/" class="article-date">
+  <time datetime="2019-01-07T05:40:32.000Z" itemprop="datePublished">2019-01-07</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/前端/">前端</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/01/07/webpack-e5-ad-a6-e4-b9-a0-e7-ac-94-e8-ae-b0-e5-88-9d-e4-bd-93-e9-aa-8c/">WebPack学习笔记-初体验</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>1.全局安装webpack:</p>
+<p>npm install -g webpack</p>
+<p>2.在项目里面创建配置项</p>
+<p>npm init</p>
+<p>3.在项目中安装webpack的依赖项</p>
+<p>npm install –save-dex webpack</p>
+<p>4.创建多个目录</p>
+<p><img src="http://www.1zyan.cn/wp-content/uploads/2019/01/a1-7.png" alt></p>
+<p>-app   存放js文件<br>—main.js   入口文件,在页面中引用<br>—work.js   应用文件<br>-public   公共文件<br>—index.html   首页</p>
+<p>5.编写文件</p>
+<p>//在main.js中引入work.js<br>require(‘./work.js’);<br>//在work.js中写入<br>console.log(‘hello word’);<br>//在index.html中引入文件</p>
+<script src="./webpack.js"></script>
+
+<p>6.编译</p>
+<p>//进入项目目录，运行命令<br>webpack js目录 输出的目录<br>webpack app/main.js public/webpack.js<br>//如果出现Do you want to install ‘webpack-cli’ (yes/no)请执行一下命令<br>npm install webpack-cli -g<br>//如果再次出错说没找到模块行加上-o在执行就可以了<br>webpack app/main.js -o public/webpack.js</p>
+<p>成功后会生成webpack.js</p>
+<p><img src="http://www.1zyan.cn/wp-content/uploads/2019/01/a2-6.png" alt></p>
+<p>运行结果</p>
+<p><img src="http://www.1zyan.cn/wp-content/uploads/2019/01/a3-4.png" alt></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.1zyan.cc/2019/01/07/webpack-e5-ad-a6-e4-b9-a0-e7-ac-94-e8-ae-b0-e5-88-9d-e4-bd-93-e9-aa-8c/" data-id="cjtbs4mj9008xe05s6uw985na" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Webpack/">Webpack</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端/">前端</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-spring-ioc-e7-90-86-e8-a7-a3" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/01/04/spring-ioc-e7-90-86-e8-a7-a3/" class="article-date">
+  <time datetime="2019-01-04T10:14:32.000Z" itemprop="datePublished">2019-01-04</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/JAVA/">JAVA</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/01/04/spring-ioc-e7-90-86-e8-a7-a3/">spring ioc理解</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>ioc控制反转：所谓控制反转，就是将控制权转移到容器之中。</p>
+<p>DI：控制反转中的DI，俗称依赖注入。就是在容器new的时候将我们.xml配置的值注入到对象的属性之中。</p>
+<p>说白了ioc就是让spring容器帮我们new，di就是容器在帮我们new的同时顺便将我们配置的值添加到new好的对象之中。</p>
+<p>以下贴出代码：</p>
+<pre><code>//获取配置文件，本人理解为初始化容器
+ApplicationContext context=new ClassPathXmlApplicationContext(&quot;ApplicationContext.xml&quot;);
+//获取bean，就是获取容器new的对象，并给配置好的属性赋值
+Printer pri =(Printer) context.getBean(&quot;printer&quot;);
+//调用对象中的方法，在获取1之后就可以直接使用对象中的方法了。
+pri.print(&quot;内容&quot;);
+</code></pre><p>以上是本人对于ioc的理解，如有错误请谅解</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.1zyan.cc/2019/01/04/spring-ioc-e7-90-86-e8-a7-a3/" data-id="cjtbs4mie006re05sqhkw02i7" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JAVA/">JAVA</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ioc/">ioc</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/spring/">spring</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-e5-88-9d-e8-af-86spring" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/01/04/e5-88-9d-e8-af-86spring/" class="article-date">
+  <time datetime="2019-01-04T07:24:19.000Z" itemprop="datePublished">2019-01-04</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/JAVA/">JAVA</a>►<a class="article-category-link" href="/categories/JAVA/首页/">首页</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/01/04/e5-88-9d-e8-af-86spring/">初识Spring</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="下载spring："><a href="#下载spring：" class="headerlink" title="下载spring："></a>下载spring：</h3><p><a href="https://repo.spring.io/" target="_blank" rel="noopener">https://repo.spring.io/</a></p>
+<p><img src="http://www.1zyan.cn/wp-content/uploads/2019/01/a1-6.png" alt></p>
+<h3 id="创建一个Web项目导入必要包和log配置文件："><a href="#创建一个Web项目导入必要包和log配置文件：" class="headerlink" title="创建一个Web项目导入必要包和log配置文件："></a>创建一个Web项目导入必要包和log配置文件：</h3><p><img src="http://www.1zyan.cn/wp-content/uploads/2019/01/a2-5.png" alt>  </p>
+<p>编写注入类HelloSpring</p>
+<p><img src="http://www.1zyan.cn/wp-content/uploads/2019/01/b1-2.png" alt></p>
+<p>编写ApplicationContext.XML文件：</p>
+<p>&lt;?xml version=”1.0” encoding=”UTF-8”?&gt;</p>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemalocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"><br>    &lt;!-- id获取bean节点的唯一标识 class注入的类所在的具体包 –&gt;<br>    <bean id="testHelloSpring" class="cn.spring.demo.SpringHello"><br>        &lt;!-- property类的属性 name则为属性名 –&gt;<br>        <property name="name"><br>            &lt;!-- 赋值 –&gt;<br>            <value>张三</value><br>        </property><br>        <property name="age"><br>            <value>18</value><br>        </property><br>    </bean><br></beans>
+
+<p>编写测试类：</p>
+<p> @Test<br>    public void hello(){<br>        /* 获取配置文件实例 <em>/<br>        ApplicationContext app=new ClassPathXmlApplicationContext(“ApplictionContext.xml”);<br>        /\</em> 获取bean节点 */<br>        SpringHello helo = (SpringHello)app.getBean(“testHelloSpring”);<br>        helo.print();<br>    }</p>
+<p>其他方法获取配置文件：</p>
+<p>FileSystemXmlApplicationContext<br>BeanFactory</p>
+<p><img src="http://www.1zyan.cn/wp-content/uploads/2019/01/b2-1.png" alt></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.1zyan.cc/2019/01/04/e5-88-9d-e8-af-86spring/" data-id="cjtbs4meh001me05snjsszbzb" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JAVA/">JAVA</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/spring/">spring</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-java-e4-b8-80-e5-af-b9-e5-a4-9a-e5-85-b3-e7-b3-bb" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/01/04/java-e4-b8-80-e5-af-b9-e5-a4-9a-e5-85-b3-e7-b3-bb/" class="article-date">
+  <time datetime="2019-01-04T01:49:01.000Z" itemprop="datePublished">2019-01-04</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/JAVA/">JAVA</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/01/04/java-e4-b8-80-e5-af-b9-e5-a4-9a-e5-85-b3-e7-b3-bb/">java 一对多关系</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>理解：一个管理员可管理多个用户</p>
+<p><img src="http://www.1zyan.cn/wp-content/uploads/2019/01/a1-4.png" alt></p>
+<h3 id="准备："><a href="#准备：" class="headerlink" title="准备："></a>准备：</h3><p>address表实体类：</p>
+<p>//id<br>private Integer id;<br>//联系人姓名<br>private String contact;<br>//收货地址明细<br>private String addressDesc;<br>//邮编<br>private String postCode;<br>//联系人电话<br>private String tel;<br>//创建者<br>private Integer createdBy;<br>//创建时间<br>private Date creationDate;</p>
+<p>在user实体类添加字段：</p>
+<h3 id="private-List-addressList"><a href="#private-List-addressList" class="headerlink" title="private List addressList;"></a>private List<address> addressList;</address></h3><h3 id="开始："><a href="#开始：" class="headerlink" title="开始："></a>开始：</h3><p>1.编写mapper.xml</p>
+<p>2.编写resultMap</p>
+<p>先编写mapper接口：</p>
+<p>public User getUserListByUserId(@Param(“id”) int id);</p>
+<p>注意我这里添加了注释标签的，等会就不会设置参数类型了<br>然后编写mapper.xml并且添加resultMap=”userAddressResultMap”<br>记住了编写其他的不变但上一篇文章里面的association替换为collection<br>这里注意：这里设置的返回值不在是javaType而是ofType</p>
+<p><img src="http://www.1zyan.cn/wp-content/uploads/2019/01/a1-5.png" alt></p>
+<p>3.测试</p>
+<p><img src="http://www.1zyan.cn/wp-content/uploads/2019/01/a2-4.png" alt></p>
+<p>运行结果如下</p>
+<p><img src="http://www.1zyan.cn/wp-content/uploads/2019/01/a3-3.png" alt></p>
+<p>4.使用另一种方式编写resultMap</p>
+<p>当然这里也可以使用上一篇文章中说到的resultMap嵌套的方式进行一对多关系的映射。看下图</p>
+<p><img src="http://www.1zyan.cn/wp-content/uploads/2019/01/a4-2.png" alt></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.1zyan.cc/2019/01/04/java-e4-b8-80-e5-af-b9-e5-a4-9a-e5-85-b3-e7-b3-bb/" data-id="cjtbs4mh3004se05slvmp4gks" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JAVA/">JAVA</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MyBatis/">MyBatis</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-mybatis-e4-b8-80-e5-af-b9-e5-a4-9a-e7-9a-84-e7-90-86-e8-a7-a3-e5-92-8c-e5-ae-9e-e4-be-8b" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/01/03/mybatis-e4-b8-80-e5-af-b9-e5-a4-9a-e7-9a-84-e7-90-86-e8-a7-a3-e5-92-8c-e5-ae-9e-e4-be-8b/" class="article-date">
+  <time datetime="2019-01-03T06:28:25.000Z" itemprop="datePublished">2019-01-03</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/JAVA/">JAVA</a>►<a class="article-category-link" href="/categories/JAVA/首页/">首页</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/01/03/mybatis-e4-b8-80-e5-af-b9-e5-a4-9a-e7-9a-84-e7-90-86-e8-a7-a3-e5-92-8c-e5-ae-9e-e4-be-8b/">MyBatis一对一的理解和实例</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>理论：一对多的关系就比如一个人一个身份证，一个用户一个角色</p>
+<p>使用association节点来设置一对一的关系</p>
+<p><img src="http://www.1zyan.cn/wp-content/uploads/2019/01/noeduineo.png" alt></p>
+<h3 id="准备："><a href="#准备：" class="headerlink" title="准备："></a>准备：</h3><p>User表实体类</p>
+<p>private Integer id; // id<br>private String userCode; // 用户编码<br>private String userName; // 用户名称<br>private String userPassword; // 用户密码<br>private Integer gender; // 性别<br>private Date birthday; // 出生日期<br>private String phone; // 电话<br>private String address; // 地址<br>private Integer userRole; // 用户角色<br>private Integer createdBy; // 创建者<br>private Date creationDate; // 创建时间<br>private Integer modifyBy; // 更新者<br>private Date modifyDate; // 更新时间<br>private Role role;</p>
+<p>Role表实体类</p>
+<p>private Integer id; //id<br>private String roleCode; //角色编码<br>private String roleName; //角色名称<br>private Integer createdBy; //创建者<br>private Date creationDate; //创建时间<br>private Integer modifyBy; //更新者<br>private Date modifyDate;//更新时间</p>
+<h3 id="开始："><a href="#开始：" class="headerlink" title="开始："></a>开始：</h3><p>1.在mapper.xml中写入sql,设置返回值为resultMap</p>
+<p><img src="http://www.1zyan.cn/wp-content/uploads/2019/01/a1-3.png" alt></p>
+<p>2.编写resultMap，注意这里的Id需要和使用时的resultMap一致</p>
+<p>3.添加association节点</p>
+<p><img src="http://www.1zyan.cn/wp-content/uploads/2019/01/a2-3.png" alt></p>
+<p>注意：在编写association节点时javaType必填，javaType为实体类中的role字段类型。还有注意看id不能冲突，所以role.id需要取个别名。</p>
+<p>完成之后编写mapper接口中的方法</p>
+<p>4.测试运行</p>
+<p><img src="http://www.1zyan.cn/wp-content/uploads/2019/01/a3-2.png" alt></p>
+<p>以下是运行结果</p>
+<p><img src="http://www.1zyan.cn/wp-content/uploads/2019/01/b1-1.png" alt></p>
+<p>好了，以上就是本次内容。有出错的地方欢迎指出！</p>
+<h3 id="补充："><a href="#补充：" class="headerlink" title="补充："></a>补充：</h3><p>另一种xml写法，直接上截图了哈</p>
+<p><img src="http://www.1zyan.cn/wp-content/uploads/2019/01/s1.png" alt></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.1zyan.cc/2019/01/03/mybatis-e4-b8-80-e5-af-b9-e5-a4-9a-e7-9a-84-e7-90-86-e8-a7-a3-e5-92-8c-e5-ae-9e-e4-be-8b/" data-id="cjtbs4mhy005oe05s5evcynzr" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JAVA/">JAVA</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-myeclipse-e9-a1-b9-e7-9b-ae-e8-bd-acidea-e9-a1-b9-e7-9b-ae-e5-92-8cjunit-e5-8d-95-e5-85-83-e6-b5-8b-e8-af-95-e7-9a-84-e5-9d-91" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/01/03/myeclipse-e9-a1-b9-e7-9b-ae-e8-bd-acidea-e9-a1-b9-e7-9b-ae-e5-92-8cjunit-e5-8d-95-e5-85-83-e6-b5-8b-e8-af-95-e7-9a-84-e5-9d-91/" class="article-date">
+  <time datetime="2019-01-03T06:00:29.000Z" itemprop="datePublished">2019-01-03</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/JAVA/">JAVA</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/01/03/myeclipse-e9-a1-b9-e7-9b-ae-e8-bd-acidea-e9-a1-b9-e7-9b-ae-e5-92-8cjunit-e5-8d-95-e5-85-83-e6-b5-8b-e8-af-95-e7-9a-84-e5-9d-91/">MyEclipse项目转idea项目和junit单元测试的坑</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="起因："><a href="#起因：" class="headerlink" title="起因："></a>起因：</h3><p>今天打算将myeclipse项目迁移到idea中，发现了几个问题</p>
+<h4 id="1-直接导入的项目有问题"><a href="#1-直接导入的项目有问题" class="headerlink" title="1.直接导入的项目有问题"></a>1.直接导入的项目有问题</h4><p>解决方法：不导入，直接新建一个项目然后将文件考入项目</p>
+<h4 id="2-导包，在idea中的web-info目录下没有lib文件夹"><a href="#2-导包，在idea中的web-info目录下没有lib文件夹" class="headerlink" title="2.导包，在idea中的web-info目录下没有lib文件夹"></a>2.导包，在idea中的web-info目录下没有lib文件夹</h4><p>解决方法：直接新建一个lib文件夹，并导入，具体步骤如下</p>
+<p><img src="http://www.1zyan.cn/wp-content/uploads/2019/01/a1-2.png" alt>  <img src="http://www.1zyan.cn/wp-content/uploads/2019/01/a2-2.png" alt></p>
+<p>在这里注意了，补充一下刚才没有讲到，点击+号后选择第一个java然后在进行目录选择<img src="http://www.1zyan.cn/wp-content/uploads/2019/01/a3-1.png" alt> <img src="http://www.1zyan.cn/wp-content/uploads/2019/01/a4-1.png" alt></p>
+<h4 id="3-junit导包有问题"><a href="#3-junit导包有问题" class="headerlink" title="3.junit导包有问题"></a>3.junit导包有问题</h4><p>打开测试类，发现junit会报错，因为没有导包所以还要导入junit包</p>
+<p>解决一：先打开file -&gt; settings -&gt; plugins -&gt; Marketplace下面搜索junit搜索时间会比较长下载JUnitGenerator V2.0</p>
+<p>解决二：导入idea安装目录lib目录下的junit4.jar如下图</p>
+<p><img src="http://www.1zyan.cn/wp-content/uploads/2019/01/j1.png" alt></p>
+<p>你以为这就成功了吗?那就错了</p>
+<p>还需要导入hamcrest-all-1.3.jar包，不然还会报错，具体原理是因为junit4把这个分离了。。。应该是这样把，反正网上是这样说的</p>
+<p>包的下载地址：<a href="http://central.maven.org/maven2/org/hamcrest/hamcrest-all/1.3/hamcrest-all-1.3.jar" target="_blank" rel="noopener">http://central.maven.org/maven2/org/hamcrest/hamcrest-all/1.3/hamcrest-all-1.3.jar</a></p>
+<h4 id="4-编码问题"><a href="#4-编码问题" class="headerlink" title="4.编码问题"></a>4.编码问题</h4><p>编码问题主要是因为，MyEclips默认编码是gbk二idea大部分是utf-8，所以现在开始设计编码</p>
+<p><img src="http://www.1zyan.cn/wp-content/uploads/2019/01/b1.png" alt> <img src="http://www.1zyan.cn/wp-content/uploads/2019/01/b2.png" alt></p>
+<p>ok了，好了有什么问题欢迎加我qq联系我哈</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.1zyan.cc/2019/01/03/myeclipse-e9-a1-b9-e7-9b-ae-e8-bd-acidea-e9-a1-b9-e7-9b-ae-e5-92-8cjunit-e5-8d-95-e5-85-83-e6-b5-8b-e8-af-95-e7-9a-84-e5-9d-91/" data-id="cjtbs4mhy005we05ssmy587a6" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JAVA/">JAVA</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/idea/">idea</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/junit/">junit</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/page/3/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/5/">Next &raquo;</a>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/C/">C#</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/C/JAVA/">JAVA</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/C/JAVA/软件开发/">软件开发</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/C/SqlServer/">SqlServer</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/C/SqlServer/数据库/">数据库</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/C/SqlServer/数据库/软件开发/">软件开发</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/C/原创/">原创</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/C/原创/视频/">视频</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/C/原创/软件开发/">软件开发</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/C/原创/软件开发/首页/">首页</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/C/原创/首页/">首页</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/C/软件开发/">软件开发</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/C/软件开发/首页/">首页</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/C/首页/">首页</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/HTML/">HTML</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/HTML/WEB/">WEB</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/HTML/WEB/前端/">前端</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/HTML/WEB/前端/原创/">原创</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/HTML/前端/">前端</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/JAVA/">JAVA</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/JAVA/原创/">原创</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/JAVA/软件开发/">软件开发</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/JAVA/首页/">首页</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Mysql/">Mysql</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Mysql/SqlServer/">SqlServer</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Mysql/SqlServer/数据库/">数据库</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/SqlServer/">SqlServer</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/SqlServer/数据库/">数据库</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/WEB/">WEB</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/WEB/其他/">其他</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/WEB/前端/">前端</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/WEB/前端/首页/">首页</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/WordPress/">WordPress</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/WordPress/其他/">其他</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/其他/">其他</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/其他/娱乐/">娱乐</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/其他/娱乐/视频/">视频</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/其他/娱乐/视频/音乐/">音乐</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/其他/娱乐/视频/音乐/首页/">首页</a></li></ul></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/其他/首页/">首页</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/">前端</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/娱乐/">娱乐</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/娱乐/视频/">视频</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/娱乐/视频/首页/">首页</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/首页/">首页</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C#</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/EXCEL写数据/">EXCEL写数据</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JAVA/">JAVA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jquery/">Jquery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MV/">MV</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MyBatis/">MyBatis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/">PHP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PS/">PS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SqlServer/">SqlServer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WEB/">WEB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Webpack/">Webpack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WordPress/">WordPress</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/aop/">aop</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/app/">app</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c-未将对象引用设置到对象的实例/">c#未将对象引用设置到对象的实例</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6/">es6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/">html</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/idea/">idea</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ioc/">ioc</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javaGui/">javaGui</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/junit/">junit</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/">nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rem插件/">rem插件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spring/">spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sql/">sql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sql-server/">sql server</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sqlse/">sqlse</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue-cli/">vue-cli</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/中文乱码/">中文乱码</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/中文类库/">中文类库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/入栈/">入栈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/公司模板/">公司模板</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/其他主题/">其他主题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/冒泡排序/">冒泡排序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/分布式/">分布式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端/">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/单例模式/">单例模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/原创/">原创</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/古风/">古风</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/图片/">图片</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/多线程/">多线程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/好听/">好听</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/娱乐/">娱乐</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小米/">小米</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工具/">工具</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/情书/">情书</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/支烟IP扫描器/">支烟IP扫描器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/支烟类库/">支烟类库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/教程/">教程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/新技术/">新技术</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/易代码转换/">易代码转换</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/枚举/">枚举</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/社团管理系统/">社团管理系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/程序/">程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/系统/">系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网络/">网络</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/美图/">美图</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/荒野行动/">荒野行动</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/视频软件/">视频软件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/语音合成/">语音合成</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/超级CS/">超级CS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/超级类库/">超级类库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/软件/">软件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/软件开发/">软件开发</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/逻辑思维训练/">逻辑思维训练</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面试题/">面试题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/音乐/">音乐</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/C/" style="font-size: 20px;">C#</a> <a href="/tags/EXCEL写数据/" style="font-size: 10px;">EXCEL写数据</a> <a href="/tags/JAVA/" style="font-size: 19px;">JAVA</a> <a href="/tags/Jquery/" style="font-size: 10px;">Jquery</a> <a href="/tags/MV/" style="font-size: 10px;">MV</a> <a href="/tags/MyBatis/" style="font-size: 15px;">MyBatis</a> <a href="/tags/PHP/" style="font-size: 10px;">PHP</a> <a href="/tags/PS/" style="font-size: 10px;">PS</a> <a href="/tags/SqlServer/" style="font-size: 11px;">SqlServer</a> <a href="/tags/WEB/" style="font-size: 13px;">WEB</a> <a href="/tags/Webpack/" style="font-size: 17px;">Webpack</a> <a href="/tags/WordPress/" style="font-size: 13px;">WordPress</a> <a href="/tags/aop/" style="font-size: 10px;">aop</a> <a href="/tags/app/" style="font-size: 10px;">app</a> <a href="/tags/c-未将对象引用设置到对象的实例/" style="font-size: 10px;">c#未将对象引用设置到对象的实例</a> <a href="/tags/es6/" style="font-size: 16px;">es6</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/idea/" style="font-size: 11px;">idea</a> <a href="/tags/ioc/" style="font-size: 10px;">ioc</a> <a href="/tags/javaGui/" style="font-size: 10px;">javaGui</a> <a href="/tags/junit/" style="font-size: 10px;">junit</a> <a href="/tags/linux/" style="font-size: 11px;">linux</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/rem插件/" style="font-size: 10px;">rem插件</a> <a href="/tags/spring/" style="font-size: 17px;">spring</a> <a href="/tags/sql/" style="font-size: 10px;">sql</a> <a href="/tags/sql-server/" style="font-size: 10px;">sql server</a> <a href="/tags/sqlse/" style="font-size: 10px;">sqlse</a> <a href="/tags/vue/" style="font-size: 18px;">vue</a> <a href="/tags/vue-cli/" style="font-size: 16px;">vue-cli</a> <a href="/tags/中文乱码/" style="font-size: 10px;">中文乱码</a> <a href="/tags/中文类库/" style="font-size: 10px;">中文类库</a> <a href="/tags/入栈/" style="font-size: 10px;">入栈</a> <a href="/tags/公司模板/" style="font-size: 10px;">公司模板</a> <a href="/tags/其他主题/" style="font-size: 10px;">其他主题</a> <a href="/tags/冒泡排序/" style="font-size: 10px;">冒泡排序</a> <a href="/tags/分布式/" style="font-size: 10px;">分布式</a> <a href="/tags/前端/" style="font-size: 11px;">前端</a> <a href="/tags/单例模式/" style="font-size: 10px;">单例模式</a> <a href="/tags/原创/" style="font-size: 14px;">原创</a> <a href="/tags/古风/" style="font-size: 10px;">古风</a> <a href="/tags/图片/" style="font-size: 10px;">图片</a> <a href="/tags/多线程/" style="font-size: 11px;">多线程</a> <a href="/tags/好听/" style="font-size: 10px;">好听</a> <a href="/tags/娱乐/" style="font-size: 10px;">娱乐</a> <a href="/tags/小米/" style="font-size: 10px;">小米</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a> <a href="/tags/情书/" style="font-size: 10px;">情书</a> <a href="/tags/支烟IP扫描器/" style="font-size: 10px;">支烟IP扫描器</a> <a href="/tags/支烟类库/" style="font-size: 10px;">支烟类库</a> <a href="/tags/教程/" style="font-size: 11px;">教程</a> <a href="/tags/数据库/" style="font-size: 12px;">数据库</a> <a href="/tags/新技术/" style="font-size: 10px;">新技术</a> <a href="/tags/易代码转换/" style="font-size: 10px;">易代码转换</a> <a href="/tags/枚举/" style="font-size: 10px;">枚举</a> <a href="/tags/社团管理系统/" style="font-size: 10px;">社团管理系统</a> <a href="/tags/程序/" style="font-size: 10px;">程序</a> <a href="/tags/系统/" style="font-size: 10px;">系统</a> <a href="/tags/网络/" style="font-size: 10px;">网络</a> <a href="/tags/美图/" style="font-size: 10px;">美图</a> <a href="/tags/荒野行动/" style="font-size: 10px;">荒野行动</a> <a href="/tags/视频软件/" style="font-size: 10px;">视频软件</a> <a href="/tags/语音合成/" style="font-size: 10px;">语音合成</a> <a href="/tags/超级CS/" style="font-size: 10px;">超级CS</a> <a href="/tags/超级类库/" style="font-size: 10px;">超级类库</a> <a href="/tags/软件/" style="font-size: 13px;">软件</a> <a href="/tags/软件开发/" style="font-size: 11px;">软件开发</a> <a href="/tags/逻辑思维训练/" style="font-size: 10px;">逻辑思维训练</a> <a href="/tags/面试题/" style="font-size: 13px;">面试题</a> <a href="/tags/音乐/" style="font-size: 11px;">音乐</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/02/28/测试文件/">测试文件</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/27/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/25/10-e5-88-86-e9-92-9f-e5-ad-a6-e4-bc-9aes7es8/">10分钟学会ES7+ES8</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/18/vue-e6-93-8d-e4-bd-9cdom/">vue操作dom</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/24/springmybatis-e6-95-b4-e5-90-88-e7-ac-94-e8-ae-b0-e4-bd-bf-e7-94-a8-e6-b3-a8-e8-a7-a3-e6-a0-87-e7-ad-be-e5-ae-9e-e7-8e-b0-e4-ba-8b-e5-8a-a1-e5-92-8c-e4-ba-8b-e5-8a-a1-e7-9a-84-e5-8f-82-e6-95-b0/">Spring+Mybatis整合笔记-使用注解标签实现事务和事务的参数</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 yizhiyan<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

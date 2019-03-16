@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>易支烟</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="博主熟悉前后端操作，爬虫。喜欢交朋友，欢迎各位进来坐坐">
+<meta name="keywords" content="易支烟、支烟类库">
+<meta property="og:type" content="website">
+<meta property="og:title" content="易支烟">
+<meta property="og:url" content="http://www.1zyan.cc/page/2/index.html">
+<meta property="og:site_name" content="易支烟">
+<meta property="og:description" content="博主熟悉前后端操作，爬虫。喜欢交朋友，欢迎各位进来坐坐">
+<meta property="og:locale" content="default">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="易支烟">
+<meta name="twitter:description" content="博主熟悉前后端操作，爬虫。喜欢交朋友，欢迎各位进来坐坐">
+  
+    <link rel="alternate" href="/atom.xml" title="易支烟" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">易支烟</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">易支烟</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://www.1zyan.cc"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-springmybatis-e6-95-b4-e5-90-88-e7-ac-94-e8-ae-b0" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/01/18/springmybatis-e6-95-b4-e5-90-88-e7-ac-94-e8-ae-b0/" class="article-date">
+  <time datetime="2019-01-18T07:35:26.000Z" itemprop="datePublished">2019-01-18</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/JAVA/">JAVA</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/01/18/springmybatis-e6-95-b4-e5-90-88-e7-ac-94-e8-ae-b0/">Spring+Mybatis整合笔记-通过配置文件进行整合</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>先来看文件目录</p>
+<p><img src="http://www.1zyan.cn/wp-content/uploads/2019/01/a2-16.png" alt></p>
+<p>本次要使用到的文件配置文件类</p>
+<p><img src="http://www.1zyan.cn/wp-content/uploads/2019/01/a1-21.png" alt></p>
+<p>本次教程多说，主要是自己的笔记</p>
+<p>我们来看UserMapperImpl类</p>
+<p>package cn.smbms.dao;</p>
+<p>import cn.smbms.pojo.User;<br>import org.mybatis.spring.SqlSessionTemplate;</p>
+<p>import java.util.List;</p>
+<p>public class UserMapperImpl {<br>    //通过依赖注入获取sqkSessionTemplate实例<br>    SqlSessionTemplate sqlSessionTemplate=null;</p>
+<pre><code>public SqlSessionTemplate getSqlSessionTemplate() {
+    return sqlSessionTemplate;
+}
+
+public void setSqlSessionTemplate(SqlSessionTemplate sqlSessionTemplate) {
+    this.sqlSessionTemplate = sqlSessionTemplate;
+}
+
+public List&lt;User&gt; GetUserListByName(String uName){
+    //使用和SqlSessionFactory差不多
+    return sqlSessionTemplate.getMapper(UserMapper.class).getUserListByName(uName);
+}
+</code></pre><p>}</p>
+<p>MyBatis-Config.xml</p>
+<p>&lt;?xml version=”1.0” encoding=”UTF-8” ?&gt;<br>&lt;!DOCTYPE configuration<br>  PUBLIC “-//mybatis.org//DTD Config 3.0//EN”<br>  “<a href="http://mybatis.org/dtd/mybatis-3-config.dtd&quot;&gt;" target="_blank" rel="noopener">http://mybatis.org/dtd/mybatis-3-config.dtd&quot;&gt;</a></p>
+<configuration><br>    &lt;!-- 引入databse.properties文件 –&gt;<br>    <!--<properties resource="database.properties"/>--><br>    <settings><br>        <setting name="logImpl" value="LOG4J"><br>    </setting></settings><br>    &lt;!-- 设置类型 –&gt;<br>    <typealiases><br>        <package name="cn.smbms.pojo"><br>    </package></typealiases><br><!--     一套数据环境，可配置多套，default设置使用那一套配置环境
+    <environments default="deveLopment">
+        &lt;!&ndash; id唯一 &ndash;&gt;
+        <environment id="deveLopment">
+            &lt;!&ndash; 事务管理 &ndash;&gt;
+            <transactionManager  type="JDBC" ></transactionManager>
+            &lt;!&ndash; 数据源 &ndash;&gt;
+            <dataSource  type="POOLED">
+                <property name="driver" value="${driver}"/>
+                <property name="url" value="${url}"/>
+                <property name="username" value="${user}"/>
+                <property name="password" value="${password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+    &lt;!&ndash; 讲mapper文件加入到配置文件中 &ndash;&gt;
+    <mappers>
+        <mapper resource="cn/smbms/dao/UserMapper.xml" />
+    </mappers>--><br></configuration>
+
+
+
+<p>ApplicationContext.xml文件</p>
+<p>&lt;?xml version=”1.0” encoding=”UTF-8”?&gt;</p>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemalocation="
+       http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+"><br>    &lt;!-- 使用dbcp数据源 –&gt;<br>    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"><br>        <property name="driverClassName" value="com.mysql.jdbc.Driver"><br>        <property name="url" value="jdbc:mysql://mysql.1zyan.cc:3306/smbms?useUnicode=true&amp;characterEncoding=utf-8"><br>        <property name="username" value="yizhiyan"><br>        <property name="password" value="464312406"><br>    </property></property></property></property></bean><br>    &lt;!-- 配置数据库操作 –&gt;<br>    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean"><br>        &lt;!-- 引用数据源 –&gt;<br>        <property name="dataSource" ref="dataSource"><br>        &lt;!-- 将mybatis配置文件引入 –&gt;<br>        <property name="configLocation" value="classpath:mybatis-config.xml"><br>        &lt;!-- 将mapper文件加入到配置文件中。 –&gt;<br>        &lt;!-- <property name="mapperLocations"><br>            <list><br>                <value>classpath:cn/smbms/dao/<em>.xml</em></value><br>            </list><br>        </property> –&gt;<br>        &lt;property name=”mapperLocations” value=”classpath:cn/smbms/dao/.xml”/&gt;<br>    </property></property></bean><br>    &lt;!-- 调用数据库配置文件 –&gt;<br>    <bean id="slqSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate"><br>        &lt;!-- 进行构造器注入，注入构造函数 –&gt;<br>        <constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory"><br>    </constructor-arg></bean><br>    &lt;!-- dao –&gt;<br>    <bean id="userMapperImpl" class="cn.smbms.dao.UserMapperImpl"><br>        <property name="sqlSessionTemplate" ref="slqSessionTemplate"><br>    </property></bean><br></beans>
+
+
+
+<p>编写测试测试方法</p>
+<p>@Test<br>    public void ts1(){<br>        ApplicationContext ctx=new ClassPathXmlApplicationContext(“ApplicationContext.xml”);<br>        List<user> userList=((UserMapperImpl)ctx.getBean(“userMapperImpl”)).GetUserListByName(“李”);<br>        for (User user : userList) {<br>            System.out.println(user.getId()+”.”+user.getUserName());<br>        }<br>    }</user></p>
+<p>以上配置都有注释说明，如果看不懂可以联系博主。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.1zyan.cc/2019/01/18/springmybatis-e6-95-b4-e5-90-88-e7-ac-94-e8-ae-b0/" data-id="cjtbs4mit007ie05sovxarhlx" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MyBatis/">MyBatis</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/spring/">spring</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-spring-aop-e5-88-87-e9-9d-a2-e5-ae-9e-e4-be-8b-e7-90-86-e8-a7-a3" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/01/18/spring-aop-e5-88-87-e9-9d-a2-e5-ae-9e-e4-be-8b-e7-90-86-e8-a7-a3/" class="article-date">
+  <time datetime="2019-01-18T05:18:59.000Z" itemprop="datePublished">2019-01-18</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/JAVA/">JAVA</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/01/18/spring-aop-e5-88-87-e9-9d-a2-e5-ae-9e-e4-be-8b-e7-90-86-e8-a7-a3/">spring aop切面实例理解</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="什么是AOP"><a href="#什么是AOP" class="headerlink" title="什么是AOP"></a>什么是AOP</h3><p>AOP（Aspect-OrientedProgramming，面向方面编程），可以说是OOP（Object-Oriented Programing，面向对象编程）的补充和完善。OOP引入封装、继承和多态性等概念来建立一种对象层次结构，用以模拟公共行为的一个集合。当我们需要为分散的对象引入公共行为的时候，OOP则显得无能为力。也就是说，OOP允许你定义从上到下的关系，但并不适合定义从左到右的关系。例如日志功能。日志代码往往水平地散布在所有对象层次中，而与它所散布到的对象的核心功能毫无关系。对于其他类型的代码，如安全性、异常处理和透明的持续性也是如此。这种散布在各处的无关的代码被称为横切（cross-cutting）代码，在OOP设计中，它导致了大量代码的重复，而不利于各个模块的重用。  </p>
+<p>而AOP技术则恰恰相反，它利用一种称为“横切”的技术，剖解开封装的对象内部，并将那些影响了多个类的公共行为封装到一个可重用模块，并将其名为“Aspect”，即方面。所谓“方面”，简单地说，就是将那些与业务无关，却为业务模块所共同调用的逻辑或责任封装起来，便于减少系统的重复代码，降低模块间的耦合度，并有利于未来的可操作性和可维护性。AOP代表的是一个横向的关系，如果说“对象”是一个空心的圆柱体，其中封装的是对象的属性和行为；那么面向方面编程的方法，就仿佛一把利刃，将这些空心圆柱体剖开，以获得其内部的消息。而剖开的切面，也就是所谓的“方面”了。然后它又以巧夺天功的妙手将这些剖开的切面复原，不留痕迹。</p>
+<p>使用“横切”技术，AOP把软件系统分为两个部分：核心关注点和横切关注点。业务处理的主要流程是核心关注点，与之关系不大的部分是横切关注点。横切关注点的一个特点是，他们经常发生在核心关注点的多处，而各处都基本相似。比如权限认证、日志、事务处理。Aop 的作用在于分离系统中的各种关注点，将核心关注点和横切关注点分离开来。正如Avanade公司的高级方案构架师Adam Magee所说，AOP的核心思想就是“将应用程序中的商业逻辑同对其提供支持的通用服务进行分离。”  </p>
+<p>实现AOP的技术，主要分为两大类：一是采用动态代理技术，利用截取消息的方式，对该消息进行装饰，以取代原有对象行为的执行；二是采用静态织入的方式，引入特定的语法创建“方面”，从而使得编译器可以在编译期间织入有关“方面”的代码。  </p>
+<p><img src="http://www.1zyan.cn/wp-content/uploads/2019/01/20130924152523859.png" alt></p>
+<h3 id="案例理解："><a href="#案例理解：" class="headerlink" title="案例理解："></a>案例理解：</h3><p>本次案例需要用到如下类</p>
+<p><img src="http://www.1zyan.cn/wp-content/uploads/2019/01/a3-10.png" alt></p>
+<p>下面是配置文件</p>
+<p>&lt;?xml version=”1.0” encoding=”UTF-8”?&gt;</p>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop" xsi:schemalocation="
+       http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/aop
+       http://www.springframework.org/schema/aop/spring-aop.xsd
+"><br>    <!--.....................注入dao到service中以便进行下面操作......................--><br>    <!--引入dao类--><br>    <bean id="userDao" class="dao.impl.UserDaoImpl"></bean><br>    <!--引入service类--><br>    <bean id="userService" class="service.impl.UserServiceImpl"><br>        <!--设置注入类--><br>        <property name="dao" ref="userDao"><br>    </property></bean><br>    <!--..................................A.O.P.开.始................................--><br>    <!--引入增强类--><br>    <bean id="theLogger" class="aop.UserServiceLogger"></bean><br>    <!--配置aop增强信息--><br>    <a href="aop:config" target="_blank" rel="noopener">aop:config</a><br>        <!--配置增强表达式，通过表达式expression寻找定义切入点--><br>        &lt;aop:pointcut id=”pointcut” expression=”execution(public void addNewUser(entity.User))”/&gt;<br>        <!--配置切面，织入,ref织入的哪个类--><br>        &lt;aop:aspect ref=”theLogger”&gt;<br>            <!--前置增强，method增强方法,pointcut-ref增强表达式--><br>            &lt;aop:before method=”before” pointcut-ref=”pointcut”/&gt;<br>            <!--后置增强,returning注入目标返回值--><br>            &lt;aop:after-returning method=”afterReturning” pointcut-ref=”pointcut” returning=”result”/&gt;<br>        &lt;/aop:aspect&gt;<br>    &lt;/aop:config&gt;<br></beans>
+
+<p>编写增强类</p>
+<p>package aop;</p>
+<p>import org.aspectj.lang.JoinPoint;</p>
+<p>import java.util.Arrays;</p>
+<p>/**<br> * 增强处理类<br> <em>/<br>public class UserServiceLogger {<br>    /\</em>*<br>     * 前置增强<br>     * @param jp 信息对象<br>     */<br>    public void before(JoinPoint jp){<br>        System.out.println(“调用”+jp.getTarget()+”的”+jp.getSignature()+<br>                “方法，参数”+ Arrays.toString(jp.getArgs()));<br>    }</p>
+<pre><code>/\*\*
+ \* 后置增强
+ \* @param jp 信息对象
+ \* @param result 返回值
+ */
+public void afterReturning(JoinPoint jp,Object result){
+    System.out.println(&quot;调用&quot;+jp.getTarget()+&quot;的&quot;+jp.getSignature()+
+            &quot;方法，返回值&quot;\+ result);
+}
+</code></pre><p>}</p>
+<p>编写测试</p>
+<pre><code>@Test
+public void ts1(){
+    //获取配置文件对象实例
+    ApplicationContext ac=new ClassPathXmlApplicationContext(&quot;ApplicationContext.xml&quot;);
+    //获取userService对象实例
+    UserService userService=(UserService)ac.getBean(&quot;userService&quot;);
+    User use=new User();
+    use.setId(1);
+    use.setUsername(&quot;test&quot;);
+    userService.addNewUser(use);
+}
+</code></pre><p>允许如下：</p>
+<p><img src="http://www.1zyan.cn/wp-content/uploads/2019/01/a4-5.png" alt></p>
+<p><img src="http://www.1zyan.cn/wp-content/uploads/2019/01/a1-20.png" alt><img src="http://www.1zyan.cn/wp-content/uploads/2019/01/a2-15.png" alt></p>
+<p>不知道上面的案例和图你们理解了没有，下面是我根据自己的理解所画的图</p>
+<p><img src="http://www.1zyan.cn/wp-content/uploads/2019/01/b1-6.png" alt><img src="http://www.1zyan.cn/wp-content/uploads/2019/01/b2-3.png" alt></p>
+<p>根据本人的理解就是spring容器在我们调用方法时，在我们的方法之前调用了和在方法之后增强方法。</p>
+<p>下面这篇详解AOP：<a href="https://blog.csdn.net/yuexianchang/article/details/77018603" target="_blank" rel="noopener">https://blog.csdn.net/yuexianchang/article/details/77018603</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.1zyan.cc/2019/01/18/spring-aop-e5-88-87-e9-9d-a2-e5-ae-9e-e4-be-8b-e7-90-86-e8-a7-a3/" data-id="cjtbs4mhy006fe05sqrtwka9c" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/aop/">aop</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/spring/">spring</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-es6-e5-ad-a6-e4-b9-a0-e6-a8-a1-e5-9d-97" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/01/15/es6-e5-ad-a6-e4-b9-a0-e6-a8-a1-e5-9d-97/" class="article-date">
+  <time datetime="2019-01-15T01:40:07.000Z" itemprop="datePublished">2019-01-15</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/WEB/">WEB</a>►<a class="article-category-link" href="/categories/WEB/前端/">前端</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/01/15/es6-e5-ad-a6-e4-b9-a0-e6-a8-a1-e5-9d-97/">es6学习-模块</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>模块在浏览器是不支持的，但是在vue-cli中是支持的。</p>
+<p>export导出，不能直接导出值</p>
+<p>console.log(“我是mo.js”);<br>var firstName = “唐”<br>var lastName = “菜叶”<br>var sex = “男”<br>export {<br>  firstName,<br>  lastName,<br>  sex<br>}<br>export var name=”鬼知道”;<br>export var fun=()=&gt;{alert(firstName)};<br>export {sex as uSex};</p>
+<p>import导入</p>
+<p>  import {firstName,name,fun,uSex} from ‘./mo’<br>  console.log(firstName);<br>  console.log(name);<br>  console.log(uSex);<br>  fun();</p>
+<p>注意：这里导入和导入的名字必须一致，除非导出时使用as重命名了。</p>
+<p>export default 默认输出</p>
+<p>export default function () {<br>  console.log(‘11111111’);<br>}</p>
+<p>导出的时候没有名字，在import的时候指定名字</p>
+<p>  import fun from ‘./mo’<br>  fun();</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.1zyan.cc/2019/01/15/es6-e5-ad-a6-e4-b9-a0-e6-a8-a1-e5-9d-97/" data-id="cjtbs4mgn004ee05sroct5652" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/es6/">es6</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue/">vue</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue-cli/">vue-cli</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-es6-e5-ad-a6-e4-b9-a0-babel-e5-ae-9e-e7-8e-b0-e5-85-bc-e5-ae-b9" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/01/15/es6-e5-ad-a6-e4-b9-a0-babel-e5-ae-9e-e7-8e-b0-e5-85-bc-e5-ae-b9/" class="article-date">
+  <time datetime="2019-01-15T01:39:58.000Z" itemprop="datePublished">2019-01-15</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/WEB/">WEB</a>►<a class="article-category-link" href="/categories/WEB/前端/">前端</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/01/15/es6-e5-ad-a6-e4-b9-a0-babel-e5-ae-9e-e7-8e-b0-e5-85-bc-e5-ae-b9/">es6学习-babel实现兼容</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>babel是一个广泛使用的转码器，可以将es6代码转为es5代码，从而在现有环境执行，这一位置，你可以现在就用es6编写程序，而不用担心现有环境。</p>
+<p>1.安装babel</p>
+<p>npm install –save-dev babel-cli<br>或者<br>cnpm install –save-dev babel-cli</p>
+<p><img src="http://www.1zyan.cn/wp-content/uploads/2019/01/a1-19.png" alt></p>
+<p><img src="http://www.1zyan.cn/wp-content/uploads/2019/01/a2-14.png" alt></p>
+<p>demo.js</p>
+<p>let a=5;<br>const b=10;<br>input.map(item =&gt; item+1);</p>
+<p>package.json</p>
+<p>{<br>    “devDependencies”:{<br>      “babel-cli”: “^6.26.0”,<br>      “babel-preset-es2015”: “^6.24.1”<br>    },<br>  “scripts”:{<br>    “build”:”babel demo.js –out-file a.js”<br>  }<br>}</p>
+<p>运行</p>
+<p>npm run build</p>
+<p><img src="http://www.1zyan.cn/wp-content/uploads/2019/01/a3-9.png" alt></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.1zyan.cc/2019/01/15/es6-e5-ad-a6-e4-b9-a0-babel-e5-ae-9e-e7-8e-b0-e5-85-bc-e5-ae-b9/" data-id="cjtbs4mgn003ye05smbxbyu4d" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Webpack/">Webpack</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/es6/">es6</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-es6-e5-ad-a6-e4-b9-a0-e8-a7-a3-e6-9e-84-e8-b5-8b-e5-80-bc" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/01/15/es6-e5-ad-a6-e4-b9-a0-e8-a7-a3-e6-9e-84-e8-b5-8b-e5-80-bc/" class="article-date">
+  <time datetime="2019-01-15T01:39:48.000Z" itemprop="datePublished">2019-01-15</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/WEB/">WEB</a>►<a class="article-category-link" href="/categories/WEB/前端/">前端</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/01/15/es6-e5-ad-a6-e4-b9-a0-e8-a7-a3-e6-9e-84-e8-b5-8b-e5-80-bc/">es6学习-解构赋值</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>什么是解构赋值，ES6允许按照一定模式，从数组和对象中提取值，对变量进行赋值。</p>
+<p>数组：</p>
+<p>/*    let a=1;<br>    let b=2;<br>    let c=3;*/<br>    let [a,b,c]=[1,2,3];</p>
+<p>嵌套解构：</p>
+<pre><code>let \[a,\[b,c\],d\]=\[1,\[2,3\],4\];
+console.log(b);
+</code></pre><p>对象解构：</p>
+<p>let obj={<br>    name:”gun”,<br>    sex:”男”<br>};<br>let {name:uname,sex:usex}=obj;<br>console.log(uname);<br>console.log(usex);</p>
+<p><img src="http://www.1zyan.cn/wp-content/uploads/2019/01/a1-18.png" alt></p>
+<p>对象解构就是将对象中的属性赋值给新的变量。</p>
+<p>//使用解构赋值方法获取参数<br>function show({a}) {<br>    console.log(a)<br>}<br>show({<br>    a:1,<br>    b:2,<br>    c:3<br>});</p>
+<p>字符串解构</p>
+<p>//字符串解构<br>let [a,b,c]=”鬼知道”;<br>console.log(a);</p>
+<p><img src="http://www.1zyan.cn/wp-content/uploads/2019/01/a2-13.png" alt></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.1zyan.cc/2019/01/15/es6-e5-ad-a6-e4-b9-a0-e8-a7-a3-e6-9e-84-e8-b5-8b-e5-80-bc/" data-id="cjtbs4mh3004ke05s9b4l5zc5" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/es6/">es6</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-es6-e5-ad-a6-e4-b9-a0-class-e7-b1-bb" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/01/15/es6-e5-ad-a6-e4-b9-a0-class-e7-b1-bb/" class="article-date">
+  <time datetime="2019-01-15T01:39:26.000Z" itemprop="datePublished">2019-01-15</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/WEB/">WEB</a>►<a class="article-category-link" href="/categories/WEB/前端/">前端</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/01/15/es6-e5-ad-a6-e4-b9-a0-class-e7-b1-bb/">es6学习-class类</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在es6中声明类和其他语言声明类是一样的使用class关键词，继承使用extends，构造方法constructor，调用父类使用super</p>
+<pre><code>/*
+function  Person(name,sex) {
+    this.name=name;
+    this.sex=sex;
+    this.showName=function(){
+        this.alert(this.name);
+    }
+}
+var obj1=new Person(&apos;小文&apos;,&apos;男&apos;)
+function Manger(name,sex,pwd) {
+    //继承 Person
+    Person.call(this,name,sex);
+    this.pwd=pwd
+}
+*/
+//-----------------------e-s-6-----------------------
+class Person{
+    //构造函数
+    constructor(name,sex){
+        this.name=name;
+        this.sex=sex;
+    }
+    //方法
+    showName(){
+        alert(this.name);
+    }
+}
+var obj1=new Person(&apos;小文&apos;,&apos;男&apos;)
+//继承
+class Manger extends Person{
+    constructor(name,sex,pwd){
+        //调用父类
+        super(name,sex);
+        this.pwd=pwd;
+    }
+    static getStatic(){
+        console.log(&apos;这是静态方法&apos;);
+    }
+}
+Manger.getStatic();
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.1zyan.cc/2019/01/15/es6-e5-ad-a6-e4-b9-a0-class-e7-b1-bb/" data-id="cjtbs4mgn0042e05si003iyk8" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/es6/">es6</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-es6-e5-ad-a6-e4-b9-a0-object-defineproperty" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/01/14/es6-e5-ad-a6-e4-b9-a0-object-defineproperty/" class="article-date">
+  <time datetime="2019-01-14T03:10:26.000Z" itemprop="datePublished">2019-01-14</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/WEB/">WEB</a>►<a class="article-category-link" href="/categories/WEB/前端/">前端</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/01/14/es6-e5-ad-a6-e4-b9-a0-object-defineproperty/">es6学习-Object.defineProperty</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Object.defineProperty可以进行双向数据绑定</p>
+<pre><code>var data={};
+Object.defineProperty(data,&apos;b&apos;,{
+    //value:值
+    //value:5,
+    //writable值为false则只读,默认flase
+    //writable:true,
+    //总开关，一旦为false就不能设置他的(value,writable),默认为false
+    //configurable:false
+    //是否能被for..in循环便利或在Object.keys中枚举出来，false不能，默认为false
+    //enumerable:true,
+    //get set 访问器，一旦使用访问器，前面的value就不能使用了
+    /*set(newValue){
+        console.log(newValue);
+    },
+    get(){
+        return 999;
+    }*/
+});
+data.b=5;
+console.log(data.b);
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.1zyan.cc/2019/01/14/es6-e5-ad-a6-e4-b9-a0-object-defineproperty/" data-id="cjtbs4mh3004le05syb3n46qu" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/es6/">es6</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-es6-e5-ad-a6-e4-b9-a0-e5-af-b9-e8-b1-a1-e7-9a-84-e7-ae-80-e5-86-99" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/01/14/es6-e5-ad-a6-e4-b9-a0-e5-af-b9-e8-b1-a1-e7-9a-84-e7-ae-80-e5-86-99/" class="article-date">
+  <time datetime="2019-01-14T02:57:36.000Z" itemprop="datePublished">2019-01-14</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/WEB/">WEB</a>►<a class="article-category-link" href="/categories/WEB/前端/">前端</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/01/14/es6-e5-ad-a6-e4-b9-a0-e5-af-b9-e8-b1-a1-e7-9a-84-e7-ae-80-e5-86-99/">es6学习-对象的简写</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在es6中对象进行了简化</p>
+<p>首先是赋值的简写</p>
+<pre><code>var a=5;
+var obj={
+    //es6之前写法
+    //a:a
+    //es6语法，如果键和值一样，可以直接简写
+    a
+}
+console.log(obj);
+</code></pre><p>方法的简写：</p>
+<pre><code>var obj={
+    //es6之前
+    b:function(){
+        console.log(this);
+    },
+    //es6语法，定义方法可以简写成
+    b(){
+        console.log(this);
+    }
+}
+</code></pre><p>获取对象和数组的key在es6中使用Object.keys(对象)来获取,返回一个数组</p>
+<pre><code>//使用Object.keys()获取对象和数组的key
+console.log(Object.keys(obj));
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.1zyan.cc/2019/01/14/es6-e5-ad-a6-e4-b9-a0-e5-af-b9-e8-b1-a1-e7-9a-84-e7-ae-80-e5-86-99/" data-id="cjtbs4mgn004be05sjh73z2ag" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/es6/">es6</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-es6-e5-ad-a6-e4-b9-a0-e5-87-bd-e6-95-b0-e7-9a-84-e6-89-a9-e5-b1-95" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/01/14/es6-e5-ad-a6-e4-b9-a0-e5-87-bd-e6-95-b0-e7-9a-84-e6-89-a9-e5-b1-95/" class="article-date">
+  <time datetime="2019-01-14T02:44:14.000Z" itemprop="datePublished">2019-01-14</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/WEB/">WEB</a>►<a class="article-category-link" href="/categories/WEB/前端/">前端</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/01/14/es6-e5-ad-a6-e4-b9-a0-e5-87-bd-e6-95-b0-e7-9a-84-e6-89-a9-e5-b1-95/">es6学习-函数的扩展</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>1.函数默认值，在es6之前是使用||来赋默认值，在es6中可以直接在括号中进行赋值</p>
+<pre><code>//es6可以直接在括号中赋值
+function show(a,b=8){
+    //es6之前,如果b没有值则使用8
+    //b=b||8;
+    return a+b;
+}
+alert(show(5));
+</code></pre><p>2.箭头函数，相当于匿名函数</p>
+<pre><code>//箭头函数(参数列表)=&gt;返回值
+//var show=(a,b=7)=&gt;a+b;
+//多行代码使用{}进行包裹
+var show=(a,b=7) =&gt; {
+    console.log(&apos;调用了一次&apos;);
+    return a+b;
+}
+alert(show(1));
+</code></pre><p>3.this，在es6中this始终只方法定义时的this。</p>
+<p>var obj={<br>        a:5,<br>        fun:function(){<br>            console.log(this.a);<br>        },<br>        test:function(){<br>            console.log(this);// this —&gt; obj<br>            /<em><br>            setTimeout(function(){<br>                console.log(this);//this —&gt; window<br>                this.fun();<br>            },1)
+            </em>/<br>            setTimeout(()=&gt;{<br>                this.fun();//this —&gt; obj<br>            },1);<br>        }<br>    }<br>    obj.test();</p>
+<p>说白了，在箭头函数定义的方法中使用this不是值当前对象，而是只父函数所在的对象。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.1zyan.cc/2019/01/14/es6-e5-ad-a6-e4-b9-a0-e5-87-bd-e6-95-b0-e7-9a-84-e6-89-a9-e5-b1-95/" data-id="cjtbs4mgn0045e05sg7hb18dl" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/es6/">es6</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-es6-e5-ad-a6-e4-b9-a0-e6-a8-a1-e6-9d-bf-e8-af-ad-e6-b3-95" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/01/14/es6-e5-ad-a6-e4-b9-a0-e6-a8-a1-e6-9d-bf-e8-af-ad-e6-b3-95/" class="article-date">
+  <time datetime="2019-01-14T02:21:50.000Z" itemprop="datePublished">2019-01-14</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/WEB/">WEB</a>►<a class="article-category-link" href="/categories/WEB/前端/">前端</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/01/14/es6-e5-ad-a6-e4-b9-a0-e6-a8-a1-e6-9d-bf-e8-af-ad-e6-b3-95/">es6学习-模板语法</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在es6之前写字符串拼接需要使用+进行连接，在es6中使得更加简介方便。</p>
+<p>let name=”小文”;<br>//es6之前写法<br>console.log(“</p><h3>“+name+”</h3>“);<br>//es6语法<br>console.log(<code>&lt;h3&gt;${name}&lt;/h3&gt;</code>)<p></p>
+<p>es6在字符串使用··中可以用${变量名}的方法来使用变量</p>
+<p><img src="http://www.1zyan.cn/wp-content/uploads/2019/01/a3-8.png" alt></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.1zyan.cc/2019/01/14/es6-e5-ad-a6-e4-b9-a0-e6-a8-a1-e6-9d-bf-e8-af-ad-e6-b3-95/" data-id="cjtbs4mgn004ge05sb8s8qjbk" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/es6/">es6</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/C/">C#</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/C/JAVA/">JAVA</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/C/JAVA/软件开发/">软件开发</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/C/SqlServer/">SqlServer</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/C/SqlServer/数据库/">数据库</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/C/SqlServer/数据库/软件开发/">软件开发</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/C/原创/">原创</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/C/原创/视频/">视频</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/C/原创/软件开发/">软件开发</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/C/原创/软件开发/首页/">首页</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/C/原创/首页/">首页</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/C/软件开发/">软件开发</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/C/软件开发/首页/">首页</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/C/首页/">首页</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/HTML/">HTML</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/HTML/WEB/">WEB</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/HTML/WEB/前端/">前端</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/HTML/WEB/前端/原创/">原创</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/HTML/前端/">前端</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/JAVA/">JAVA</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/JAVA/原创/">原创</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/JAVA/软件开发/">软件开发</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/JAVA/首页/">首页</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Mysql/">Mysql</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Mysql/SqlServer/">SqlServer</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Mysql/SqlServer/数据库/">数据库</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/SqlServer/">SqlServer</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/SqlServer/数据库/">数据库</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/WEB/">WEB</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/WEB/其他/">其他</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/WEB/前端/">前端</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/WEB/前端/首页/">首页</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/WordPress/">WordPress</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/WordPress/其他/">其他</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/其他/">其他</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/其他/娱乐/">娱乐</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/其他/娱乐/视频/">视频</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/其他/娱乐/视频/音乐/">音乐</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/其他/娱乐/视频/音乐/首页/">首页</a></li></ul></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/其他/首页/">首页</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/">前端</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/娱乐/">娱乐</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/娱乐/视频/">视频</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/娱乐/视频/首页/">首页</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/首页/">首页</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C#</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/EXCEL写数据/">EXCEL写数据</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JAVA/">JAVA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jquery/">Jquery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MV/">MV</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MyBatis/">MyBatis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/">PHP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PS/">PS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SqlServer/">SqlServer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WEB/">WEB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Webpack/">Webpack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WordPress/">WordPress</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/aop/">aop</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/app/">app</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c-未将对象引用设置到对象的实例/">c#未将对象引用设置到对象的实例</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6/">es6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/">html</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/idea/">idea</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ioc/">ioc</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javaGui/">javaGui</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/junit/">junit</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/">nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rem插件/">rem插件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spring/">spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sql/">sql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sql-server/">sql server</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sqlse/">sqlse</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue-cli/">vue-cli</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/中文乱码/">中文乱码</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/中文类库/">中文类库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/入栈/">入栈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/公司模板/">公司模板</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/其他主题/">其他主题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/冒泡排序/">冒泡排序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/分布式/">分布式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端/">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/单例模式/">单例模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/原创/">原创</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/古风/">古风</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/图片/">图片</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/多线程/">多线程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/好听/">好听</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/娱乐/">娱乐</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小米/">小米</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工具/">工具</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/情书/">情书</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/支烟IP扫描器/">支烟IP扫描器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/支烟类库/">支烟类库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/教程/">教程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/新技术/">新技术</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/易代码转换/">易代码转换</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/枚举/">枚举</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/社团管理系统/">社团管理系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/程序/">程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/系统/">系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网络/">网络</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/美图/">美图</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/荒野行动/">荒野行动</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/视频软件/">视频软件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/语音合成/">语音合成</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/超级CS/">超级CS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/超级类库/">超级类库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/软件/">软件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/软件开发/">软件开发</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/逻辑思维训练/">逻辑思维训练</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面试题/">面试题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/音乐/">音乐</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/C/" style="font-size: 20px;">C#</a> <a href="/tags/EXCEL写数据/" style="font-size: 10px;">EXCEL写数据</a> <a href="/tags/JAVA/" style="font-size: 19px;">JAVA</a> <a href="/tags/Jquery/" style="font-size: 10px;">Jquery</a> <a href="/tags/MV/" style="font-size: 10px;">MV</a> <a href="/tags/MyBatis/" style="font-size: 15px;">MyBatis</a> <a href="/tags/PHP/" style="font-size: 10px;">PHP</a> <a href="/tags/PS/" style="font-size: 10px;">PS</a> <a href="/tags/SqlServer/" style="font-size: 11px;">SqlServer</a> <a href="/tags/WEB/" style="font-size: 13px;">WEB</a> <a href="/tags/Webpack/" style="font-size: 17px;">Webpack</a> <a href="/tags/WordPress/" style="font-size: 13px;">WordPress</a> <a href="/tags/aop/" style="font-size: 10px;">aop</a> <a href="/tags/app/" style="font-size: 10px;">app</a> <a href="/tags/c-未将对象引用设置到对象的实例/" style="font-size: 10px;">c#未将对象引用设置到对象的实例</a> <a href="/tags/es6/" style="font-size: 16px;">es6</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/idea/" style="font-size: 11px;">idea</a> <a href="/tags/ioc/" style="font-size: 10px;">ioc</a> <a href="/tags/javaGui/" style="font-size: 10px;">javaGui</a> <a href="/tags/junit/" style="font-size: 10px;">junit</a> <a href="/tags/linux/" style="font-size: 11px;">linux</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/rem插件/" style="font-size: 10px;">rem插件</a> <a href="/tags/spring/" style="font-size: 17px;">spring</a> <a href="/tags/sql/" style="font-size: 10px;">sql</a> <a href="/tags/sql-server/" style="font-size: 10px;">sql server</a> <a href="/tags/sqlse/" style="font-size: 10px;">sqlse</a> <a href="/tags/vue/" style="font-size: 18px;">vue</a> <a href="/tags/vue-cli/" style="font-size: 16px;">vue-cli</a> <a href="/tags/中文乱码/" style="font-size: 10px;">中文乱码</a> <a href="/tags/中文类库/" style="font-size: 10px;">中文类库</a> <a href="/tags/入栈/" style="font-size: 10px;">入栈</a> <a href="/tags/公司模板/" style="font-size: 10px;">公司模板</a> <a href="/tags/其他主题/" style="font-size: 10px;">其他主题</a> <a href="/tags/冒泡排序/" style="font-size: 10px;">冒泡排序</a> <a href="/tags/分布式/" style="font-size: 10px;">分布式</a> <a href="/tags/前端/" style="font-size: 11px;">前端</a> <a href="/tags/单例模式/" style="font-size: 10px;">单例模式</a> <a href="/tags/原创/" style="font-size: 14px;">原创</a> <a href="/tags/古风/" style="font-size: 10px;">古风</a> <a href="/tags/图片/" style="font-size: 10px;">图片</a> <a href="/tags/多线程/" style="font-size: 11px;">多线程</a> <a href="/tags/好听/" style="font-size: 10px;">好听</a> <a href="/tags/娱乐/" style="font-size: 10px;">娱乐</a> <a href="/tags/小米/" style="font-size: 10px;">小米</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a> <a href="/tags/情书/" style="font-size: 10px;">情书</a> <a href="/tags/支烟IP扫描器/" style="font-size: 10px;">支烟IP扫描器</a> <a href="/tags/支烟类库/" style="font-size: 10px;">支烟类库</a> <a href="/tags/教程/" style="font-size: 11px;">教程</a> <a href="/tags/数据库/" style="font-size: 12px;">数据库</a> <a href="/tags/新技术/" style="font-size: 10px;">新技术</a> <a href="/tags/易代码转换/" style="font-size: 10px;">易代码转换</a> <a href="/tags/枚举/" style="font-size: 10px;">枚举</a> <a href="/tags/社团管理系统/" style="font-size: 10px;">社团管理系统</a> <a href="/tags/程序/" style="font-size: 10px;">程序</a> <a href="/tags/系统/" style="font-size: 10px;">系统</a> <a href="/tags/网络/" style="font-size: 10px;">网络</a> <a href="/tags/美图/" style="font-size: 10px;">美图</a> <a href="/tags/荒野行动/" style="font-size: 10px;">荒野行动</a> <a href="/tags/视频软件/" style="font-size: 10px;">视频软件</a> <a href="/tags/语音合成/" style="font-size: 10px;">语音合成</a> <a href="/tags/超级CS/" style="font-size: 10px;">超级CS</a> <a href="/tags/超级类库/" style="font-size: 10px;">超级类库</a> <a href="/tags/软件/" style="font-size: 13px;">软件</a> <a href="/tags/软件开发/" style="font-size: 11px;">软件开发</a> <a href="/tags/逻辑思维训练/" style="font-size: 10px;">逻辑思维训练</a> <a href="/tags/面试题/" style="font-size: 13px;">面试题</a> <a href="/tags/音乐/" style="font-size: 11px;">音乐</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/02/28/测试文件/">测试文件</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/27/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/25/10-e5-88-86-e9-92-9f-e5-ad-a6-e4-bc-9aes7es8/">10分钟学会ES7+ES8</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/18/vue-e6-93-8d-e4-bd-9cdom/">vue操作dom</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/24/springmybatis-e6-95-b4-e5-90-88-e7-ac-94-e8-ae-b0-e4-bd-bf-e7-94-a8-e6-b3-a8-e8-a7-a3-e6-a0-87-e7-ad-be-e5-ae-9e-e7-8e-b0-e4-ba-8b-e5-8a-a1-e5-92-8c-e4-ba-8b-e5-8a-a1-e7-9a-84-e5-8f-82-e6-95-b0/">Spring+Mybatis整合笔记-使用注解标签实现事务和事务的参数</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 yizhiyan<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

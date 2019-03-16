@@ -1,96 +1,995 @@
-{% extends "_layout.njk" %}
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
 
-{% block css %}
-<link rel="stylesheet" type="text/css" href="{{ url_for("css/page.css") }}">
-<link rel="stylesheet" type="text/css" href="{{ url_for("css/post.css") }}">
-{% endblock %}
-
-{% block title %}{{ config.title }}{% if config.subtitle %} - {{ config.subtitle }}{% endif %}{% endblock %}
-
-{% block content %}
-{% set comment = false %}
-<div id="index" class="index page">
-  {% for post in page.posts.toArray() %}
-  <article class="article post card{% if theme.animate %} animate{% endif %}" itemscope itemtype="http://schema.org/Article">
-    <div class="post-block">
-      <link itemprop="mainEntityOfPage" href="{{ config.url }}{{ url_for(post.path) }}">
-      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-        <meta itemprop="name" content="{{ config.author }}">
-        <meta itemprop="description" content="{{ config.description }}">
-        <meta itemprop="image" content="{{ url_for( theme.avatar) }}">
-      </span>
-      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-        <meta itemprop="name" content="{{ config.title }}">
-      </span>
-    </div>
-    <header class="post-header">
-      <h1 class="post-title" itemprop="name headline">
-        <a class="post-title-link post-title-link-external" href="{{ url_for(post.path) }}" itemprop="url">{{ post.title }}</a>
+  
+  <title>易支烟</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="博主熟悉前后端操作，爬虫。喜欢交朋友，欢迎各位进来坐坐">
+<meta name="keywords" content="易支烟、支烟类库">
+<meta property="og:type" content="website">
+<meta property="og:title" content="易支烟">
+<meta property="og:url" content="http://www.1zyan.cc/index.html">
+<meta property="og:site_name" content="易支烟">
+<meta property="og:description" content="博主熟悉前后端操作，爬虫。喜欢交朋友，欢迎各位进来坐坐">
+<meta property="og:locale" content="default">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="易支烟">
+<meta name="twitter:description" content="博主熟悉前后端操作，爬虫。喜欢交朋友，欢迎各位进来坐坐">
+  
+    <link rel="alternate" href="/atom.xml" title="易支烟" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">易支烟</a>
       </h1>
-      <div class="post-meta">
-        {% if post.date %}
-        <span class="post-date">
-          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="{{ moment(post.date).format() }}">{{ date(post.date, config.date_format) }} {{ time(post.date, config.time_format) }}</time></span>
-        </span>
-        {% endif %}
-        {% if post.categories and post.categories.toArray().length %}
-        {% if post.date %}
-        <span class="post-meta-divider divider">|</span>
-        {% endif %}
-        <span class="post-categories">
-          {# About `-`: https://mozilla.github.io/nunjucks/cn/templating.html#part-861ece9d8e5ce60c #}
-          {% for cat in post.categories.toArray() -%}
-          {% if loop.first %}<i class="far fa-folder-open"></i>{% else %}<i class="fas fa-angle-right"></i>{% endif %}<span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="{{ url_for(cat.path) }}" itemprop="url" rel="index"><span itemprop="name">{{ cat.name }}</span></a></span>
-          {%- endfor %}
-        </span>
-        {% endif %}
-        {% if post.comment !== false and theme.comment.enable %}
-        {% if theme.comment.disqus_shortname %}
-        {% if post.categories or post.date %}
-        <span class="post-meta-divider divider">|</span>
-        {% endif %}
-        <span class="post-comment-count">
-          <i class="far fa-comments"></i><span><a href="{{ url_for(post.path) }}#disqus_thread" itemprop="discussionUrl"><span class="post-comment-count disqus-comment-count" data-disqus-identifier="{{ post.path }}" itemprop="commentCount"></span></a></span>
-        </span>
-        {% endif %}
-        {% endif %}
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">易支烟</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://www.1zyan.cc"></form>
       </div>
-    </header>
-    <main class="post-main" itemprop="articleBody">
-      {% if post.excerpt  %}
-      {{ post.excerpt }}
-      {% elif post.description %}
-      {{ post.description }}
-      {% elif theme.auto_excerpt %}
-      {{ post.content.substring(0, theme.auto_excerpt) }}
-      {% else %}
-      {{ post.content }}
-      {% endif %}
-    </main>
-    <footer class="post-footer">
-      {% if post.tags and post.tags.toArray().length %}
-      <div class="post-tags">
-        {% for tag in post.tags.toArray() %}
-        <a class="post-tag button" href="{{ url_for(tag.path) }}" rel="tag"><i class="fas fa-tags"></i>{{ tag.name }}</a>
-        {% endfor %}
-      </div>
-      {% endif %}
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-测试文件" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/02/28/测试文件/" class="article-date">
+  <time datetime="2019-02-28T07:08:00.000Z" itemprop="datePublished">2019-02-28</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/02/28/测试文件/">测试文件</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="你好这是我的测试文章哈"><a href="#你好这是我的测试文章哈" class="headerlink" title="你好这是我的测试文章哈"></a>你好这是我的测试文章哈</h2><blockquote>
+<p>测试哈</p>
+<blockquote>
+<p>2</p>
+<blockquote>
+<p>3<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">这里是代码块</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+</blockquote>
+</blockquote>
+<ul>
+<li>1</li>
+<li>2<br>换行2个空格+回车</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>学号</th>
+<th>积分</th>
+<th>年级</th>
+<th>按钮</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td><a href="https://www.1zyan.cc">https://www.1zyan.cc</a></td>
+</tr>
+<tr>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td><a href="https://www.1zyan.cn" target="_blank" rel="noopener">易支烟</a></td>
+</tr>
+<tr>
+<td>3</td>
+<td>3</td>
+<td>3</td>
+<td>eeee</td>
+</tr>
+<tr>
+<td>4</td>
+<td>4</td>
+<td>4</td>
+<td>eeee</td>
+</tr>
+</tbody>
+</table>
+<p><strong><em> 1 </em></strong></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.1zyan.cc/2019/02/28/测试文件/" data-id="cjtbs2h7x0001u45smyd9c6ek" class="article-share-link">Share</a>
+      
+      
     </footer>
-  </article>
-  {% endfor %}
-  {% if page.prev or page.next %}
-  <nav class="pagination">
-    {{
-      paginator({
-        prev_text: "<i class=\"fas fa-angle-left\" aria-label=\"" + __("accessibility.prev_page") + "\"></i>",
-        next_text: "<i class=\"fas fa-angle-right\" aria-label=\"" + __("accessibility.next_page") + "\"></i>",
-        mid_size: 1
-      })
-    }}
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/02/27/hello-world/" class="article-date">
+  <time datetime="2019-02-27T10:22:00.000Z" itemprop="datePublished">2019-02-27</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/02/27/hello-world/">Hello World</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.1zyan.cc/2019/02/27/hello-world/" data-id="cjtbs2h7i0000u45sx78oz11s" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-10-e5-88-86-e9-92-9f-e5-ad-a6-e4-bc-9aes7es8" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/02/25/10-e5-88-86-e9-92-9f-e5-ad-a6-e4-bc-9aes7es8/" class="article-date">
+  <time datetime="2019-02-25T05:33:09.000Z" itemprop="datePublished">2019-02-25</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/HTML/">HTML</a>►<a class="article-category-link" href="/categories/HTML/WEB/">WEB</a>►<a class="article-category-link" href="/categories/HTML/WEB/前端/">前端</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/02/25/10-e5-88-86-e9-92-9f-e5-ad-a6-e4-bc-9aes7es8/">10分钟学会ES7+ES8</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="撰文为何"><a href="#撰文为何" class="headerlink" title="撰文为何"></a>撰文为何</h2><p>身为一个前端开发者，ECMAScript(以下简称ES)早已广泛应用在我们的工作当中。了解ECMA机构流程的人应该知道，标准委员会会在每年的6月份正式发布一次规范的修订，而这次的发布也将作为当年的正式版本。以后的改动，都会基于上一版本进行修改。所以，我们这次就基于ES6的版本对ES7、ES8版本的新增以及修改内容，做一次简要的总结，方便我们快速开发。</p>
+<h3 id="ES7新特性"><a href="#ES7新特性" class="headerlink" title="ES7新特性"></a>ES7新特性</h3><p>ES7在ES6的基础上添加了三项内容：<strong>求幂运算符（</strong>）<strong>、</strong>Array.prototype.includes()**方法、函数作用域中严格模式的变更。</p>
+<h4 id="Array-prototype-includes-方法"><a href="#Array-prototype-includes-方法" class="headerlink" title="Array.prototype.includes()方法"></a>Array.prototype.includes()方法</h4><p>includes()的作用，是查找一个值在不在数组里，若在，则返回true，反之返回false。 基本用法：</p>
+<p>[‘a’, ‘b’, ‘c’].includes(‘a’) // true [‘a’, ‘b’, ‘c’].includes(‘d’) // false</p>
+<p><strong>Array.prototype.includes()</strong>方法接收两个参数：<strong>要搜索的值和搜索的开始索引</strong>。当第二个参数被传入时，该方法会从索引处开始往后搜索（默认索引值为0）。若搜索值在数组中存在则返回true，否则返回false。 且看下面示例：</p>
+<p>[‘a’, ‘b’, ‘c’, ‘d’].includes(‘b’) // true [‘a’, ‘b’, ‘c’, ‘d’].includes(‘b’, 1) // true [‘a’, ‘b’, ‘c’, ‘d’].includes(‘b’, 2) // false</p>
+<p>那么，我们会联想到ES6里数组的另一个方法indexOf，下面的示例代码是等效的：</p>
+<p>[‘a’, ‘b’, ‘c’].includes(‘a’) //true [‘a’, ‘b’, ‘c’].indexOf(‘a’) &gt; -1 //true</p>
+<p>此时，就有必要来比较下两者的优缺点和使用场景了。</p>
+<ul>
+<li>简便性</li>
+</ul>
+<p>从这一点上来说，includes略胜一筹。熟悉indexOf的同学都知道，indexOf返回的是某个元素在数组中的下标值，若想判断某个元素是否在数组里，我们还需要做额外的处理，即判断该返回值是否&gt;-1。而includes则不用，它直接返回的便是Boolean型的结果。</p>
+<ul>
+<li>精确性</li>
+</ul>
+<p>两者使用的都是 === 操作符来做值的比较。但是includes()方法有一点不同，两个NaN被认为是相等的，即使在NaN === NaN结果是false的情况下。这一点和indexOf()的行为不同，indexOf()严格使用===判断。请看下面示例代码：</p>
+<p>let demo = [1, NaN, 2, 3]</p>
+<p>demo.indexOf(NaN) //-1 demo.includes(NaN) //true</p>
+<p>上述代码中，indexOf()方法返回-1，即使NaN存在于数组中，而includes()则返回了true。</p>
+<blockquote>
+<p><strong>提示：</strong>由于它对NaN的处理方式与indexOf不同，假如你只想知道某个值是否在数组中而并不关心它的索引位置，建议使用includes()。如果你想获取一个值在数组中的位置，那么你只能使用indexOf方法。</p>
+</blockquote>
+<p>includes()还有一个怪异的点需要指出，在判断 +0 与 -0 时，被认为是相同的。</p>
+<p>[1, +0, 3, 4].includes(-0) //true [1, +0, 3, 4].indexOf(-0) //1</p>
+<p>在这一点上，indexOf()与includes()的处理结果是一样的，前者同样会返回 +0 的索引值。</p>
+<blockquote>
+<p><strong>注意：</strong>在这里，需要注意一点，includes()只能判断简单类型的数据，对于复杂类型的数据，比如对象类型的数组，二维数组，这些，是无法判断的。</p>
+<h4 id="求幂运算符（-）"><a href="#求幂运算符（-）" class="headerlink" title="求幂运算符（**）"></a>求幂运算符（**）</h4><p>基本用法</p>
+<p>3 ** 2 // 9 </p>
+<p>效果同：</p>
+<p>Math.pow(3, 2) // 9 </p>
+<p>** 是一个用于求幂的中缀算子，比较可知，中缀符号比函数符号更简洁，这也使得它更为可取。 下面让我们扩展下思路，既然说**是一个运算符，那么它就应该能满足类似加等的操作，我们姑且称之为幂等，例如下面的例子，a的值依然是9：</p>
+<p>let a = 3 a **= 2 // 9</p>
+<p>对比下其他语言的指数运算符：</p>
+</blockquote>
+<ul>
+<li>Python: x ** y</li>
+<li>CoffeeScript: x ** y</li>
+<li>F#: x ** y</li>
+<li>Ruby: x ** y</li>
+<li>Perl: x ** y</li>
+<li>Lua, Basic, MATLAB: x ^ y</li>
+</ul>
+<p>不难发现，ES的这个新特性是从其他语言（Python，Ruby等）模仿而来的。</p>
+<h3 id="ES8新特性"><a href="#ES8新特性" class="headerlink" title="ES8新特性"></a>ES8新特性</h3><h4 id="异步函数-Async-functions"><a href="#异步函数-Async-functions" class="headerlink" title="异步函数(Async functions)"></a>异步函数(Async functions)</h4><h5 id="为什么要引入async"><a href="#为什么要引入async" class="headerlink" title="为什么要引入async"></a>为什么要引入async</h5><p>众所周知，JavaScript语言的执行环境是“单线程”的，那么异步编程对JavaScript语言来说就显得尤为重要。以前我们大多数的做法是使用回调函数来实现JavaScript语言的异步编程。回调函数本身没有问题，但如果出现多个回调函数嵌套，例如：进入某个页面，需要先登录，拿到用户信息之后，调取用户商品信息，代码如下：</p>
+<p>this.$http.jsonp(‘/login’, (res) =&gt; { this.$http.jsonp(‘/getInfo’, (info) =&gt; { // do something  })<br>})</p>
+<p>假如上面还有更多的请求操作，就会出现多重嵌套。代码很快就会乱成一团，这种情况就被称为“回调函数地狱”（callback hell）。</p>
+<p>于是，我们提出了Promise，它将回调函数的嵌套，改成了链式调用。写法如下：</p>
+<p>var promise = new Promise((resolve, reject) =&gt; { this.login(resolve)<br>})<br>.then(() => this.getInfo())<br>.catch(() => { console.log(“Error”) })</p>
+<p>从上面可以看出，Promise的写法只是回调函数的改进，使用then方法，只是让异步任务的两段执行更清楚而已。Promise的最大问题是代码冗余，请求任务多时，一堆的then，也使得原来的语义变得很不清楚。此时我们引入了另外一种异步编程的机制：Generator。</p>
+<p>Generator 函数是一个普通函数，但是有两个特征。一是，function关键字与函数名之间有一个星号；二是，函数体内部使用yield表达式，定义不同的内部状态（yield在英语里的意思就是“产出”）。一个简单的例子用来说明它的用法：</p>
+<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<p>function* helloWorldGenerator() {<br>  yield ‘hello’;<br>  yield ‘world’; return ‘ending’;<br>} var hw = helloWorldGenerator();</p>
+<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<p>上面代码定义了一个 Generator 函数helloWorldGenerator，它内部有两个yield表达式（hello和world），即该函数有三个状态：hello，world 和 return 语句（结束执行）。Generator 函数的调用方法与普通函数一样，也是在函数名后面加上一对圆括号。不同的是，调用 Generator 函数后，该函数并不执行，返回的也不是函数运行结果，而是一个指向内部状态的指针对象，必须调用遍历器对象的next方法，使得指针移向下一个状态。也就是说，每次调用next方法，内部指针就从函数头部或上一次停下来的地方开始执行，直到遇到下一个yield表达式（或return语句）为止。换言之，Generator 函数是分段执行的，yield表达式是暂停执行的标记，而next方法可以恢复执行。上述代码分步执行如下：</p>
+<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<p>hw.next() // { value: ‘hello’, done: false } hw.next() // { value: ‘world’, done: false } hw.next() // { value: ‘ending’, done: true } hw.next() // { value: undefined, done: true }</p>
+<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<p>Generator函数的机制更符合我们理解的异步编程思想。</p>
+<p>用户登录的例子，我们用Generator来写，如下：</p>
+<p>var gen = function* () {<br>  const f1 = yield this.login()<br>  const f2 = yield this.getInfo()<br>};</p>
+<p>虽然Generator将异步操作表示得很简洁，但是流程管理却不方便（即何时执行第一阶段、何时执行第二阶段）。此时，我们便希望能出现一种能自动执行Generator函数的方法。我们的主角来了：async/await。</p>
+<p>ES8引入了async函数，使得异步操作变得更加方便。简单说来，它就是Generator函数的语法糖。</p>
+<p>async function asyncFunc(params) {<br>  const result1 = await this.login()<br>  const result2 = await this.getInfo()<br>}</p>
+<p>是不是更加简洁易懂呢？</p>
+<h5 id="变体"><a href="#变体" class="headerlink" title="变体"></a>变体</h5><p>异步函数存在以下四种使用形式：</p>
+<ul>
+<li>函数声明： async function foo() {}</li>
+<li>函数表达式： const foo = async function() {}</li>
+<li>对象的方式： let obj = { async foo() {} }</li>
+<li>箭头函数： const foo = async () =&gt; {}</li>
+</ul>
+<h5 id="常见用法汇总"><a href="#常见用法汇总" class="headerlink" title="常见用法汇总"></a>常见用法汇总</h5><p>处理单个异步结果：</p>
+<p>async function asyncFunc() {<br>  const result = await otherAsyncFunc();<br>  console.log(result);<br>}</p>
+<p>顺序处理多个异步结果：</p>
+<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<p>async function asyncFunc() {<br>  const result1 = await otherAsyncFunc1();<br>  console.log(result1);<br>  const result2 = await otherAsyncFunc2();<br>  console.log(result2);<br>}</p>
+<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<p>并行处理多个异步结果：</p>
+<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<p>async function asyncFunc() {<br>  const [result1, result2] = await Promise.all([<br>    otherAsyncFunc1(),<br>    otherAsyncFunc2()<br>  ]);<br>  console.log(result1, result2);<br>}</p>
+<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<p>处理错误：</p>
+<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<p>async function asyncFunc() { try {<br>    await otherAsyncFunc();<br>  } catch (err) {<br>    console.error(err);<br>  }<br>}</p>
+<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<p>若想进一步了解async的具体实践，可参见阮一峰的博客文章，链接奉上：<a href="http://es6.ruanyifeng.com/#docs/async" target="_blank" rel="noopener">http://es6.ruanyifeng.com/#docs/async</a></p>
+<h4 id="Object-entries-和Object-values"><a href="#Object-entries-和Object-values" class="headerlink" title="Object.entries()和Object.values()"></a>Object.entries()和Object.values()</h4><h5 id="Object-entries"><a href="#Object-entries" class="headerlink" title="Object.entries()"></a>Object.entries()</h5><p>如果一个对象是具有键值对的数据结构，则每一个键值对都将会编译成一个具有两个元素的数组，这些数组最终会放到一个数组中，返回一个二维数组。简言之，该方法会将某个对象的可枚举属性与值按照二维数组的方式返回。若目标对象是数组时，则会将数组的下标作为键值返回。例如：</p>
+<p>Object.entries({ one: 1, two: 2 }) //[[‘one’, 1], [‘two’, 2]] Object.entries([1, 2]) //[[‘0’, 1], [‘1’, 2]]</p>
+<blockquote>
+<p><strong>注意：</strong>键值对中，如果键的值是Symbol，编译时将会被忽略。例如：</p>
+<p>Object.entries({ [Symbol()]: 1, two: 2 })       //[[‘two’, 2]] </p>
+</blockquote>
+<p>Object.entries()返回的数组的顺序与for-in循环保持一致，即如果对象的key值是数字，则返回值会对key值进行排序，返回的是排序后的结果。例如：</p>
+<p>Object.entries({ 3: ‘a’, 4: ‘b’, 1: ‘c’ }) //[[‘1’, ‘c’], [‘3’, ‘a’], [‘4’, ‘b’]]</p>
+<p>使用Object.entries()，我们还可以进行对象属性的遍历。例如：</p>
+<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<p>let obj = { one: 1, two: 2 }; for (let [k,v] of Object.entries(obj)) {<br>  console.log(<code>${JSON.stringify(k)}: ${JSON.stringify(v)}</code>);<br>} //输出结果如下： ‘one’: 1<br>‘two’: 2</p>
+<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<h5 id="Object-values"><a href="#Object-values" class="headerlink" title="Object.values()"></a>Object.values()</h5><p>它的工作原理跟Object.entries()很像，顾名思义，它只返回自己的键值对中属性的值。它返回的数组顺序，也跟Object.entries()保持一致。</p>
+<p>Object.values({ one: 1, two: 2 }) //[1, 2] Object.values({ 3: ‘a’, 4: ‘b’, 1: ‘c’ }) //[‘c’, ‘a’, ‘b’]</p>
+<h4 id="字符串填充：padStart和padEnd"><a href="#字符串填充：padStart和padEnd" class="headerlink" title="字符串填充：padStart和padEnd"></a>字符串填充：padStart和padEnd</h4><p>ES8提供了新的字符串方法-padStart和padEnd。padStart函数通过填充字符串的首部来保证字符串达到固定的长度，反之，padEnd是填充字符串的尾部来保证字符串的长度的。该方法提供了两个参数：字符串目标长度和填充字段，其中第二个参数可以不填，默认情况下使用空格填充。</p>
+<p>‘Vue’.padStart(10) //‘       Vue’ ‘React’.padStart(10) //‘     React’ ‘JavaScript’.padStart(10) //‘JavaScript’</p>
+<p>可以看出，多个数据如果都采用同样长度的padStart，相当于将呈现内容右对齐。</p>
+<p>上面示例中我们只定义了第一个参数，那么我们现在来看看第二个参数，我们可以指定字符串来代替空字符串。</p>
+<p>‘Vue’.padStart(10, ‘<em>*’) //‘</em>*_*_*_Vue’ ‘React’.padStart(10, ‘Hello’) //‘HelloReact’ ‘JavaScript’.padStart(10, ‘Hi’) //‘JavaScript’ ‘JavaScript’.padStart(8, ‘Hi’) //‘JavaScript’</p>
+<p>从上面结果来看，填充函数只有在字符长度小于目标长度时才有效，若字符长度已经等于或小于目标长度时，填充字符不会起作用，而且目标长度如果小于字符串本身长度时，字符串也不会做截断处理，只会原样输出。</p>
+<p>padEnd函数作用同padStart，只不过它是从字符串尾部做填充。来看个小例子：</p>
+<p>‘Vue’.padEnd(10, ‘<em>*’) //‘Vue</em>*_*_*_’ ‘React’.padEnd(10, ‘Hello’) //‘ReactHello’ ‘JavaScript’.padEnd(10, ‘Hi’) //‘JavaScript’ ‘JavaScript’.padEnd(8, ‘Hi’) //‘JavaScript’</p>
+<h4 id="Object-getOwnPropertyDescriptors"><a href="#Object-getOwnPropertyDescriptors" class="headerlink" title="Object.getOwnPropertyDescriptors()"></a>Object.getOwnPropertyDescriptors()</h4><p>顾名思义，该方法会返回目标对象中所有属性的属性描述符，该属性必须是对象自己定义的，不能是从原型链继承来的。先来看个它的基本用法：</p>
+<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<p>let obj = {<br>  id: 1,<br>  name: ‘test’,<br>  get gender() {<br>    console.log(‘gender’)<br>  },<br>  set grade(g) {<br>    console.log(g)<br>  }<br>}<br>Object.getOwnPropertyDescriptors(obj) //输出结果为： {<br>  gender: {<br>    configurable: true,<br>    enumerable: true,<br>    get: f gender(),<br>    set: undefined<br>  },<br>  grade: {<br>    configurable: true,<br>    enumerable: true,<br>    get: undefined,<br>    set: f grade(g)<br>  },<br>  id: {<br>    configurable: true,<br>    enumerable: true,<br>    value: 1,<br>    writable: true },<br>  name: {<br>    configurable: true,<br>    enumerable: true,<br>    value: ‘test’,<br>    writable: true }<br>}</p>
+<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<p>方法还提供了第二个参数，用来获取指定属性的属性描述符。</p>
+<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<p>let obj = {<br>  id: 1,<br>  name: ‘test’,<br>  get gender() {<br>    console.log(‘gender’)<br>  },<br>  set grade(g) {<br>    console.log(g)<br>  }<br>}<br>Object.getOwnPropertyDescriptors(obj, ‘id’) //输出结果为： {<br>  id: {<br>    configurable: true,<br>    enumerable: true,<br>    value: 1,<br>    writable: true }<br>}</p>
+<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<p>由上述例子可知，该方法返回的描述符，会有两种类型：数据描述符、存取器描述符。返回结果中包含的键可能的值有：configurable、enumerable、value、writable、get、set。</p>
+<p>使用过Object.assign()的同学都知道，assign方法只能拷贝一个属性的值，而不会拷贝它背后的复制方法和取值方法。Object.getOwnPropertyDescriptors()主要是为了解决Object.assign()无法正确拷贝get属性和set属性的问题。</p>
+<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<p>let obj = {<br>  id: 1,<br>  name: ‘test’,<br>  get gender() {<br>    console.log(‘gender’)<br>  }<br>}<br>Object.assign(obj) //输出结果为： {<br>  gender: undefined<br>  id: 1,<br>  name: ‘test’ }</p>
+<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<p>此时，Object.getOwnPropertyDescriptors方法配合Object.defineProperties方法，就可以实现正确拷贝。</p>
+<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<p>let obj = {<br>  id: 1,<br>  name: ‘test’,<br>  get gender() {<br>    console.log(‘gender’)<br>  }<br>}<br>let obj1 = {}<br>Object.defineProperties(obj1, Object.getOwnPropertyDescriptors(obj))<br>Object.getOwnPropertyDescriptors(obj1) //输出结果为： {<br>  gender: {<br>    configurable: true,<br>    enumerable: true,<br>    get: f gender(),<br>    set: undefined<br>  },<br>  id: {<br>    configurable: true,<br>    enumerable: true,<br>    value: 1,<br>    writable: true },<br>  name: {<br>    configurable: true,<br>    enumerable: true,<br>    value: ‘test’,<br>    writable: true }<br>}</p>
+<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<p>上述代码演示了，我们如何来拷贝一个属性值为赋值方法或者取值方法的对象。更多Object.getOwnPropertyDescriptors的使用细则，可参见阮一峰的博客文章，链接奉上：<a href="http://es6.ruanyifeng.com/#docs/object#Object-getOwnPropertyDescriptors" target="_blank" rel="noopener">http://es6.ruanyifeng.com/#docs/object#Object-getOwnPropertyDescriptors</a></p>
+<h4 id="共享内存和原子（Shared-memory-and-atomics）"><a href="#共享内存和原子（Shared-memory-and-atomics）" class="headerlink" title="共享内存和原子（Shared memory and atomics）"></a>共享内存和原子（Shared memory and atomics）</h4><p>ES8引入了两部分内容：新的构造函数SharedArrayBuffer、具有辅助函数的命名空间对象Atomics。共享内存允许多个线程并发读写数据，而原子操作则能够进行并发控制，确保多个存在竞争关系的线程顺序执行。</p>
+<p>共享内存和原子也称为共享阵列缓冲区，它是更高级的并发抽象的基本构建块。它允许在多个工作者和主线程之间共享SharedArrayBuffer对象的字节（缓冲区是共享的，用以访问字节，将其包装在类型化的数组中）。这种共享有两个好处：</p>
+<ul>
+<li>可以更快地在web worker之间共享数据</li>
+<li>web worker之间的协调变得更加简单和快速</li>
+</ul>
+<p>那么，我们为什么要引入共享内存和原子的概念呢？以及SharedArrayBuffer的竞争条件是什么，Atomics又是如何解决这种竞争的？推荐下面的文章，文章讲解很详细，图文并茂，带你深入了解SharedArrayBuffer和Atomics。</p>
+<p>内存管理碰撞课程：<a href="https://segmentfault.com/a/1190000009878588" target="_blank" rel="noopener">https://segmentfault.com/a/1190000009878588</a></p>
+<p>图解 ArrayBuffers 和 SharedArrayBuffers：<a href="https://segmentfault.com/a/1190000009878632" target="_blank" rel="noopener">https://segmentfault.com/a/1190000009878632</a></p>
+<p>用 Atomics 避免 SharedArrayBuffers 竞争条件：<a href="https://segmentfault.com/a/1190000009878699" target="_blank" rel="noopener">https://segmentfault.com/a/1190000009878699</a></p>
+<p>Atomics对象提供了许多静态方法，配合SharedArrayBuffer对象一起使用，可以帮助我们去构建一个内存共享的多线程编程环境。Atomic操作安装在Atomics模块上。与其他全局对象不同，Atomics不是构造函数。您不能使用new操作符或Atomics作为函数调用该对象。所有的属性和方法Atomics都是静态的，这一点跟Math类似。下面链接贴出了Atomics提供的一些基本方法：</p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Atomics" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Atomics</a></p>
+<p>关于共享内存和原子的深入研究，也可以参考Axel Rauschmayer博士的《Exploring ES2016 and ES2017》一书中的内容。具体章节链接如下：</p>
+<p><a href="http://exploringjs.com/es2016-es2017/ch_shared-array-buffer.html" target="_blank" rel="noopener">http://exploringjs.com/es2016-es2017/ch_shared-array-buffer.html</a></p>
+<h4 id="函数参数列表与调用中的尾部逗号"><a href="#函数参数列表与调用中的尾部逗号" class="headerlink" title="函数参数列表与调用中的尾部逗号"></a>函数参数列表与调用中的尾部逗号</h4><p>该特性允许我们在定义或者调用函数时添加尾部逗号而不报错。</p>
+<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<p>let foo = function (<br>  a,<br>  b,<br>  c,<br>) {<br>  console.log(‘a:’, a)<br>  console.log(‘b:’, b)<br>  console.log(‘c:’, c)<br>}<br>foo(1, 3, 4, ) //输出结果为： a: 1 b: 3 c: 4</p>
+<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<p>上面这种方式调用是没有问题的。函数的这种尾逗号也是向数组和字面量对象中尾逗号看齐，它适用于那种多行参数并且参数名很长的情况，开发过程中，如果忘记删除尾部逗号也没关系，ES8已经支持这种写法。</p>
+<p>这么用有什么好处呢？</p>
+<p>首先，当我们调整结构时，不会因为最后一行代码的位置变动，而去添加或者删除逗号。</p>
+<p>其次，在版本管理上，不会出现因为一个逗号，而使本来只有一行的修改，变成两行。例如下面：</p>
+<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<p>从</p>
+<p>( ‘abc’ )<br>到</p>
+<p>( ‘abc’, ‘def’ )</p>
+<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<p>在我们版本管理系统里，它会监测到你有两处更改，但是如果我们不必去关心逗号的存在，每一行都有逗号时，新加一行，也只会监测到一行的修改。</p>
+<h3 id="建议的ES9功能"><a href="#建议的ES9功能" class="headerlink" title="建议的ES9功能"></a>建议的ES9功能</h3><p>回想一下，每个ECMAScript功能提案都经过了几个阶段：</p>
+<ul>
+<li>阶段4意味着功能将在下一个版本中（或之后的版本）。</li>
+<li>阶段3意味着功能仍然有机会被包含在下一个版本中。</li>
+</ul>
+<h5 id="第4阶段和部分ECMAScript规范草案"><a href="#第4阶段和部分ECMAScript规范草案" class="headerlink" title="第4阶段和部分ECMAScript规范草案"></a>第4阶段和部分ECMAScript规范草案</h5><p>以下功能目前在第4阶段：</p>
+<ul>
+<li>Template Literal Revision：模板文字修订（蒂姆·迪士尼）</li>
+</ul>
+<h5 id="候选功能（第3阶段）"><a href="#候选功能（第3阶段）" class="headerlink" title="候选功能（第3阶段）"></a>候选功能（第3阶段）</h5><p>以下功能目前在第3阶段：</p>
+<ul>
+<li>Function.prototype.toString 修订版（Michael Ficarra）</li>
+<li>global（Jordan Harband）</li>
+<li>Rest/Spread Properties：Rest/Spread属性（SebastianMarkbåge）</li>
+<li>Asynchronous Iteration：异步迭代（Domenic Denicola）</li>
+<li>import() （Domenic Denicola）</li>
+<li>RegExp Lookbehind Assertions：RegExp Lookbehind断言（Daniel Ehrenberg）</li>
+<li>RegExp Unicode Property Escapes：RegExp Unicode属性转义（Brian Terlson，Daniel Ehrenberg，Mathias Bynens）</li>
+<li>RegExp named capture groups：RegExp命名捕获组（Daniel Ehrenberg，Brian Terlson）</li>
+<li>s (dotAll) flag for regular expressions：s（dotAll）标志为正则表达式（Mathias Bynens，Brian Terlson）</li>
+<li>Promise.prototype.finally() （Jordan Harband）</li>
+<li>BigInt - 任意精度整数（Daniel Ehrenberg）</li>
+<li>Class fields（Daniel Ehrenberg，Jeff Morrison）</li>
+<li>Optional catch binding（Michael Ficarra）</li>
+</ul>
+<h3 id="下面贴出了解和学习ES的官方链接，供大家查阅："><a href="#下面贴出了解和学习ES的官方链接，供大家查阅：" class="headerlink" title="下面贴出了解和学习ES的官方链接，供大家查阅："></a>下面贴出了解和学习ES的官方链接，供大家查阅：</h3><ul>
+<li>ES6：<a href="http://www.ecma-international.org/ecma-262/6.0/index.html" target="_blank" rel="noopener">http://www.ecma-international.org/ecma-262/6.0/index.html</a></li>
+<li>ES7：<a href="http://www.ecma-international.org/ecma-262/7.0/index.html" target="_blank" rel="noopener">http://www.ecma-international.org/ecma-262/7.0/index.html</a></li>
+<li>ES8：<a href="http://www.ecma-international.org/ecma-262/8.0/index.html" target="_blank" rel="noopener">http://www.ecma-international.org/ecma-262/8.0/index.html</a></li>
+<li>TC39提案：<a href="https://github.com/tc39/ecma262" target="_blank" rel="noopener">https://github.com/tc39/ecma262</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.1zyan.cc/2019/02/25/10-e5-88-86-e9-92-9f-e5-ad-a6-e4-bc-9aes7es8/" data-id="cjtbs4mog00k2e05sfkgsfz6o" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/新技术/">新技术</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-vue-e6-93-8d-e4-bd-9cdom" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/02/18/vue-e6-93-8d-e4-bd-9cdom/" class="article-date">
+  <time datetime="2019-02-18T08:50:33.000Z" itemprop="datePublished">2019-02-18</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/HTML/">HTML</a>►<a class="article-category-link" href="/categories/HTML/前端/">前端</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/02/18/vue-e6-93-8d-e4-bd-9cdom/">vue操作dom</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在vue中如何操作dom呢？</p>
+<p>有时候vue必须要操作dom，那么到底如何操作呢。</p>
+<p>首先我们来快速构建一个vue模板</p>
+<p><img src="http://www.1zyan.cn/wp-content/uploads/2019/02/a1.png" alt></p>
+<p>好了，模板构建完成了。在我们要操作的dom上面加上ref，ref就代表别名</p>
+<p><img src="http://www.1zyan.cn/wp-content/uploads/2019/02/a2.png" alt></p>
+<p>然后我们添加个点击事件</p>
+<p><img src="http://www.1zyan.cn/wp-content/uploads/2019/02/a3.png" alt></p>
+<p>在vue的事件中this代表vue实例，那么$refs就是当前实例中的ref所以这里的$refs.hello当然就是我们绑定的div了</p>
+<p>我们打印出来看看是不是呢？</p>
+<p><img src="http://www.1zyan.cn/wp-content/uploads/2019/02/a4.png" alt></p>
+<p>果然打印出了div对象。既然拿到了对象剩下的还不好操作？啊哈，就这样吧，一些小技巧.</p>
+<p>注意：在组件上使用refs获取到的就是组件，而不是dom</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.1zyan.cc/2019/02/18/vue-e6-93-8d-e4-bd-9cdom/" data-id="cjtbs4mit0086e05sknwcl95y" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue/">vue</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-springmybatis-e6-95-b4-e5-90-88-e7-ac-94-e8-ae-b0-e4-bd-bf-e7-94-a8-e6-b3-a8-e8-a7-a3-e6-a0-87-e7-ad-be-e5-ae-9e-e7-8e-b0-e4-ba-8b-e5-8a-a1-e5-92-8c-e4-ba-8b-e5-8a-a1-e7-9a-84-e5-8f-82-e6-95-b0" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/01/24/springmybatis-e6-95-b4-e5-90-88-e7-ac-94-e8-ae-b0-e4-bd-bf-e7-94-a8-e6-b3-a8-e8-a7-a3-e6-a0-87-e7-ad-be-e5-ae-9e-e7-8e-b0-e4-ba-8b-e5-8a-a1-e5-92-8c-e4-ba-8b-e5-8a-a1-e7-9a-84-e5-8f-82-e6-95-b0/" class="article-date">
+  <time datetime="2019-01-24T02:22:27.000Z" itemprop="datePublished">2019-01-24</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/JAVA/">JAVA</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/01/24/springmybatis-e6-95-b4-e5-90-88-e7-ac-94-e8-ae-b0-e4-bd-bf-e7-94-a8-e6-b3-a8-e8-a7-a3-e6-a0-87-e7-ad-be-e5-ae-9e-e7-8e-b0-e4-ba-8b-e5-8a-a1-e5-92-8c-e4-ba-8b-e5-8a-a1-e7-9a-84-e5-8f-82-e6-95-b0/">Spring+Mybatis整合笔记-使用注解标签实现事务和事务的参数</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>补充一下之前将的事务参数</p>
+<p><img src="http://www.1zyan.cn/wp-content/uploads/2019/01/a1-27.png" alt> <img src="http://www.1zyan.cn/wp-content/uploads/2019/01/a2-21.png" alt></p>
+<h3 id="现在开始本次课程"><a href="#现在开始本次课程" class="headerlink" title="现在开始本次课程"></a>现在开始本次课程</h3><p><img src="http://www.1zyan.cn/wp-content/uploads/2019/01/b1-8.png" alt></p>
+<p>首先将之前的配置文件中事务增强和后面的配置都注释掉，然后在新增以下内容</p>
+<pre><code>&lt;!\-\- 通过注解进行事务 --&gt;
+&lt;tx:annotation-driven transaction-manager=&quot;txMannager&quot; /&gt;
+</code></pre><p>在service类中添加注解标签</p>
+<p>@Transactional(propagation = Propagation.REQUIRED)</p>
+<p><img src="http://www.1zyan.cn/wp-content/uploads/2019/01/b4.png" alt></p>
+<p>下面来看看具体的事务类型吧</p>
+<p><img src="http://www.1zyan.cn/wp-content/uploads/2019/01/b2-5.png" alt> <img src="http://www.1zyan.cn/wp-content/uploads/2019/01/b3.png" alt></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.1zyan.cc/2019/01/24/springmybatis-e6-95-b4-e5-90-88-e7-ac-94-e8-ae-b0-e4-bd-bf-e7-94-a8-e6-b3-a8-e8-a7-a3-e6-a0-87-e7-ad-be-e5-ae-9e-e7-8e-b0-e4-ba-8b-e5-8a-a1-e5-92-8c-e4-ba-8b-e5-8a-a1-e7-9a-84-e5-8f-82-e6-95-b0/" data-id="cjtbs4mie0072e05scj6oa61v" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JAVA/">JAVA</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MyBatis/">MyBatis</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/spring/">spring</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-vue-router-e5-86-99-e5-ba-95-e9-83-a8-e5-af-bc-e8-88-aa-e6-a0-8f-e9-81-87-e5-88-b0-e7-9a-84-e5-9d-91router-replace" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/01/22/vue-router-e5-86-99-e5-ba-95-e9-83-a8-e5-af-bc-e8-88-aa-e6-a0-8f-e9-81-87-e5-88-b0-e7-9a-84-e5-9d-91router-replace/" class="article-date">
+  <time datetime="2019-01-22T07:24:22.000Z" itemprop="datePublished">2019-01-22</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/HTML/">HTML</a>►<a class="article-category-link" href="/categories/HTML/WEB/">WEB</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/01/22/vue-router-e5-86-99-e5-ba-95-e9-83-a8-e5-af-bc-e8-88-aa-e6-a0-8f-e9-81-87-e5-88-b0-e7-9a-84-e5-9d-91router-replace/">vue-router写底部导航栏遇到的坑router.replace</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>今天闲来无事写个webapp自己玩，发现个bug，在网上找了半天都没有找到合适的解决方案后来终于解决了，分享给大家。</p>
+<p><img src="http://www.1zyan.cn/wp-content/uploads/2019/01/a1-26.png" alt></p>
+<p>由于底部的tabbar组件是使用的ui库所以是用单击事件进行路游调转的。</p>
+<p>这里使用正常的路游看起来是没问题的，但是只要返回就会有问题。</p>
+<p>在官网上查看文档发现可以使用</p>
+<p>router.replace(location, onComplete?, onAbort?)</p>
+<p><img src="http://www.1zyan.cn/wp-content/uploads/2019/01/a2-20.png" alt></p>
+<p>但是官方文档并没有明确说明怎么使用，在这里博主找了半天。由于又是vue-cli搭建的项目所以router对象不知道在哪里。</p>
+<p>经过多次测试终于解决了。</p>
+<p><img src="http://www.1zyan.cn/wp-content/uploads/2019/01/a3-12.png" alt></p>
+<p>虽然看起来这篇文章似乎没有什么。但是也是博主被坑之路，记录一下。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.1zyan.cc/2019/01/22/vue-router-e5-86-99-e5-ba-95-e9-83-a8-e5-af-bc-e8-88-aa-e6-a0-8f-e9-81-87-e5-88-b0-e7-9a-84-e5-9d-91router-replace/" data-id="cjtbs4mit0089e05sk4qizvon" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue/">vue</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue-cli/">vue-cli</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-e4-bd-bf-e7-94-a8vue-cli-e7-bc-96-e5-86-99-e7-bb-84-e4-bb-b6-e5-b9-b6-e5-8f-91-e5-b8-83-e5-88-b0npm-e4-b8-8a" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/01/22/e4-bd-bf-e7-94-a8vue-cli-e7-bc-96-e5-86-99-e7-bb-84-e4-bb-b6-e5-b9-b6-e5-8f-91-e5-b8-83-e5-88-b0npm-e4-b8-8a/" class="article-date">
+  <time datetime="2019-01-22T03:38:51.000Z" itemprop="datePublished">2019-01-22</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/HTML/">HTML</a>►<a class="article-category-link" href="/categories/HTML/WEB/">WEB</a>►<a class="article-category-link" href="/categories/HTML/WEB/前端/">前端</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/01/22/e4-bd-bf-e7-94-a8vue-cli-e7-bc-96-e5-86-99-e7-bb-84-e4-bb-b6-e5-b9-b6-e5-8f-91-e5-b8-83-e5-88-b0npm-e4-b8-8a/">使用vue-cli编写组件并发布到npm上</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>前几天遇到一个问题，需要写一个tree组件，研究了半天发现网上的基本上都有问题，这里我就分享给大家一个完整的教程吧</p>
+<p>1.创建一个vue-cli项目，如果你还不会创建可以看一下我之前的教程。</p>
+<p>vue init webpack-simple yizhiyan-ui-button</p>
+<p>2.根据vue-cli提示进行初始化操作</p>
+<p>  cd yizhiyan-ui-button<br>  npm install<br>  npm run dev</p>
+<p>先来看看整体目录吧</p>
+<p><img src="http://www.1zyan.cn/wp-content/uploads/2019/01/a1-25.png" alt></p>
+<p><img src="http://www.1zyan.cn/wp-content/uploads/2019/01/a2-19.png" alt></p>
+<p>我在src目录下新建了个button目录然后在下面新建index.vue文件</p>
+<p><img src="http://www.1zyan.cn/wp-content/uploads/2019/01/a3-11.png" alt></p>
+<p>我们修改index的name为zyButton，然后在indec.vue同级目录下新建index.js文件</p>
+<p><img src="http://www.1zyan.cn/wp-content/uploads/2019/01/a4-6.png" alt></p>
+<p>编写index.js如下</p>
+<p>import zyButton from ‘./index.vue’;</p>
+<p>//设置模块导出名字<br>zyButton.install = Vue =&gt; Vue.component(zyButton.name, zyButton);<br>//导出模块，如果这里是单个模块就直接导出单个名字<br>// 如果是同时导出多个则使用{}如：{zyButton,zuTree}<br>export default zyButton</p>
+<p>我们在app.vue中引入我们的index.js测试一下</p>
+<p>运行之后发现报错找不到模块index.vue仔细一看原来是我们的文件名写错了</p>
+<p>改过来之后在运行</p>
+<p>npm run dev</p>
+<p><img src="http://www.1zyan.cn/wp-content/uploads/2019/01/a5-2.png" alt></p>
+<p>测试成功现在咱们就开始修改配置文件进行发布前的准备</p>
+<p>首先修改package.json文件，注意private一定要改成false。既然上传到npm上面就是公开如果是true上传就不会成功</p>
+<p><img src="http://www.1zyan.cn/wp-content/uploads/2019/01/b1-7.png" alt></p>
+<p>然后在修改我们的webpack.config.js</p>
+<p><img src="http://www.1zyan.cn/wp-content/uploads/2019/01/b2-4.png" alt></p>
+<p>const NODE_ENV = process.env.NODE_ENV; //别忘了这里的常量<br>//入口，编译的时候’./src/button/index.js’作为入口，运行的时候使用’./src/main.js’作为入口<br>  entry: NODE_ENV == ‘development’ ? ‘./src/main.js’ : ‘./src/button/index.js’,<br>  output: {<br>    path: path.resolve(__dirname, ‘./dist’),<br>    publicPath: ‘/dist/‘,//路径<br>    filename: ‘yizhiyan-ui-button.js’,//打包之后的名称<br>    library: ‘yizhiyan-ui-button’, // 指定的就是你使用require时的模块名<br>    libraryTarget: ‘umd’, // 指定输出格式<br>    umdNamedDefine: true // 会对 UMD 的构建过程中的 AMD 模块进行命名。否则就使用匿名的 define<br>  },</p>
+<p>然后我们在根目录下新建文件.npmignore文件，此文件是用来避免上传其他无用文件和目录的</p>
+<p>.<em>
+</em>.md<br>*.yml<br>build/<br>node_modules/<br>src/<br>test/</p>
+<p>好了现在配置完成了，发布，如果没有npm账户可以取官网注册，发布之前账户必须要通过邮箱验证</p>
+<p>注意：发布之前一定要先生成dist文件夹命令</p>
+<p>//生成dist<br>npm run build<br>//登录<br>npm login<br>//发布，如果没有登录需要先登录npm<br>npm publish</p>
+<p>好了，步骤比较详细，如果还是有不明白的地方，欢迎加博主博客进行交流</p>
+<p>下一篇将讲到如何使用本次发布的作品</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.1zyan.cc/2019/01/22/e4-bd-bf-e7-94-a8vue-cli-e7-bc-96-e5-86-99-e7-bb-84-e4-bb-b6-e5-b9-b6-e5-8f-91-e5-b8-83-e5-88-b0npm-e4-b8-8a/" data-id="cjtbs4meh001fe05s8f6c82pn" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Webpack/">Webpack</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue/">vue</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue-cli/">vue-cli</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-springmybatis-e6-95-b4-e5-90-88-e7-ac-94-e8-ae-b0-e4-bd-bf-e7-94-a8aop-e8-bf-9b-e8-a1-8c-e4-ba-8b-e5-8a-a1-e6-8e-a7-e5-88-b6" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/01/19/springmybatis-e6-95-b4-e5-90-88-e7-ac-94-e8-ae-b0-e4-bd-bf-e7-94-a8aop-e8-bf-9b-e8-a1-8c-e4-ba-8b-e5-8a-a1-e6-8e-a7-e5-88-b6/" class="article-date">
+  <time datetime="2019-01-19T02:45:55.000Z" itemprop="datePublished">2019-01-19</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/JAVA/">JAVA</a>►<a class="article-category-link" href="/categories/JAVA/首页/">首页</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/01/19/springmybatis-e6-95-b4-e5-90-88-e7-ac-94-e8-ae-b0-e4-bd-bf-e7-94-a8aop-e8-bf-9b-e8-a1-8c-e4-ba-8b-e5-8a-a1-e6-8e-a7-e5-88-b6/">Spring+Mybatis整合笔记-使用AOP进行事务控制</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="http://www.1zyan.cn/wp-content/uploads/2019/01/a1-24.png" alt></p>
+<p><img src="http://www.1zyan.cn/wp-content/uploads/2019/01/a2-18.png" alt></p>
+<p>在原本的配置文件中新增以下</p>
+<pre><code>&lt;!\-\- 事务管理器 --&gt;
+&lt;bean id=&quot;txMannager&quot;
+      class=&quot;org.springframework.jdbc.datasource.DataSourceTransactionManager&quot;&gt;
+    &lt;!\-\- 引用数据源 --&gt;
+    &lt;property name=&quot;dataSource&quot; ref=&quot;dataSource&quot;/&gt;
+&lt;/bean&gt;
+&lt;!\-\- 事务增强 --&gt;
+&lt;tx:advice id=&quot;txAdvice&quot; transaction-manager=&quot;txMannager&quot;&gt;
+    &lt;!\-\- 事务规则 --&gt;
+    &lt;tx:attributes&gt;
+        &lt;!\-\- 使用通配符 \-\-&gt;
+        &lt;!\-\- 所有find开头的方法都加到事务里面来 --&gt;
+        &lt;!\-\- timeout超时时间-1永不抄手，单位秒 --&gt;
+        &lt;tx:method name=&quot;find*&quot; timeout=&quot;-1&quot;/&gt;
+        &lt;!\-\- propagation传播属性，表示这些方法总是在事务里面，如果不在就创建一个事务 --&gt;
+        &lt;tx:method name=&quot;*&quot; propagation=&quot;REQUIRED&quot;/&gt;
+    &lt;/tx:attributes&gt;
+&lt;/tx:advice&gt;
+&lt;!\-\- 在那些方法上执行事务，方法在哪个包下面,通过切面来进行配置 --&gt;
+&lt;aop:config&gt;
+    &lt;!\-\- 配置切入点 --&gt;
+    &lt;aop:pointcut id=&quot;myPoint&quot; expression=&quot;execution(* cn.smbms.service..*.*(..))&quot;/&gt;
+    &lt;!\-\- 为方法织入事务的增强 --&gt;
+    &lt;aop:advisor advice-ref=&quot;txAdvice&quot; pointcut-ref=&quot;myPoint&quot;/&gt;
+&lt;/aop:config&gt;
+</code></pre><p>我对于spring事务的理解就是，在调用方法的时候通过aop切面织入我们配置的事务处理增强人，然后通过事务增强里面的规则进行事务处理。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.1zyan.cc/2019/01/19/springmybatis-e6-95-b4-e5-90-88-e7-ac-94-e8-ae-b0-e4-bd-bf-e7-94-a8aop-e8-bf-9b-e8-a1-8c-e4-ba-8b-e5-8a-a1-e6-8e-a7-e5-88-b6/" data-id="cjtbs4mie0077e05s0xphsc1u" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/spring/">spring</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-springmybatis-e6-95-b4-e5-90-88-e7-ac-94-e8-ae-b0-e6-b3-a8-e8-a7-a3service-e5-ae-9e-e7-8e-b0" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/01/19/springmybatis-e6-95-b4-e5-90-88-e7-ac-94-e8-ae-b0-e6-b3-a8-e8-a7-a3service-e5-ae-9e-e7-8e-b0/" class="article-date">
+  <time datetime="2019-01-19T02:45:38.000Z" itemprop="datePublished">2019-01-19</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/JAVA/">JAVA</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/01/19/springmybatis-e6-95-b4-e5-90-88-e7-ac-94-e8-ae-b0-e6-b3-a8-e8-a7-a3service-e5-ae-9e-e7-8e-b0/">Spring+Mybatis整合笔记-注解Service实现</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>接着前面一章讲其他配置文件不变</p>
+<p>1.创建Service接口和实现类</p>
+<p>package cn.smbms.service;</p>
+<p>import cn.smbms.pojo.User;<br>import java.util.List;</p>
+<p>public interface UserService {<br>    public List<user> findUserService(String userName);<br>}</user></p>
+<p>package cn.smbms.service;</p>
+<p>import cn.smbms.dao.UserMapper;<br>import cn.smbms.pojo.User;<br>import org.springframework.beans.factory.annotation.Autowired;<br>import org.springframework.beans.factory.annotation.Qualifier;<br>import org.springframework.stereotype.Service;<br>import java.util.List;</p>
+<p>//当前ServiceBean的名字<br>@Service(“userService”)<br>public class UserServiceImpl implements UserService {<br>    //Autowired自动装配，也就是自动注入。<br>    //Qualifier表示要使用spring容器中的哪个bean，将哪个bean注入到当前bean中<br>    @Autowired<br>    @Qualifier(“userMapper”)<br>    private UserMapper userMapper;<br>    public UserMapper getUserMapper() {<br>        return userMapper;<br>    }</p>
+<pre><code>public void setUserMapper(UserMapper userMapper) {
+    this.userMapper = userMapper;
+}
+
+public List&lt;User&gt; findUserService(String userName) {
+    return userMapper.getUserListByName(userName);
+}
+</code></pre><p>}</p>
+<p>2.编写配置文件，其他配置文件不变添加以下bean</p>
+<p>&lt;!-- 通过扫描注解标签进行service注入, base-package需要扫描类所在的包–&gt;<br>&lt;context:component-scan base-package=”cn.smbms.service”&gt;&lt;/context:component-scan&gt;</p>
+<p>3.编写测试</p>
+<p>@Test<br>    public void ts2(){<br>        ApplicationContext ctx=new ClassPathXmlApplicationContext(“ApplicationContext.xml”);<br>        UserService us=(UserService)ctx.getBean(“userService”);<br>        List<user> userList=us.findUserService(“李”);<br>        for (User user : userList) {<br>            System.out.println(user.getId()+”.”+user.getUserName());<br>        }<br>    }</user></p>
+<p>运行结果如下：</p>
+<p><img src="http://www.1zyan.cn/wp-content/uploads/2019/01/a1-23.png" alt></p>
+<p>总结：注解标签有以下几个</p>
+<p>@service 设置bean的id</p>
+<p>@Autowired 自动装配，自动赋值</p>
+<p>@Qualifier(“userMapper”) 将哪个bean装配到当前属性中</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.1zyan.cc/2019/01/19/springmybatis-e6-95-b4-e5-90-88-e7-ac-94-e8-ae-b0-e6-b3-a8-e8-a7-a3service-e5-ae-9e-e7-8e-b0/" data-id="cjtbs4mie007ae05s4rzr0c4u" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/spring/">spring</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-springmybatis-e6-95-b4-e5-90-88-e7-ac-94-e8-ae-b0-e9-80-9a-e8-bf-87-e6-98-a0-e5-b0-84-e5-99-a8-e8-bf-9b-e8-a1-8c-e6-95-b4-e5-90-88" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/01/18/springmybatis-e6-95-b4-e5-90-88-e7-ac-94-e8-ae-b0-e9-80-9a-e8-bf-87-e6-98-a0-e5-b0-84-e5-99-a8-e8-bf-9b-e8-a1-8c-e6-95-b4-e5-90-88/" class="article-date">
+  <time datetime="2019-01-18T09:35:50.000Z" itemprop="datePublished">2019-01-18</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/JAVA/">JAVA</a>►<a class="article-category-link" href="/categories/JAVA/首页/">首页</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/01/18/springmybatis-e6-95-b4-e5-90-88-e7-ac-94-e8-ae-b0-e9-80-9a-e8-bf-87-e6-98-a0-e5-b0-84-e5-99-a8-e8-bf-9b-e8-a1-8c-e6-95-b4-e5-90-88/">Spring+Mybatis整合笔记-通过映射器进行整合</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>手动编写映射器实现存在的问题：<br>    1.SqlSession.selectList()等方法需要采用字符串来指定映射项</p>
+<pre><code>2.SqlSession.getMapper()方法需要在每次调用时都实现一次映射器接口
+</code></pre><p>能不能在ioc容器中始终存在一个映射器接口的实现呢？</p>
+<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><p><img src="http://www.1zyan.cn/wp-content/uploads/2019/01/a1-22.png" alt></p>
+<p>配置文件</p>
+<p>&lt;?xml version=”1.0” encoding=”UTF-8”?&gt;</p>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemalocation="
+       http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+"><br>    &lt;!-- 使用dbcp数据源 –&gt;<br>    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"><br>        <property name="driverClassName" value="com.mysql.jdbc.Driver"><br>        <property name="url" value="jdbc:mysql://mysql.1zyan.cc:3306/smbms?useUnicode=true&amp;characterEncoding=utf-8"><br>        <property name="username" value="yizhiyan"><br>        <property name="password" value="464312406"><br>    </property></property></property></property></bean><br>    &lt;!-- 配置数据库操作 –&gt;<br>    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean"><br>        &lt;!-- 引用数据源 –&gt;<br>        <property name="dataSource" ref="dataSource"><br>        &lt;!-- 将mybatis配置文件引入 –&gt;<br>        <property name="configLocation" value="classpath:mybatis-config.xml"><br>    </property></property></bean><br>    &lt;!-- dao –&gt;<br>    <bean id="userMapperImpl" class="org.mybatis.spring.mapper.MapperFactoryBean"><br>        <property name="mapperInterface" value="cn.smbms.dao.UserMapper"><br>        <property name="sqlSessionFactory" ref="sqlSessionFactory"><br>    </property></property></bean><br></beans>
+
+<p>测试方法：</p>
+<pre><code>@Test
+public void ts1(){
+    ApplicationContext ctx=new ClassPathXmlApplicationContext(&quot;ApplicationContext.xml&quot;);
+    UserMapper um=(UserMapper)ctx.getBean(&quot;userMapperImpl&quot;);
+    List&lt;User&gt; userList=um.getUserListByName(&quot;李&quot;);
+    for (User user : userList) {
+        System.out.println(user.getId()+&quot;.&quot;+user.getUserName());
+    }
+}
+</code></pre><p>这样就不需要UserMapperImpl这个类了。博主在这里踩了个坑，那就是死坑那个UserMapperImpl。在上一篇文章中可以看到博主是使用UserMapperImpl来获取实例的，在我改了时候没注意把测试方法getBean的类型强制设置为UserMapperImpl然后把bean节点里面的mapperinterface也强制设置成立UserMapperImpl导致报错。所以注意了在使用映射器的时候就没有中间的UserMapperImpl了直接写dao的接口就可以了。一定注意！！！</p>
+<h3 id="那好问题又来了，如果有多个dao呢？这样写岂不是要写很多个MapperFactoryBean？"><a href="#那好问题又来了，如果有多个dao呢？这样写岂不是要写很多个MapperFactoryBean？" class="headerlink" title="那好问题又来了，如果有多个dao呢？这样写岂不是要写很多个MapperFactoryBean？"></a>那好问题又来了，如果有多个dao呢？这样写岂不是要写很多个MapperFactoryBean？</h3><p><img src="http://www.1zyan.cn/wp-content/uploads/2019/01/a2-17.png" alt></p>
+<p>经过修改后的配置文件如下</p>
+<p>&lt;?xml version=”1.0” encoding=”UTF-8”?&gt;</p>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemalocation="
+       http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+"><br>    &lt;!-- 使用dbcp数据源 –&gt;<br>    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"><br>        <property name="driverClassName" value="com.mysql.jdbc.Driver"><br>        <property name="url" value="jdbc:mysql://mysql.1zyan.cc:3306/smbms?useUnicode=true&amp;characterEncoding=utf-8"><br>        <property name="username" value="yizhiyan"><br>        <property name="password" value="464312406"><br>    </property></property></property></property></bean><br>    &lt;!-- 配置数据库操作 –&gt;<br>    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean"><br>        &lt;!-- 引用数据源 –&gt;<br>        <property name="dataSource" ref="dataSource"><br>        &lt;!-- 将mybatis配置文件引入 –&gt;<br>        <property name="configLocation" value="classpath:mybatis-config.xml"><br>    </property></property></bean><br>    &lt;!-- 通过dao批量映射 –&gt;<br>    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer"><br>        &lt;!-- 会自动创建一个MapperFactoryBean节点 id就是接口名首字母小写，如UserMapper接口的id就是userMapper –&gt;<br>        <property name="basePackage" value="cn.smbms.dao"><br>    </property></bean><br></beans>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.1zyan.cc/2019/01/18/springmybatis-e6-95-b4-e5-90-88-e7-ac-94-e8-ae-b0-e9-80-9a-e8-bf-87-e6-98-a0-e5-b0-84-e5-99-a8-e8-bf-9b-e8-a1-8c-e6-95-b4-e5-90-88/" data-id="cjtbs4mie007fe05slp0tg1ix" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MyBatis/">MyBatis</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/spring/">spring</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
   </nav>
-  {% endif %}
-  {% if theme.comment.enable %}
-  {% include "comment.njk" %}
-  {% endif %}
-</div>
-{% endblock %}
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/C/">C#</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/C/JAVA/">JAVA</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/C/JAVA/软件开发/">软件开发</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/C/SqlServer/">SqlServer</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/C/SqlServer/数据库/">数据库</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/C/SqlServer/数据库/软件开发/">软件开发</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/C/原创/">原创</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/C/原创/视频/">视频</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/C/原创/软件开发/">软件开发</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/C/原创/软件开发/首页/">首页</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/C/原创/首页/">首页</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/C/软件开发/">软件开发</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/C/软件开发/首页/">首页</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/C/首页/">首页</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/HTML/">HTML</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/HTML/WEB/">WEB</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/HTML/WEB/前端/">前端</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/HTML/WEB/前端/原创/">原创</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/HTML/前端/">前端</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/JAVA/">JAVA</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/JAVA/原创/">原创</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/JAVA/软件开发/">软件开发</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/JAVA/首页/">首页</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Mysql/">Mysql</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Mysql/SqlServer/">SqlServer</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Mysql/SqlServer/数据库/">数据库</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/SqlServer/">SqlServer</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/SqlServer/数据库/">数据库</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/WEB/">WEB</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/WEB/其他/">其他</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/WEB/前端/">前端</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/WEB/前端/首页/">首页</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/WordPress/">WordPress</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/WordPress/其他/">其他</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/其他/">其他</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/其他/娱乐/">娱乐</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/其他/娱乐/视频/">视频</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/其他/娱乐/视频/音乐/">音乐</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/其他/娱乐/视频/音乐/首页/">首页</a></li></ul></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/其他/首页/">首页</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/">前端</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/娱乐/">娱乐</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/娱乐/视频/">视频</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/娱乐/视频/首页/">首页</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/首页/">首页</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C#</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/EXCEL写数据/">EXCEL写数据</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JAVA/">JAVA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jquery/">Jquery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MV/">MV</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MyBatis/">MyBatis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/">PHP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PS/">PS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SqlServer/">SqlServer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WEB/">WEB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Webpack/">Webpack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WordPress/">WordPress</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/aop/">aop</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/app/">app</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c-未将对象引用设置到对象的实例/">c#未将对象引用设置到对象的实例</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6/">es6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/">html</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/idea/">idea</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ioc/">ioc</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javaGui/">javaGui</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/junit/">junit</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/">nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rem插件/">rem插件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spring/">spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sql/">sql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sql-server/">sql server</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sqlse/">sqlse</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue-cli/">vue-cli</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/中文乱码/">中文乱码</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/中文类库/">中文类库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/入栈/">入栈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/公司模板/">公司模板</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/其他主题/">其他主题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/冒泡排序/">冒泡排序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/分布式/">分布式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端/">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/单例模式/">单例模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/原创/">原创</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/古风/">古风</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/图片/">图片</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/多线程/">多线程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/好听/">好听</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/娱乐/">娱乐</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小米/">小米</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工具/">工具</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/情书/">情书</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/支烟IP扫描器/">支烟IP扫描器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/支烟类库/">支烟类库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/教程/">教程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/新技术/">新技术</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/易代码转换/">易代码转换</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/枚举/">枚举</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/社团管理系统/">社团管理系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/程序/">程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/系统/">系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网络/">网络</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/美图/">美图</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/荒野行动/">荒野行动</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/视频软件/">视频软件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/语音合成/">语音合成</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/超级CS/">超级CS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/超级类库/">超级类库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/软件/">软件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/软件开发/">软件开发</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/逻辑思维训练/">逻辑思维训练</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面试题/">面试题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/音乐/">音乐</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/C/" style="font-size: 20px;">C#</a> <a href="/tags/EXCEL写数据/" style="font-size: 10px;">EXCEL写数据</a> <a href="/tags/JAVA/" style="font-size: 19px;">JAVA</a> <a href="/tags/Jquery/" style="font-size: 10px;">Jquery</a> <a href="/tags/MV/" style="font-size: 10px;">MV</a> <a href="/tags/MyBatis/" style="font-size: 15px;">MyBatis</a> <a href="/tags/PHP/" style="font-size: 10px;">PHP</a> <a href="/tags/PS/" style="font-size: 10px;">PS</a> <a href="/tags/SqlServer/" style="font-size: 11px;">SqlServer</a> <a href="/tags/WEB/" style="font-size: 13px;">WEB</a> <a href="/tags/Webpack/" style="font-size: 17px;">Webpack</a> <a href="/tags/WordPress/" style="font-size: 13px;">WordPress</a> <a href="/tags/aop/" style="font-size: 10px;">aop</a> <a href="/tags/app/" style="font-size: 10px;">app</a> <a href="/tags/c-未将对象引用设置到对象的实例/" style="font-size: 10px;">c#未将对象引用设置到对象的实例</a> <a href="/tags/es6/" style="font-size: 16px;">es6</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/idea/" style="font-size: 11px;">idea</a> <a href="/tags/ioc/" style="font-size: 10px;">ioc</a> <a href="/tags/javaGui/" style="font-size: 10px;">javaGui</a> <a href="/tags/junit/" style="font-size: 10px;">junit</a> <a href="/tags/linux/" style="font-size: 11px;">linux</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/rem插件/" style="font-size: 10px;">rem插件</a> <a href="/tags/spring/" style="font-size: 17px;">spring</a> <a href="/tags/sql/" style="font-size: 10px;">sql</a> <a href="/tags/sql-server/" style="font-size: 10px;">sql server</a> <a href="/tags/sqlse/" style="font-size: 10px;">sqlse</a> <a href="/tags/vue/" style="font-size: 18px;">vue</a> <a href="/tags/vue-cli/" style="font-size: 16px;">vue-cli</a> <a href="/tags/中文乱码/" style="font-size: 10px;">中文乱码</a> <a href="/tags/中文类库/" style="font-size: 10px;">中文类库</a> <a href="/tags/入栈/" style="font-size: 10px;">入栈</a> <a href="/tags/公司模板/" style="font-size: 10px;">公司模板</a> <a href="/tags/其他主题/" style="font-size: 10px;">其他主题</a> <a href="/tags/冒泡排序/" style="font-size: 10px;">冒泡排序</a> <a href="/tags/分布式/" style="font-size: 10px;">分布式</a> <a href="/tags/前端/" style="font-size: 11px;">前端</a> <a href="/tags/单例模式/" style="font-size: 10px;">单例模式</a> <a href="/tags/原创/" style="font-size: 14px;">原创</a> <a href="/tags/古风/" style="font-size: 10px;">古风</a> <a href="/tags/图片/" style="font-size: 10px;">图片</a> <a href="/tags/多线程/" style="font-size: 11px;">多线程</a> <a href="/tags/好听/" style="font-size: 10px;">好听</a> <a href="/tags/娱乐/" style="font-size: 10px;">娱乐</a> <a href="/tags/小米/" style="font-size: 10px;">小米</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a> <a href="/tags/情书/" style="font-size: 10px;">情书</a> <a href="/tags/支烟IP扫描器/" style="font-size: 10px;">支烟IP扫描器</a> <a href="/tags/支烟类库/" style="font-size: 10px;">支烟类库</a> <a href="/tags/教程/" style="font-size: 11px;">教程</a> <a href="/tags/数据库/" style="font-size: 12px;">数据库</a> <a href="/tags/新技术/" style="font-size: 10px;">新技术</a> <a href="/tags/易代码转换/" style="font-size: 10px;">易代码转换</a> <a href="/tags/枚举/" style="font-size: 10px;">枚举</a> <a href="/tags/社团管理系统/" style="font-size: 10px;">社团管理系统</a> <a href="/tags/程序/" style="font-size: 10px;">程序</a> <a href="/tags/系统/" style="font-size: 10px;">系统</a> <a href="/tags/网络/" style="font-size: 10px;">网络</a> <a href="/tags/美图/" style="font-size: 10px;">美图</a> <a href="/tags/荒野行动/" style="font-size: 10px;">荒野行动</a> <a href="/tags/视频软件/" style="font-size: 10px;">视频软件</a> <a href="/tags/语音合成/" style="font-size: 10px;">语音合成</a> <a href="/tags/超级CS/" style="font-size: 10px;">超级CS</a> <a href="/tags/超级类库/" style="font-size: 10px;">超级类库</a> <a href="/tags/软件/" style="font-size: 13px;">软件</a> <a href="/tags/软件开发/" style="font-size: 11px;">软件开发</a> <a href="/tags/逻辑思维训练/" style="font-size: 10px;">逻辑思维训练</a> <a href="/tags/面试题/" style="font-size: 13px;">面试题</a> <a href="/tags/音乐/" style="font-size: 11px;">音乐</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/02/28/测试文件/">测试文件</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/27/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/25/10-e5-88-86-e9-92-9f-e5-ad-a6-e4-bc-9aes7es8/">10分钟学会ES7+ES8</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/18/vue-e6-93-8d-e4-bd-9cdom/">vue操作dom</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/24/springmybatis-e6-95-b4-e5-90-88-e7-ac-94-e8-ae-b0-e4-bd-bf-e7-94-a8-e6-b3-a8-e8-a7-a3-e6-a0-87-e7-ad-be-e5-ae-9e-e7-8e-b0-e4-ba-8b-e5-8a-a1-e5-92-8c-e4-ba-8b-e5-8a-a1-e7-9a-84-e5-8f-82-e6-95-b0/">Spring+Mybatis整合笔记-使用注解标签实现事务和事务的参数</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 yizhiyan<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>10分钟学会ES7+ES8 | 易支烟</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="撰文为何身为一个前端开发者，ECMAScript(以下简称ES)早已广泛应用在我们的工作当中。了解ECMA机构流程的人应该知道，标准委员会会在每年的6月份正式发布一次规范的修订，而这次的发布也将作为当年的正式版本。以后的改动，都会基于上一版本进行修改。所以，我们这次就基于ES6的版本对ES7、ES8版本的新增以及修改内容，做一次简要的总结，方便我们快速开发。 ES7新特性ES7在ES6的基础上添加">
+<meta name="keywords" content="新技术">
+<meta property="og:type" content="article">
+<meta property="og:title" content="10分钟学会ES7+ES8">
+<meta property="og:url" content="http://www.1zyan.cc/2019/02/25/10-e5-88-86-e9-92-9f-e5-ad-a6-e4-bc-9aes7es8/index.html">
+<meta property="og:site_name" content="易支烟">
+<meta property="og:description" content="撰文为何身为一个前端开发者，ECMAScript(以下简称ES)早已广泛应用在我们的工作当中。了解ECMA机构流程的人应该知道，标准委员会会在每年的6月份正式发布一次规范的修订，而这次的发布也将作为当年的正式版本。以后的改动，都会基于上一版本进行修改。所以，我们这次就基于ES6的版本对ES7、ES8版本的新增以及修改内容，做一次简要的总结，方便我们快速开发。 ES7新特性ES7在ES6的基础上添加">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="https://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="https://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="https://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="https://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="https://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="https://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="https://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="https://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="https://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="https://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="https://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="https://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="https://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="https://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="https://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="https://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="https://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="https://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="https://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="https://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="https://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="https://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="https://common.cnblogs.com/images/copycode.gif">
+<meta property="og:updated_time" content="2019-03-16T17:42:37.710Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="10分钟学会ES7+ES8">
+<meta name="twitter:description" content="撰文为何身为一个前端开发者，ECMAScript(以下简称ES)早已广泛应用在我们的工作当中。了解ECMA机构流程的人应该知道，标准委员会会在每年的6月份正式发布一次规范的修订，而这次的发布也将作为当年的正式版本。以后的改动，都会基于上一版本进行修改。所以，我们这次就基于ES6的版本对ES7、ES8版本的新增以及修改内容，做一次简要的总结，方便我们快速开发。 ES7新特性ES7在ES6的基础上添加">
+<meta name="twitter:image" content="https://common.cnblogs.com/images/copycode.gif">
+  
+    <link rel="alternate" href="/atom.xml" title="易支烟" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">易支烟</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">易支烟</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://www.1zyan.cc"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-10-e5-88-86-e9-92-9f-e5-ad-a6-e4-bc-9aes7es8" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/02/25/10-e5-88-86-e9-92-9f-e5-ad-a6-e4-bc-9aes7es8/" class="article-date">
+  <time datetime="2019-02-25T05:33:09.000Z" itemprop="datePublished">2019-02-25</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/HTML/">HTML</a>►<a class="article-category-link" href="/categories/HTML/WEB/">WEB</a>►<a class="article-category-link" href="/categories/HTML/WEB/前端/">前端</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      10分钟学会ES7+ES8
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="撰文为何"><a href="#撰文为何" class="headerlink" title="撰文为何"></a>撰文为何</h2><p>身为一个前端开发者，ECMAScript(以下简称ES)早已广泛应用在我们的工作当中。了解ECMA机构流程的人应该知道，标准委员会会在每年的6月份正式发布一次规范的修订，而这次的发布也将作为当年的正式版本。以后的改动，都会基于上一版本进行修改。所以，我们这次就基于ES6的版本对ES7、ES8版本的新增以及修改内容，做一次简要的总结，方便我们快速开发。</p>
+<h3 id="ES7新特性"><a href="#ES7新特性" class="headerlink" title="ES7新特性"></a>ES7新特性</h3><p>ES7在ES6的基础上添加了三项内容：<strong>求幂运算符（</strong>）<strong>、</strong>Array.prototype.includes()**方法、函数作用域中严格模式的变更。</p>
+<h4 id="Array-prototype-includes-方法"><a href="#Array-prototype-includes-方法" class="headerlink" title="Array.prototype.includes()方法"></a>Array.prototype.includes()方法</h4><p>includes()的作用，是查找一个值在不在数组里，若在，则返回true，反之返回false。 基本用法：</p>
+<p>[‘a’, ‘b’, ‘c’].includes(‘a’) // true [‘a’, ‘b’, ‘c’].includes(‘d’) // false</p>
+<p><strong>Array.prototype.includes()</strong>方法接收两个参数：<strong>要搜索的值和搜索的开始索引</strong>。当第二个参数被传入时，该方法会从索引处开始往后搜索（默认索引值为0）。若搜索值在数组中存在则返回true，否则返回false。 且看下面示例：</p>
+<p>[‘a’, ‘b’, ‘c’, ‘d’].includes(‘b’) // true [‘a’, ‘b’, ‘c’, ‘d’].includes(‘b’, 1) // true [‘a’, ‘b’, ‘c’, ‘d’].includes(‘b’, 2) // false</p>
+<p>那么，我们会联想到ES6里数组的另一个方法indexOf，下面的示例代码是等效的：</p>
+<p>[‘a’, ‘b’, ‘c’].includes(‘a’) //true [‘a’, ‘b’, ‘c’].indexOf(‘a’) &gt; -1 //true</p>
+<p>此时，就有必要来比较下两者的优缺点和使用场景了。</p>
+<ul>
+<li>简便性</li>
+</ul>
+<p>从这一点上来说，includes略胜一筹。熟悉indexOf的同学都知道，indexOf返回的是某个元素在数组中的下标值，若想判断某个元素是否在数组里，我们还需要做额外的处理，即判断该返回值是否&gt;-1。而includes则不用，它直接返回的便是Boolean型的结果。</p>
+<ul>
+<li>精确性</li>
+</ul>
+<p>两者使用的都是 === 操作符来做值的比较。但是includes()方法有一点不同，两个NaN被认为是相等的，即使在NaN === NaN结果是false的情况下。这一点和indexOf()的行为不同，indexOf()严格使用===判断。请看下面示例代码：</p>
+<p>let demo = [1, NaN, 2, 3]</p>
+<p>demo.indexOf(NaN) //-1 demo.includes(NaN) //true</p>
+<p>上述代码中，indexOf()方法返回-1，即使NaN存在于数组中，而includes()则返回了true。</p>
+<blockquote>
+<p><strong>提示：</strong>由于它对NaN的处理方式与indexOf不同，假如你只想知道某个值是否在数组中而并不关心它的索引位置，建议使用includes()。如果你想获取一个值在数组中的位置，那么你只能使用indexOf方法。</p>
+</blockquote>
+<p>includes()还有一个怪异的点需要指出，在判断 +0 与 -0 时，被认为是相同的。</p>
+<p>[1, +0, 3, 4].includes(-0) //true [1, +0, 3, 4].indexOf(-0) //1</p>
+<p>在这一点上，indexOf()与includes()的处理结果是一样的，前者同样会返回 +0 的索引值。</p>
+<blockquote>
+<p><strong>注意：</strong>在这里，需要注意一点，includes()只能判断简单类型的数据，对于复杂类型的数据，比如对象类型的数组，二维数组，这些，是无法判断的。</p>
+<h4 id="求幂运算符（-）"><a href="#求幂运算符（-）" class="headerlink" title="求幂运算符（**）"></a>求幂运算符（**）</h4><p>基本用法</p>
+<p>3 ** 2 // 9 </p>
+<p>效果同：</p>
+<p>Math.pow(3, 2) // 9 </p>
+<p>** 是一个用于求幂的中缀算子，比较可知，中缀符号比函数符号更简洁，这也使得它更为可取。 下面让我们扩展下思路，既然说**是一个运算符，那么它就应该能满足类似加等的操作，我们姑且称之为幂等，例如下面的例子，a的值依然是9：</p>
+<p>let a = 3 a **= 2 // 9</p>
+<p>对比下其他语言的指数运算符：</p>
+</blockquote>
+<ul>
+<li>Python: x ** y</li>
+<li>CoffeeScript: x ** y</li>
+<li>F#: x ** y</li>
+<li>Ruby: x ** y</li>
+<li>Perl: x ** y</li>
+<li>Lua, Basic, MATLAB: x ^ y</li>
+</ul>
+<p>不难发现，ES的这个新特性是从其他语言（Python，Ruby等）模仿而来的。</p>
+<h3 id="ES8新特性"><a href="#ES8新特性" class="headerlink" title="ES8新特性"></a>ES8新特性</h3><h4 id="异步函数-Async-functions"><a href="#异步函数-Async-functions" class="headerlink" title="异步函数(Async functions)"></a>异步函数(Async functions)</h4><h5 id="为什么要引入async"><a href="#为什么要引入async" class="headerlink" title="为什么要引入async"></a>为什么要引入async</h5><p>众所周知，JavaScript语言的执行环境是“单线程”的，那么异步编程对JavaScript语言来说就显得尤为重要。以前我们大多数的做法是使用回调函数来实现JavaScript语言的异步编程。回调函数本身没有问题，但如果出现多个回调函数嵌套，例如：进入某个页面，需要先登录，拿到用户信息之后，调取用户商品信息，代码如下：</p>
+<p>this.$http.jsonp(‘/login’, (res) =&gt; { this.$http.jsonp(‘/getInfo’, (info) =&gt; { // do something  })<br>})</p>
+<p>假如上面还有更多的请求操作，就会出现多重嵌套。代码很快就会乱成一团，这种情况就被称为“回调函数地狱”（callback hell）。</p>
+<p>于是，我们提出了Promise，它将回调函数的嵌套，改成了链式调用。写法如下：</p>
+<p>var promise = new Promise((resolve, reject) =&gt; { this.login(resolve)<br>})<br>.then(() => this.getInfo())<br>.catch(() => { console.log(“Error”) })</p>
+<p>从上面可以看出，Promise的写法只是回调函数的改进，使用then方法，只是让异步任务的两段执行更清楚而已。Promise的最大问题是代码冗余，请求任务多时，一堆的then，也使得原来的语义变得很不清楚。此时我们引入了另外一种异步编程的机制：Generator。</p>
+<p>Generator 函数是一个普通函数，但是有两个特征。一是，function关键字与函数名之间有一个星号；二是，函数体内部使用yield表达式，定义不同的内部状态（yield在英语里的意思就是“产出”）。一个简单的例子用来说明它的用法：</p>
+<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<p>function* helloWorldGenerator() {<br>  yield ‘hello’;<br>  yield ‘world’; return ‘ending’;<br>} var hw = helloWorldGenerator();</p>
+<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<p>上面代码定义了一个 Generator 函数helloWorldGenerator，它内部有两个yield表达式（hello和world），即该函数有三个状态：hello，world 和 return 语句（结束执行）。Generator 函数的调用方法与普通函数一样，也是在函数名后面加上一对圆括号。不同的是，调用 Generator 函数后，该函数并不执行，返回的也不是函数运行结果，而是一个指向内部状态的指针对象，必须调用遍历器对象的next方法，使得指针移向下一个状态。也就是说，每次调用next方法，内部指针就从函数头部或上一次停下来的地方开始执行，直到遇到下一个yield表达式（或return语句）为止。换言之，Generator 函数是分段执行的，yield表达式是暂停执行的标记，而next方法可以恢复执行。上述代码分步执行如下：</p>
+<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<p>hw.next() // { value: ‘hello’, done: false } hw.next() // { value: ‘world’, done: false } hw.next() // { value: ‘ending’, done: true } hw.next() // { value: undefined, done: true }</p>
+<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<p>Generator函数的机制更符合我们理解的异步编程思想。</p>
+<p>用户登录的例子，我们用Generator来写，如下：</p>
+<p>var gen = function* () {<br>  const f1 = yield this.login()<br>  const f2 = yield this.getInfo()<br>};</p>
+<p>虽然Generator将异步操作表示得很简洁，但是流程管理却不方便（即何时执行第一阶段、何时执行第二阶段）。此时，我们便希望能出现一种能自动执行Generator函数的方法。我们的主角来了：async/await。</p>
+<p>ES8引入了async函数，使得异步操作变得更加方便。简单说来，它就是Generator函数的语法糖。</p>
+<p>async function asyncFunc(params) {<br>  const result1 = await this.login()<br>  const result2 = await this.getInfo()<br>}</p>
+<p>是不是更加简洁易懂呢？</p>
+<h5 id="变体"><a href="#变体" class="headerlink" title="变体"></a>变体</h5><p>异步函数存在以下四种使用形式：</p>
+<ul>
+<li>函数声明： async function foo() {}</li>
+<li>函数表达式： const foo = async function() {}</li>
+<li>对象的方式： let obj = { async foo() {} }</li>
+<li>箭头函数： const foo = async () =&gt; {}</li>
+</ul>
+<h5 id="常见用法汇总"><a href="#常见用法汇总" class="headerlink" title="常见用法汇总"></a>常见用法汇总</h5><p>处理单个异步结果：</p>
+<p>async function asyncFunc() {<br>  const result = await otherAsyncFunc();<br>  console.log(result);<br>}</p>
+<p>顺序处理多个异步结果：</p>
+<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<p>async function asyncFunc() {<br>  const result1 = await otherAsyncFunc1();<br>  console.log(result1);<br>  const result2 = await otherAsyncFunc2();<br>  console.log(result2);<br>}</p>
+<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<p>并行处理多个异步结果：</p>
+<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<p>async function asyncFunc() {<br>  const [result1, result2] = await Promise.all([<br>    otherAsyncFunc1(),<br>    otherAsyncFunc2()<br>  ]);<br>  console.log(result1, result2);<br>}</p>
+<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<p>处理错误：</p>
+<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<p>async function asyncFunc() { try {<br>    await otherAsyncFunc();<br>  } catch (err) {<br>    console.error(err);<br>  }<br>}</p>
+<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<p>若想进一步了解async的具体实践，可参见阮一峰的博客文章，链接奉上：<a href="http://es6.ruanyifeng.com/#docs/async" target="_blank" rel="noopener">http://es6.ruanyifeng.com/#docs/async</a></p>
+<h4 id="Object-entries-和Object-values"><a href="#Object-entries-和Object-values" class="headerlink" title="Object.entries()和Object.values()"></a>Object.entries()和Object.values()</h4><h5 id="Object-entries"><a href="#Object-entries" class="headerlink" title="Object.entries()"></a>Object.entries()</h5><p>如果一个对象是具有键值对的数据结构，则每一个键值对都将会编译成一个具有两个元素的数组，这些数组最终会放到一个数组中，返回一个二维数组。简言之，该方法会将某个对象的可枚举属性与值按照二维数组的方式返回。若目标对象是数组时，则会将数组的下标作为键值返回。例如：</p>
+<p>Object.entries({ one: 1, two: 2 }) //[[‘one’, 1], [‘two’, 2]] Object.entries([1, 2]) //[[‘0’, 1], [‘1’, 2]]</p>
+<blockquote>
+<p><strong>注意：</strong>键值对中，如果键的值是Symbol，编译时将会被忽略。例如：</p>
+<p>Object.entries({ [Symbol()]: 1, two: 2 })       //[[‘two’, 2]] </p>
+</blockquote>
+<p>Object.entries()返回的数组的顺序与for-in循环保持一致，即如果对象的key值是数字，则返回值会对key值进行排序，返回的是排序后的结果。例如：</p>
+<p>Object.entries({ 3: ‘a’, 4: ‘b’, 1: ‘c’ }) //[[‘1’, ‘c’], [‘3’, ‘a’], [‘4’, ‘b’]]</p>
+<p>使用Object.entries()，我们还可以进行对象属性的遍历。例如：</p>
+<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<p>let obj = { one: 1, two: 2 }; for (let [k,v] of Object.entries(obj)) {<br>  console.log(<code>${JSON.stringify(k)}: ${JSON.stringify(v)}</code>);<br>} //输出结果如下： ‘one’: 1<br>‘two’: 2</p>
+<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<h5 id="Object-values"><a href="#Object-values" class="headerlink" title="Object.values()"></a>Object.values()</h5><p>它的工作原理跟Object.entries()很像，顾名思义，它只返回自己的键值对中属性的值。它返回的数组顺序，也跟Object.entries()保持一致。</p>
+<p>Object.values({ one: 1, two: 2 }) //[1, 2] Object.values({ 3: ‘a’, 4: ‘b’, 1: ‘c’ }) //[‘c’, ‘a’, ‘b’]</p>
+<h4 id="字符串填充：padStart和padEnd"><a href="#字符串填充：padStart和padEnd" class="headerlink" title="字符串填充：padStart和padEnd"></a>字符串填充：padStart和padEnd</h4><p>ES8提供了新的字符串方法-padStart和padEnd。padStart函数通过填充字符串的首部来保证字符串达到固定的长度，反之，padEnd是填充字符串的尾部来保证字符串的长度的。该方法提供了两个参数：字符串目标长度和填充字段，其中第二个参数可以不填，默认情况下使用空格填充。</p>
+<p>‘Vue’.padStart(10) //‘       Vue’ ‘React’.padStart(10) //‘     React’ ‘JavaScript’.padStart(10) //‘JavaScript’</p>
+<p>可以看出，多个数据如果都采用同样长度的padStart，相当于将呈现内容右对齐。</p>
+<p>上面示例中我们只定义了第一个参数，那么我们现在来看看第二个参数，我们可以指定字符串来代替空字符串。</p>
+<p>‘Vue’.padStart(10, ‘<em>*’) //‘</em>*_*_*_Vue’ ‘React’.padStart(10, ‘Hello’) //‘HelloReact’ ‘JavaScript’.padStart(10, ‘Hi’) //‘JavaScript’ ‘JavaScript’.padStart(8, ‘Hi’) //‘JavaScript’</p>
+<p>从上面结果来看，填充函数只有在字符长度小于目标长度时才有效，若字符长度已经等于或小于目标长度时，填充字符不会起作用，而且目标长度如果小于字符串本身长度时，字符串也不会做截断处理，只会原样输出。</p>
+<p>padEnd函数作用同padStart，只不过它是从字符串尾部做填充。来看个小例子：</p>
+<p>‘Vue’.padEnd(10, ‘<em>*’) //‘Vue</em>*_*_*_’ ‘React’.padEnd(10, ‘Hello’) //‘ReactHello’ ‘JavaScript’.padEnd(10, ‘Hi’) //‘JavaScript’ ‘JavaScript’.padEnd(8, ‘Hi’) //‘JavaScript’</p>
+<h4 id="Object-getOwnPropertyDescriptors"><a href="#Object-getOwnPropertyDescriptors" class="headerlink" title="Object.getOwnPropertyDescriptors()"></a>Object.getOwnPropertyDescriptors()</h4><p>顾名思义，该方法会返回目标对象中所有属性的属性描述符，该属性必须是对象自己定义的，不能是从原型链继承来的。先来看个它的基本用法：</p>
+<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<p>let obj = {<br>  id: 1,<br>  name: ‘test’,<br>  get gender() {<br>    console.log(‘gender’)<br>  },<br>  set grade(g) {<br>    console.log(g)<br>  }<br>}<br>Object.getOwnPropertyDescriptors(obj) //输出结果为： {<br>  gender: {<br>    configurable: true,<br>    enumerable: true,<br>    get: f gender(),<br>    set: undefined<br>  },<br>  grade: {<br>    configurable: true,<br>    enumerable: true,<br>    get: undefined,<br>    set: f grade(g)<br>  },<br>  id: {<br>    configurable: true,<br>    enumerable: true,<br>    value: 1,<br>    writable: true },<br>  name: {<br>    configurable: true,<br>    enumerable: true,<br>    value: ‘test’,<br>    writable: true }<br>}</p>
+<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<p>方法还提供了第二个参数，用来获取指定属性的属性描述符。</p>
+<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<p>let obj = {<br>  id: 1,<br>  name: ‘test’,<br>  get gender() {<br>    console.log(‘gender’)<br>  },<br>  set grade(g) {<br>    console.log(g)<br>  }<br>}<br>Object.getOwnPropertyDescriptors(obj, ‘id’) //输出结果为： {<br>  id: {<br>    configurable: true,<br>    enumerable: true,<br>    value: 1,<br>    writable: true }<br>}</p>
+<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<p>由上述例子可知，该方法返回的描述符，会有两种类型：数据描述符、存取器描述符。返回结果中包含的键可能的值有：configurable、enumerable、value、writable、get、set。</p>
+<p>使用过Object.assign()的同学都知道，assign方法只能拷贝一个属性的值，而不会拷贝它背后的复制方法和取值方法。Object.getOwnPropertyDescriptors()主要是为了解决Object.assign()无法正确拷贝get属性和set属性的问题。</p>
+<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<p>let obj = {<br>  id: 1,<br>  name: ‘test’,<br>  get gender() {<br>    console.log(‘gender’)<br>  }<br>}<br>Object.assign(obj) //输出结果为： {<br>  gender: undefined<br>  id: 1,<br>  name: ‘test’ }</p>
+<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<p>此时，Object.getOwnPropertyDescriptors方法配合Object.defineProperties方法，就可以实现正确拷贝。</p>
+<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<p>let obj = {<br>  id: 1,<br>  name: ‘test’,<br>  get gender() {<br>    console.log(‘gender’)<br>  }<br>}<br>let obj1 = {}<br>Object.defineProperties(obj1, Object.getOwnPropertyDescriptors(obj))<br>Object.getOwnPropertyDescriptors(obj1) //输出结果为： {<br>  gender: {<br>    configurable: true,<br>    enumerable: true,<br>    get: f gender(),<br>    set: undefined<br>  },<br>  id: {<br>    configurable: true,<br>    enumerable: true,<br>    value: 1,<br>    writable: true },<br>  name: {<br>    configurable: true,<br>    enumerable: true,<br>    value: ‘test’,<br>    writable: true }<br>}</p>
+<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<p>上述代码演示了，我们如何来拷贝一个属性值为赋值方法或者取值方法的对象。更多Object.getOwnPropertyDescriptors的使用细则，可参见阮一峰的博客文章，链接奉上：<a href="http://es6.ruanyifeng.com/#docs/object#Object-getOwnPropertyDescriptors" target="_blank" rel="noopener">http://es6.ruanyifeng.com/#docs/object#Object-getOwnPropertyDescriptors</a></p>
+<h4 id="共享内存和原子（Shared-memory-and-atomics）"><a href="#共享内存和原子（Shared-memory-and-atomics）" class="headerlink" title="共享内存和原子（Shared memory and atomics）"></a>共享内存和原子（Shared memory and atomics）</h4><p>ES8引入了两部分内容：新的构造函数SharedArrayBuffer、具有辅助函数的命名空间对象Atomics。共享内存允许多个线程并发读写数据，而原子操作则能够进行并发控制，确保多个存在竞争关系的线程顺序执行。</p>
+<p>共享内存和原子也称为共享阵列缓冲区，它是更高级的并发抽象的基本构建块。它允许在多个工作者和主线程之间共享SharedArrayBuffer对象的字节（缓冲区是共享的，用以访问字节，将其包装在类型化的数组中）。这种共享有两个好处：</p>
+<ul>
+<li>可以更快地在web worker之间共享数据</li>
+<li>web worker之间的协调变得更加简单和快速</li>
+</ul>
+<p>那么，我们为什么要引入共享内存和原子的概念呢？以及SharedArrayBuffer的竞争条件是什么，Atomics又是如何解决这种竞争的？推荐下面的文章，文章讲解很详细，图文并茂，带你深入了解SharedArrayBuffer和Atomics。</p>
+<p>内存管理碰撞课程：<a href="https://segmentfault.com/a/1190000009878588" target="_blank" rel="noopener">https://segmentfault.com/a/1190000009878588</a></p>
+<p>图解 ArrayBuffers 和 SharedArrayBuffers：<a href="https://segmentfault.com/a/1190000009878632" target="_blank" rel="noopener">https://segmentfault.com/a/1190000009878632</a></p>
+<p>用 Atomics 避免 SharedArrayBuffers 竞争条件：<a href="https://segmentfault.com/a/1190000009878699" target="_blank" rel="noopener">https://segmentfault.com/a/1190000009878699</a></p>
+<p>Atomics对象提供了许多静态方法，配合SharedArrayBuffer对象一起使用，可以帮助我们去构建一个内存共享的多线程编程环境。Atomic操作安装在Atomics模块上。与其他全局对象不同，Atomics不是构造函数。您不能使用new操作符或Atomics作为函数调用该对象。所有的属性和方法Atomics都是静态的，这一点跟Math类似。下面链接贴出了Atomics提供的一些基本方法：</p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Atomics" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Atomics</a></p>
+<p>关于共享内存和原子的深入研究，也可以参考Axel Rauschmayer博士的《Exploring ES2016 and ES2017》一书中的内容。具体章节链接如下：</p>
+<p><a href="http://exploringjs.com/es2016-es2017/ch_shared-array-buffer.html" target="_blank" rel="noopener">http://exploringjs.com/es2016-es2017/ch_shared-array-buffer.html</a></p>
+<h4 id="函数参数列表与调用中的尾部逗号"><a href="#函数参数列表与调用中的尾部逗号" class="headerlink" title="函数参数列表与调用中的尾部逗号"></a>函数参数列表与调用中的尾部逗号</h4><p>该特性允许我们在定义或者调用函数时添加尾部逗号而不报错。</p>
+<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<p>let foo = function (<br>  a,<br>  b,<br>  c,<br>) {<br>  console.log(‘a:’, a)<br>  console.log(‘b:’, b)<br>  console.log(‘c:’, c)<br>}<br>foo(1, 3, 4, ) //输出结果为： a: 1 b: 3 c: 4</p>
+<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<p>上面这种方式调用是没有问题的。函数的这种尾逗号也是向数组和字面量对象中尾逗号看齐，它适用于那种多行参数并且参数名很长的情况，开发过程中，如果忘记删除尾部逗号也没关系，ES8已经支持这种写法。</p>
+<p>这么用有什么好处呢？</p>
+<p>首先，当我们调整结构时，不会因为最后一行代码的位置变动，而去添加或者删除逗号。</p>
+<p>其次，在版本管理上，不会出现因为一个逗号，而使本来只有一行的修改，变成两行。例如下面：</p>
+<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<p>从</p>
+<p>( ‘abc’ )<br>到</p>
+<p>( ‘abc’, ‘def’ )</p>
+<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<p>在我们版本管理系统里，它会监测到你有两处更改，但是如果我们不必去关心逗号的存在，每一行都有逗号时，新加一行，也只会监测到一行的修改。</p>
+<h3 id="建议的ES9功能"><a href="#建议的ES9功能" class="headerlink" title="建议的ES9功能"></a>建议的ES9功能</h3><p>回想一下，每个ECMAScript功能提案都经过了几个阶段：</p>
+<ul>
+<li>阶段4意味着功能将在下一个版本中（或之后的版本）。</li>
+<li>阶段3意味着功能仍然有机会被包含在下一个版本中。</li>
+</ul>
+<h5 id="第4阶段和部分ECMAScript规范草案"><a href="#第4阶段和部分ECMAScript规范草案" class="headerlink" title="第4阶段和部分ECMAScript规范草案"></a>第4阶段和部分ECMAScript规范草案</h5><p>以下功能目前在第4阶段：</p>
+<ul>
+<li>Template Literal Revision：模板文字修订（蒂姆·迪士尼）</li>
+</ul>
+<h5 id="候选功能（第3阶段）"><a href="#候选功能（第3阶段）" class="headerlink" title="候选功能（第3阶段）"></a>候选功能（第3阶段）</h5><p>以下功能目前在第3阶段：</p>
+<ul>
+<li>Function.prototype.toString 修订版（Michael Ficarra）</li>
+<li>global（Jordan Harband）</li>
+<li>Rest/Spread Properties：Rest/Spread属性（SebastianMarkbåge）</li>
+<li>Asynchronous Iteration：异步迭代（Domenic Denicola）</li>
+<li>import() （Domenic Denicola）</li>
+<li>RegExp Lookbehind Assertions：RegExp Lookbehind断言（Daniel Ehrenberg）</li>
+<li>RegExp Unicode Property Escapes：RegExp Unicode属性转义（Brian Terlson，Daniel Ehrenberg，Mathias Bynens）</li>
+<li>RegExp named capture groups：RegExp命名捕获组（Daniel Ehrenberg，Brian Terlson）</li>
+<li>s (dotAll) flag for regular expressions：s（dotAll）标志为正则表达式（Mathias Bynens，Brian Terlson）</li>
+<li>Promise.prototype.finally() （Jordan Harband）</li>
+<li>BigInt - 任意精度整数（Daniel Ehrenberg）</li>
+<li>Class fields（Daniel Ehrenberg，Jeff Morrison）</li>
+<li>Optional catch binding（Michael Ficarra）</li>
+</ul>
+<h3 id="下面贴出了解和学习ES的官方链接，供大家查阅："><a href="#下面贴出了解和学习ES的官方链接，供大家查阅：" class="headerlink" title="下面贴出了解和学习ES的官方链接，供大家查阅："></a>下面贴出了解和学习ES的官方链接，供大家查阅：</h3><ul>
+<li>ES6：<a href="http://www.ecma-international.org/ecma-262/6.0/index.html" target="_blank" rel="noopener">http://www.ecma-international.org/ecma-262/6.0/index.html</a></li>
+<li>ES7：<a href="http://www.ecma-international.org/ecma-262/7.0/index.html" target="_blank" rel="noopener">http://www.ecma-international.org/ecma-262/7.0/index.html</a></li>
+<li>ES8：<a href="http://www.ecma-international.org/ecma-262/8.0/index.html" target="_blank" rel="noopener">http://www.ecma-international.org/ecma-262/8.0/index.html</a></li>
+<li>TC39提案：<a href="https://github.com/tc39/ecma262" target="_blank" rel="noopener">https://github.com/tc39/ecma262</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.1zyan.cc/2019/02/25/10-e5-88-86-e9-92-9f-e5-ad-a6-e4-bc-9aes7es8/" data-id="cjtbs4mog00k2e05sfkgsfz6o" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/新技术/">新技术</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/02/27/hello-world/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Hello World
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/02/18/vue-e6-93-8d-e4-bd-9cdom/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">vue操作dom</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/C/">C#</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/C/JAVA/">JAVA</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/C/JAVA/软件开发/">软件开发</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/C/SqlServer/">SqlServer</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/C/SqlServer/数据库/">数据库</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/C/SqlServer/数据库/软件开发/">软件开发</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/C/原创/">原创</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/C/原创/视频/">视频</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/C/原创/软件开发/">软件开发</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/C/原创/软件开发/首页/">首页</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/C/原创/首页/">首页</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/C/软件开发/">软件开发</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/C/软件开发/首页/">首页</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/C/首页/">首页</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/HTML/">HTML</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/HTML/WEB/">WEB</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/HTML/WEB/前端/">前端</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/HTML/WEB/前端/原创/">原创</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/HTML/前端/">前端</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/JAVA/">JAVA</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/JAVA/原创/">原创</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/JAVA/软件开发/">软件开发</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/JAVA/首页/">首页</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Mysql/">Mysql</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Mysql/SqlServer/">SqlServer</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Mysql/SqlServer/数据库/">数据库</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/SqlServer/">SqlServer</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/SqlServer/数据库/">数据库</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/WEB/">WEB</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/WEB/其他/">其他</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/WEB/前端/">前端</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/WEB/前端/首页/">首页</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/WordPress/">WordPress</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/WordPress/其他/">其他</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/其他/">其他</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/其他/娱乐/">娱乐</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/其他/娱乐/视频/">视频</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/其他/娱乐/视频/音乐/">音乐</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/其他/娱乐/视频/音乐/首页/">首页</a></li></ul></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/其他/首页/">首页</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/">前端</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/娱乐/">娱乐</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/娱乐/视频/">视频</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/娱乐/视频/首页/">首页</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/首页/">首页</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C#</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/EXCEL写数据/">EXCEL写数据</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JAVA/">JAVA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jquery/">Jquery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MV/">MV</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MyBatis/">MyBatis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/">PHP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PS/">PS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SqlServer/">SqlServer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WEB/">WEB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Webpack/">Webpack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WordPress/">WordPress</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/aop/">aop</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/app/">app</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c-未将对象引用设置到对象的实例/">c#未将对象引用设置到对象的实例</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6/">es6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/">html</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/idea/">idea</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ioc/">ioc</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javaGui/">javaGui</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/junit/">junit</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/">nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rem插件/">rem插件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spring/">spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sql/">sql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sql-server/">sql server</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sqlse/">sqlse</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue-cli/">vue-cli</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/中文乱码/">中文乱码</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/中文类库/">中文类库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/入栈/">入栈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/公司模板/">公司模板</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/其他主题/">其他主题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/冒泡排序/">冒泡排序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/分布式/">分布式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端/">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/单例模式/">单例模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/原创/">原创</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/古风/">古风</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/图片/">图片</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/多线程/">多线程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/好听/">好听</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/娱乐/">娱乐</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小米/">小米</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工具/">工具</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/情书/">情书</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/支烟IP扫描器/">支烟IP扫描器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/支烟类库/">支烟类库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/教程/">教程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/新技术/">新技术</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/易代码转换/">易代码转换</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/枚举/">枚举</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/社团管理系统/">社团管理系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/程序/">程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/系统/">系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网络/">网络</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/美图/">美图</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/荒野行动/">荒野行动</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/视频软件/">视频软件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/语音合成/">语音合成</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/超级CS/">超级CS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/超级类库/">超级类库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/软件/">软件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/软件开发/">软件开发</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/逻辑思维训练/">逻辑思维训练</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面试题/">面试题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/音乐/">音乐</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/C/" style="font-size: 20px;">C#</a> <a href="/tags/EXCEL写数据/" style="font-size: 10px;">EXCEL写数据</a> <a href="/tags/JAVA/" style="font-size: 19px;">JAVA</a> <a href="/tags/Jquery/" style="font-size: 10px;">Jquery</a> <a href="/tags/MV/" style="font-size: 10px;">MV</a> <a href="/tags/MyBatis/" style="font-size: 15px;">MyBatis</a> <a href="/tags/PHP/" style="font-size: 10px;">PHP</a> <a href="/tags/PS/" style="font-size: 10px;">PS</a> <a href="/tags/SqlServer/" style="font-size: 11px;">SqlServer</a> <a href="/tags/WEB/" style="font-size: 13px;">WEB</a> <a href="/tags/Webpack/" style="font-size: 17px;">Webpack</a> <a href="/tags/WordPress/" style="font-size: 13px;">WordPress</a> <a href="/tags/aop/" style="font-size: 10px;">aop</a> <a href="/tags/app/" style="font-size: 10px;">app</a> <a href="/tags/c-未将对象引用设置到对象的实例/" style="font-size: 10px;">c#未将对象引用设置到对象的实例</a> <a href="/tags/es6/" style="font-size: 16px;">es6</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/idea/" style="font-size: 11px;">idea</a> <a href="/tags/ioc/" style="font-size: 10px;">ioc</a> <a href="/tags/javaGui/" style="font-size: 10px;">javaGui</a> <a href="/tags/junit/" style="font-size: 10px;">junit</a> <a href="/tags/linux/" style="font-size: 11px;">linux</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/rem插件/" style="font-size: 10px;">rem插件</a> <a href="/tags/spring/" style="font-size: 17px;">spring</a> <a href="/tags/sql/" style="font-size: 10px;">sql</a> <a href="/tags/sql-server/" style="font-size: 10px;">sql server</a> <a href="/tags/sqlse/" style="font-size: 10px;">sqlse</a> <a href="/tags/vue/" style="font-size: 18px;">vue</a> <a href="/tags/vue-cli/" style="font-size: 16px;">vue-cli</a> <a href="/tags/中文乱码/" style="font-size: 10px;">中文乱码</a> <a href="/tags/中文类库/" style="font-size: 10px;">中文类库</a> <a href="/tags/入栈/" style="font-size: 10px;">入栈</a> <a href="/tags/公司模板/" style="font-size: 10px;">公司模板</a> <a href="/tags/其他主题/" style="font-size: 10px;">其他主题</a> <a href="/tags/冒泡排序/" style="font-size: 10px;">冒泡排序</a> <a href="/tags/分布式/" style="font-size: 10px;">分布式</a> <a href="/tags/前端/" style="font-size: 11px;">前端</a> <a href="/tags/单例模式/" style="font-size: 10px;">单例模式</a> <a href="/tags/原创/" style="font-size: 14px;">原创</a> <a href="/tags/古风/" style="font-size: 10px;">古风</a> <a href="/tags/图片/" style="font-size: 10px;">图片</a> <a href="/tags/多线程/" style="font-size: 11px;">多线程</a> <a href="/tags/好听/" style="font-size: 10px;">好听</a> <a href="/tags/娱乐/" style="font-size: 10px;">娱乐</a> <a href="/tags/小米/" style="font-size: 10px;">小米</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a> <a href="/tags/情书/" style="font-size: 10px;">情书</a> <a href="/tags/支烟IP扫描器/" style="font-size: 10px;">支烟IP扫描器</a> <a href="/tags/支烟类库/" style="font-size: 10px;">支烟类库</a> <a href="/tags/教程/" style="font-size: 11px;">教程</a> <a href="/tags/数据库/" style="font-size: 12px;">数据库</a> <a href="/tags/新技术/" style="font-size: 10px;">新技术</a> <a href="/tags/易代码转换/" style="font-size: 10px;">易代码转换</a> <a href="/tags/枚举/" style="font-size: 10px;">枚举</a> <a href="/tags/社团管理系统/" style="font-size: 10px;">社团管理系统</a> <a href="/tags/程序/" style="font-size: 10px;">程序</a> <a href="/tags/系统/" style="font-size: 10px;">系统</a> <a href="/tags/网络/" style="font-size: 10px;">网络</a> <a href="/tags/美图/" style="font-size: 10px;">美图</a> <a href="/tags/荒野行动/" style="font-size: 10px;">荒野行动</a> <a href="/tags/视频软件/" style="font-size: 10px;">视频软件</a> <a href="/tags/语音合成/" style="font-size: 10px;">语音合成</a> <a href="/tags/超级CS/" style="font-size: 10px;">超级CS</a> <a href="/tags/超级类库/" style="font-size: 10px;">超级类库</a> <a href="/tags/软件/" style="font-size: 13px;">软件</a> <a href="/tags/软件开发/" style="font-size: 11px;">软件开发</a> <a href="/tags/逻辑思维训练/" style="font-size: 10px;">逻辑思维训练</a> <a href="/tags/面试题/" style="font-size: 13px;">面试题</a> <a href="/tags/音乐/" style="font-size: 11px;">音乐</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/02/28/测试文件/">测试文件</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/27/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/25/10-e5-88-86-e9-92-9f-e5-ad-a6-e4-bc-9aes7es8/">10分钟学会ES7+ES8</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/18/vue-e6-93-8d-e4-bd-9cdom/">vue操作dom</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/24/springmybatis-e6-95-b4-e5-90-88-e7-ac-94-e8-ae-b0-e4-bd-bf-e7-94-a8-e6-b3-a8-e8-a7-a3-e6-a0-87-e7-ad-be-e5-ae-9e-e7-8e-b0-e4-ba-8b-e5-8a-a1-e5-92-8c-e4-ba-8b-e5-8a-a1-e7-9a-84-e5-8f-82-e6-95-b0/">Spring+Mybatis整合笔记-使用注解标签实现事务和事务的参数</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 yizhiyan<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
