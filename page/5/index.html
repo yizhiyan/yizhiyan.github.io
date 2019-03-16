@@ -70,93 +70,6 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-mybati-e5-a4-9a-e5-8f-82-e6-95-b0-e4-bc-a0-e5-8f-82" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/01/01/mybati-e5-a4-9a-e5-8f-82-e6-95-b0-e4-bc-a0-e5-8f-82/" class="article-date">
-  <time datetime="2019-01-01T07:46:56.000Z" itemprop="datePublished">2019-01-01</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/JAVA/">JAVA</a>►<a class="article-category-link" href="/categories/JAVA/首页/">首页</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/01/01/mybati-e5-a4-9a-e5-8f-82-e6-95-b0-e4-bc-a0-e5-8f-82/">MyBati多参数传参</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>我们在之前的方法上更改，如果不知道的可以看上一篇文章哈。</p>
-<h3 id="现在开始"><a href="#现在开始" class="headerlink" title="现在开始"></a>现在开始</h3><p>1.首先我们把之前的User对象参数改成ID和UserName，并且给每个参数添加@Param()注解标签。详细如下： 注意：@param标签相当于给MyBatis中的map设置key所以，@Param()中的参数可以和借口方法参数名不一致，但xml中使用时必须使用@Param中设置的key来获取值。<img src="http://www.1zyan.cn/wp-content/uploads/2019/01/a1-1.png" alt> 2.我们将mapper.xml中的parameterType去掉，其他不变，就好了<img src="http://www.1zyan.cn/wp-content/uploads/2019/01/a2-1.png" alt></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://www.1zyan.cc/2019/01/01/mybati-e5-a4-9a-e5-8f-82-e6-95-b0-e4-bc-a0-e5-8f-82/" data-id="cjtbs4mhy005le05sjcb7ht0t" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JAVA/">JAVA</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MyBatis/">MyBatis</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-3-e6-ad-a5-e5-ae-8c-e6-88-90javamybatis-e4-bf-ae-e6-94-b9-e6-93-8d-e4-bd-9c" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/01/01/3-e6-ad-a5-e5-ae-8c-e6-88-90javamybatis-e4-bf-ae-e6-94-b9-e6-93-8d-e4-bd-9c/" class="article-date">
-  <time datetime="2019-01-01T05:24:55.000Z" itemprop="datePublished">2019-01-01</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/JAVA/">JAVA</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/01/01/3-e6-ad-a5-e5-ae-8c-e6-88-90javamybatis-e4-bf-ae-e6-94-b9-e6-93-8d-e4-bd-9c/">3步完成JAVAMyBatis修改操作</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="使用MyBatis进行UPDATE修改操作"><a href="#使用MyBatis进行UPDATE修改操作" class="headerlink" title="使用MyBatis进行UPDATE修改操作"></a>使用MyBatis进行UPDATE修改操作</h2><p>准备：编写好实体类User.java，写好configuration.xml配置文件 1.先在接口UserMapper中添加方法updateUser(User use) <img src="http://www.1zyan.cn/wp-content/uploads/2019/01/a1.png" alt> 2.然后在UserMapper.xml中添加update节点并且添加sql 注意：update节点的id需要于接口中的名字相对应，注意返回值和参数<img src="http://www.1zyan.cn/wp-content/uploads/2019/01/a2.png" alt> 4.编写测试类，注意事物，openSession(true)或者不传参数 注意：OpentSession参数true，自动提交事务，否则需要使用session.commit();手动提交事务 <img src="http://www.1zyan.cn/wp-content/uploads/2019/01/a5.png" alt> OK完成了，简单吧。这是博主的学习笔记，希望对各位有帮助</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://www.1zyan.cc/2019/01/01/3-e6-ad-a5-e5-ae-8c-e6-88-90javamybatis-e4-bf-ae-e6-94-b9-e6-93-8d-e4-bd-9c/" data-id="cjtbs4mcr0004e05s41bhfk1y" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JAVA/">JAVA</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MyBatis/">MyBatis</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
     <article id="post-php-cookie-e6-93-8d-e4-bd-9c" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/12/25/php-cookie-e6-93-8d-e4-bd-9c/" class="article-date">
@@ -192,7 +105,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.1zyan.cc/2018/12/25/php-cookie-e6-93-8d-e4-bd-9c/" data-id="cjtbs4mhy0067e05sw4oi1nno" class="article-share-link">Share</a>
+      <a data-url="http://www.1zyan.cc/2018/12/25/php-cookie-e6-93-8d-e4-bd-9c/" data-id="cjtbshsh00069u85syvy73p3c" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP/">PHP</a></li></ul>
@@ -254,7 +167,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.1zyan.cc/2018/08/30/e6-94-af-e7-83-9f-e7-bd-91-e9-a1-b5-e4-be-a7-e6-bb-91js-e6-8f-92-e4-bb-b6/" data-id="cjtbs4mfc002ge05sz863vt90" class="article-share-link">Share</a>
+      <a data-url="http://www.1zyan.cc/2018/08/30/e6-94-af-e7-83-9f-e7-bd-91-e9-a1-b5-e4-be-a7-e6-bb-91js-e6-8f-92-e4-bb-b6/" data-id="cjtbshsdz002fu85sxdxbm7tz" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端/">前端</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/原创/">原创</a></li></ul>
@@ -304,7 +217,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.1zyan.cc/2018/08/09/java-e5-a4-9a-e7-ba-bf-e7-a8-8b-e4-b9-8b-e6-8e-a5-e5-8f-a3-e5-90-af-e5-8a-a8/" data-id="cjtbs4mhi0056e05sy4sndipl" class="article-share-link">Share</a>
+      <a data-url="http://www.1zyan.cc/2018/08/09/java-e5-a4-9a-e7-ba-bf-e7-a8-8b-e4-b9-8b-e6-8e-a5-e5-8f-a3-e5-90-af-e5-8a-a8/" data-id="cjtbshsg50055u85s8hwwxptj" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/多线程/">多线程</a></li></ul>
@@ -352,7 +265,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.1zyan.cc/2018/08/09/intellij-idea-e5-b8-b8-e7-94-a8-e5-bf-ab-e6-8d-b7-e9-94-ae-e5-88-97-e8-a1-a8/" data-id="cjtbs4mh3004pe05scrhgi7pg" class="article-share-link">Share</a>
+      <a data-url="http://www.1zyan.cc/2018/08/09/intellij-idea-e5-b8-b8-e7-94-a8-e5-bf-ab-e6-8d-b7-e9-94-ae-e5-88-97-e8-a1-a8/" data-id="cjtbshsfp004qu85sj2zkwluk" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/idea/">idea</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/工具/">工具</a></li></ul>
@@ -395,7 +308,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.1zyan.cc/2018/07/28/spring-mvc-e5-86-85-e9-83-a8-e8-b7-b3-e8-bd-ac/" data-id="cjtbs4mie006ve05sqdx5t763" class="article-share-link">Share</a>
+      <a data-url="http://www.1zyan.cc/2018/07/28/spring-mvc-e5-86-85-e9-83-a8-e8-b7-b3-e8-bd-ac/" data-id="cjtbshshg006xu85s62z6u479" class="article-share-link">Share</a>
       
       
     </footer>
@@ -443,7 +356,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.1zyan.cc/2018/07/28/springmvc-e8-a7-a3-e5-86-b3-e4-b8-ad-e6-96-87-e4-b9-b1-e7-a0-81-e9-97-ae-e9-a2-98/" data-id="cjtbs4mie006ze05se1menjda" class="article-share-link">Share</a>
+      <a data-url="http://www.1zyan.cc/2018/07/28/springmvc-e8-a7-a3-e5-86-b3-e4-b8-ad-e6-96-87-e4-b9-b1-e7-a0-81-e9-97-ae-e9-a2-98/" data-id="cjtbshshg0071u85sw5l2eflf" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/spring/">spring</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/中文乱码/">中文乱码</a></li></ul>
@@ -542,7 +455,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.1zyan.cc/2018/07/27/nginx-e5-88-86-e5-b8-83-e5-bc-8f-e6-90-ad-e5-bb-ba/" data-id="cjtbs4mhy0063e05sr9pshhn2" class="article-share-link">Share</a>
+      <a data-url="http://www.1zyan.cc/2018/07/27/nginx-e5-88-86-e5-b8-83-e5-bc-8f-e6-90-ad-e5-bb-ba/" data-id="cjtbshsgk0066u85sb29t5uc2" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nginx/">nginx</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/分布式/">分布式</a></li></ul>
@@ -648,10 +561,430 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.1zyan.cc/2018/07/26/spring-e9-85-8d-e7-bd-ae-e6-96-87-e4-bb-b6-e8-af-a6-e8-a7-a3/" data-id="cjtbs4mie006ne05si10cmddg" class="article-share-link">Share</a>
+      <a data-url="http://www.1zyan.cc/2018/07/26/spring-e9-85-8d-e7-bd-ae-e6-96-87-e4-bb-b6-e8-af-a6-e8-a7-a3/" data-id="cjtbshsh0006pu85ss8iokahk" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/spring/">spring</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-mybatis-e9-85-8d-e7-bd-ae-e6-96-87-e4-bb-b6-e5-92-8cmybatis-e6-a0-b8-e5-bf-83-e5-af-b9-e8-b1-a1-e8-af-a6-e8-a7-a3" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/07/25/mybatis-e9-85-8d-e7-bd-ae-e6-96-87-e4-bb-b6-e5-92-8cmybatis-e6-a0-b8-e5-bf-83-e5-af-b9-e8-b1-a1-e8-af-a6-e8-a7-a3/" class="article-date">
+  <time datetime="2018-07-25T01:41:18.000Z" itemprop="datePublished">2018-07-25</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/JAVA/">JAVA</a>►<a class="article-category-link" href="/categories/JAVA/原创/">原创</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/25/mybatis-e9-85-8d-e7-bd-ae-e6-96-87-e4-bb-b6-e5-92-8cmybatis-e6-a0-b8-e5-bf-83-e5-af-b9-e8-b1-a1-e8-af-a6-e8-a7-a3/">Mybatis配置文件和mybatis核心对象详解</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>一、MyBatis概念</p>
+<blockquote>
+<blockquote>
+<p>Mybatis 是一个半自动化的orm框架。源码Ibatis。</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<p>1.ORM  </p>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>ORM：Object(对象) relation(关系) mapping(映射)</p>
+</blockquote>
+<blockquote>
+<p>ORM就是将实体类的属性与数据库中标的字段一一对应。</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<p>2.半自动化  </p>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>MyBatis只是将从数据库中查询的数据自动封装为对象(实体类)。但是没用实现增删改等操作是将实体类自动转换为数据。</p>
+</blockquote>
+<blockquote>
+<p>所以Mybatis只是一个半自动框架。</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<p>3.持久化  </p>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>持久化指数据在瞬时状态与持久状态之间转换的过程。</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>1)瞬时状态</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>数据在缓存或内存中，则数据处于瞬时状态。</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>如：</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>打开记事本文件，文件处于编辑状态，数据处于内存中——临时储存</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>数据库读取出来，处于操作状态，数据处于内存中——临时储存</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>2)持久状态</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>数据处于硬盘上，则数据处于持久状态。</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>如：</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>记事本文件，及未打开状态，数据处于硬盘中——永久储存</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>数据库文件，及未打开状态，数据处于硬盘中——永久储存</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>3)持久化</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>数据由瞬时-&gt;持久</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>如：</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>记事本保存数据——保存</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>数据库保存数据——保存</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>数据由持久-&gt;瞬时</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>如：</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>读取记事本数据——读取</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>读取数据库数据——读取</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>二、MyBatis核心对象  </p>
+<blockquote>
+<p>1.SqlSessionFactoryBuilder  </p>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>用来启动MyBatis的。通过build方法来启动。</p>
+</blockquote>
+<blockquote>
+<p>一个web项目只有一个该类型的对象</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<p>2.SqlSessionFactory  </p>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>通过openSession来新开一个session。</p>
+</blockquote>
+<blockquote>
+<p>一个web项目只有一个该类型的对象。</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<p>3.SqlSession  </p>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>用于操作数据库的增删改查。</p>
+</blockquote>
+<blockquote>
+<p>每一次操作前都需要新打开一个，用完后关闭SqlSession对象。</p>
+</blockquote>
+<blockquote>
+<p>SqlSession对象线程级别的，多个session之间是独立的。</p>
+</blockquote>
+</blockquote>
+<p>三、Mybatis核心配置文件  </p>
+<blockquote>
+<p>Mybatis核心配置文件：Mybatis-config.xml  </p>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>1.configuration——Mybatis根节点，所有配置都在这个节点下 。</p>
+</blockquote>
+<blockquote>
+<p>2.properties——引入外部配置文件</p>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>如下：<properties resource="database.properties"></properties></p>
+</blockquote>
+</blockquote>
+<blockquote>
+<p>3.typeAliases——别名设置</p>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>1)没个实体类都取一个别名，以后可以通过使用别名代替这个实体类。 type:被起别名的类 alias：别名 </p>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>如：<typealias type="cn.jbit.pojo.User" alias="User"></typealias></p>
+</blockquote>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>2)指定实体类所在包</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>在mapper.xml 使用实体类名等同于使用权限定名。</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>如 resultType=”User” 等同于 resultType=”cn.jbit.pojo.User”</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<package name="cn.jbit.pojo">
+</package></blockquote>
+</blockquote>
+</blockquote>
+<blockquote>
+<p>4.environments——数据库环境配置</p>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>default：使用已配置的数据库环境的id值</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<p>5.environment——一套数据库的配置</p>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>id：是当前数据库环境的唯一标识符,主要在environments节点的default使用。</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>1)transactionManager——用于处理增删改的事物提交方式(commit)</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<transactionmanager type="JDBC">
+</transactionmanager></blockquote>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>2)数据源(和数据库的连接) type:连接方式，pooled:缓冲池方式</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<p>6.mapper节点</p>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>关联mapper.xml配置文件</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>&lt;?xml version=”1.0” encoding=”UTF-8”?&gt;<br>&lt;!DOCTYPE configuration PUBLIC “-//mybatis.org//DTD Config 3.0//EN”<br>“<a href="http://mybatis.org/dtd/mybatis-3-config.dtd&quot;&gt;" target="_blank" rel="noopener">http://mybatis.org/dtd/mybatis-3-config.dtd&quot;&gt;</a></p>
+<configuration><br>    &lt;!-- 导入外部文件 –&gt;<br>    <properties resource="database.properties"><br>    &lt;!-- 取别名 –&gt;<br>    <typealiases><br>        <package name="com.smbms.pojo"><br>    </package></typealiases><br>    &lt;!-- 配置文件 –&gt;<br>    <environments default="mysqlSmbms"><br>        <environment id="mysqlSmbms"><br>            <transactionmanager type="JDBC"><br>            <datasource type="POOLED"><br>                <property name="driver" value="${driver}"><br>                <property name="url" value="${url}"><br>                <property name="username" value="${user}"><br>                <property name="password" value="${password}"><br>            </property></property></property></property></datasource><br>        </transactionmanager></environment><br>    </environments><br>    <mappers><br>        <mapper resource="com/smbms/dao/UserMapper.xml"><br>    </mapper></mappers><br></properties></configuration>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.1zyan.cc/2018/07/25/mybatis-e9-85-8d-e7-bd-ae-e6-96-87-e4-bb-b6-e5-92-8cmybatis-e6-a0-b8-e5-bf-83-e5-af-b9-e8-b1-a1-e8-af-a6-e8-a7-a3/" data-id="cjtbshsgk005uu85sao4rb9ti" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JAVA/">JAVA</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-java-e5-a4-9a-e7-ba-bf-e7-a8-8b" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/07/25/java-e5-a4-9a-e7-ba-bf-e7-a8-8b/" class="article-date">
+  <time datetime="2018-07-25T01:00:24.000Z" itemprop="datePublished">2018-07-25</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/JAVA/">JAVA</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/25/java-e5-a4-9a-e7-ba-bf-e7-a8-8b/">JAVA多线程</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Thread-方法"><a href="#Thread-方法" class="headerlink" title="Thread 方法"></a>Thread 方法</h2><p>下表列出了Thread类的一些重要方法：</p>
+<p><strong>序号</strong></p>
+<p><strong>方法描述</strong></p>
+<p>1</p>
+<p><strong>public void start()</strong><br>使该线程开始执行；<strong>Java</strong> 虚拟机调用该线程的 run 方法。</p>
+<p>2</p>
+<p><strong>public void run()</strong>  </p>
+<p>如果该线程是使用独立的 Runnable 运行对象构造的，则调用该 Runnable 对象的 run 方法；否则，该方法不执行任何操作并返回。</p>
+<p>3</p>
+<p><strong>public final void setName(String name)</strong><br>改变线程名称，使之与参数 name 相同。</p>
+<p>4</p>
+<p><strong>public final void setPriority(int priority)</strong><br> 更改线程的优先级。</p>
+<p>5</p>
+<p><strong>public final void setDaemon(boolean on)</strong><br>将该线程标记为守护线程或用户线程。</p>
+<p>6</p>
+<p><strong>public final void join(long millisec)</strong><br>等待该线程终止的时间最长为 millis 毫秒。</p>
+<p>7</p>
+<p><strong>public void interrupt()</strong><br>中断线程。</p>
+<p>8</p>
+<p><strong>public final boolean isAlive()</strong><br>测试线程是否处于活动状态。</p>
+<p>测试线程是否处于活动状态。 上述方法是被Thread对象调用的。下面的方法是Thread类的静态方法。</p>
+<p><strong>序号</strong></p>
+<p><strong>方法描述</strong></p>
+<p>1</p>
+<p><strong>public static void yield()</strong><br>暂停当前正在执行的线程对象，并执行其他线程。</p>
+<p>2</p>
+<p><strong>public static void sleep(long millisec)</strong><br>在指定的毫秒数内让当前正在执行的线程休眠（暂停执行），此操作受到系统计时器和调度程序精度和准确性的影响。</p>
+<p>3</p>
+<p><strong>public static boolean holdsLock(Object x)</strong><br>当且仅当当前线程在指定的对象上保持监视器锁时，才返回 true。</p>
+<p>4</p>
+<p><strong>public static Thread currentThread()</strong><br>返回对当前正在执行的线程对象的引用。</p>
+<p>5</p>
+<p><strong>public static void dumpStack()</strong><br>将当前线程的堆栈跟踪打印至标准错误流。</p>
+<p>以上转至：<a href="http://www.runoob.com/java/java-multithreading.html" target="_blank" rel="noopener">http://www.runoob.com/java/java-multithreading.html</a></p>
+<p>样例如下：</p>
+<p>package org.junit.Ts;</p>
+<p>import javassist.compiler.ProceedHandler;</p>
+<p>import org.junit.Test;</p>
+<p>import com.sun.xml.internal.stream.events.ProcessingInstructionEvent;</p>
+<p>public class ThreadTest {<br>    @Test<br>    public void fun1(){<br>        ThreadOpen t1=new ThreadOpen();<br>        t1.setName(“t1”);<br>        t1.setDaemon(true);<br>        t1.start();<br>        ThreadOpen t2=new ThreadOpen();<br>        t2.setName(“t2”);<br>        t2.setDaemon(true);<br>        t2.start();<br>        System.out.println(“执行结束！！”);<br>    }<br>}<br>class ThreadOpen extends Thread{<br>    @Override<br>    public void run() {<br>        Thread thisThread=Thread.currentThread();<br>        System.out.println(“当前线程：”+thisThread.getName()+” ID:”+thisThread.getId());<br>        for (int i = 0; i &lt; 20; i++) {<br>            System.out.println(thisThread.getName()+” :”+i);<br>        }<br>    }<br>}</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.1zyan.cc/2018/07/25/java-e5-a4-9a-e7-ba-bf-e7-a8-8b/" data-id="cjtbshsgk0058u85sji4273rs" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JAVA/">JAVA</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/多线程/">多线程</a></li></ul>
 
     </footer>
   </div>
@@ -695,7 +1028,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/C/" style="font-size: 20px;">C#</a> <a href="/tags/EXCEL写数据/" style="font-size: 10px;">EXCEL写数据</a> <a href="/tags/JAVA/" style="font-size: 19px;">JAVA</a> <a href="/tags/Jquery/" style="font-size: 10px;">Jquery</a> <a href="/tags/MV/" style="font-size: 10px;">MV</a> <a href="/tags/MyBatis/" style="font-size: 15px;">MyBatis</a> <a href="/tags/PHP/" style="font-size: 10px;">PHP</a> <a href="/tags/PS/" style="font-size: 10px;">PS</a> <a href="/tags/SqlServer/" style="font-size: 11px;">SqlServer</a> <a href="/tags/WEB/" style="font-size: 13px;">WEB</a> <a href="/tags/Webpack/" style="font-size: 17px;">Webpack</a> <a href="/tags/WordPress/" style="font-size: 13px;">WordPress</a> <a href="/tags/aop/" style="font-size: 10px;">aop</a> <a href="/tags/app/" style="font-size: 10px;">app</a> <a href="/tags/c-未将对象引用设置到对象的实例/" style="font-size: 10px;">c#未将对象引用设置到对象的实例</a> <a href="/tags/es6/" style="font-size: 16px;">es6</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/idea/" style="font-size: 11px;">idea</a> <a href="/tags/ioc/" style="font-size: 10px;">ioc</a> <a href="/tags/javaGui/" style="font-size: 10px;">javaGui</a> <a href="/tags/junit/" style="font-size: 10px;">junit</a> <a href="/tags/linux/" style="font-size: 11px;">linux</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/rem插件/" style="font-size: 10px;">rem插件</a> <a href="/tags/spring/" style="font-size: 17px;">spring</a> <a href="/tags/sql/" style="font-size: 10px;">sql</a> <a href="/tags/sql-server/" style="font-size: 10px;">sql server</a> <a href="/tags/sqlse/" style="font-size: 10px;">sqlse</a> <a href="/tags/vue/" style="font-size: 18px;">vue</a> <a href="/tags/vue-cli/" style="font-size: 16px;">vue-cli</a> <a href="/tags/中文乱码/" style="font-size: 10px;">中文乱码</a> <a href="/tags/中文类库/" style="font-size: 10px;">中文类库</a> <a href="/tags/入栈/" style="font-size: 10px;">入栈</a> <a href="/tags/公司模板/" style="font-size: 10px;">公司模板</a> <a href="/tags/其他主题/" style="font-size: 10px;">其他主题</a> <a href="/tags/冒泡排序/" style="font-size: 10px;">冒泡排序</a> <a href="/tags/分布式/" style="font-size: 10px;">分布式</a> <a href="/tags/前端/" style="font-size: 11px;">前端</a> <a href="/tags/单例模式/" style="font-size: 10px;">单例模式</a> <a href="/tags/原创/" style="font-size: 14px;">原创</a> <a href="/tags/古风/" style="font-size: 10px;">古风</a> <a href="/tags/图片/" style="font-size: 10px;">图片</a> <a href="/tags/多线程/" style="font-size: 11px;">多线程</a> <a href="/tags/好听/" style="font-size: 10px;">好听</a> <a href="/tags/娱乐/" style="font-size: 10px;">娱乐</a> <a href="/tags/小米/" style="font-size: 10px;">小米</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a> <a href="/tags/情书/" style="font-size: 10px;">情书</a> <a href="/tags/支烟IP扫描器/" style="font-size: 10px;">支烟IP扫描器</a> <a href="/tags/支烟类库/" style="font-size: 10px;">支烟类库</a> <a href="/tags/教程/" style="font-size: 11px;">教程</a> <a href="/tags/数据库/" style="font-size: 12px;">数据库</a> <a href="/tags/新技术/" style="font-size: 10px;">新技术</a> <a href="/tags/易代码转换/" style="font-size: 10px;">易代码转换</a> <a href="/tags/枚举/" style="font-size: 10px;">枚举</a> <a href="/tags/社团管理系统/" style="font-size: 10px;">社团管理系统</a> <a href="/tags/程序/" style="font-size: 10px;">程序</a> <a href="/tags/系统/" style="font-size: 10px;">系统</a> <a href="/tags/网络/" style="font-size: 10px;">网络</a> <a href="/tags/美图/" style="font-size: 10px;">美图</a> <a href="/tags/荒野行动/" style="font-size: 10px;">荒野行动</a> <a href="/tags/视频软件/" style="font-size: 10px;">视频软件</a> <a href="/tags/语音合成/" style="font-size: 10px;">语音合成</a> <a href="/tags/超级CS/" style="font-size: 10px;">超级CS</a> <a href="/tags/超级类库/" style="font-size: 10px;">超级类库</a> <a href="/tags/软件/" style="font-size: 13px;">软件</a> <a href="/tags/软件开发/" style="font-size: 11px;">软件开发</a> <a href="/tags/逻辑思维训练/" style="font-size: 10px;">逻辑思维训练</a> <a href="/tags/面试题/" style="font-size: 13px;">面试题</a> <a href="/tags/音乐/" style="font-size: 11px;">音乐</a>
+      <a href="/tags/C/" style="font-size: 20px;">C#</a> <a href="/tags/EXCEL写数据/" style="font-size: 10px;">EXCEL写数据</a> <a href="/tags/JAVA/" style="font-size: 18.89px;">JAVA</a> <a href="/tags/Jquery/" style="font-size: 10px;">Jquery</a> <a href="/tags/MV/" style="font-size: 10px;">MV</a> <a href="/tags/MyBatis/" style="font-size: 14.44px;">MyBatis</a> <a href="/tags/PHP/" style="font-size: 10px;">PHP</a> <a href="/tags/PS/" style="font-size: 10px;">PS</a> <a href="/tags/SqlServer/" style="font-size: 11.11px;">SqlServer</a> <a href="/tags/WEB/" style="font-size: 13.33px;">WEB</a> <a href="/tags/Webpack/" style="font-size: 16.67px;">Webpack</a> <a href="/tags/WordPress/" style="font-size: 13.33px;">WordPress</a> <a href="/tags/aop/" style="font-size: 10px;">aop</a> <a href="/tags/app/" style="font-size: 10px;">app</a> <a href="/tags/c-未将对象引用设置到对象的实例/" style="font-size: 10px;">c#未将对象引用设置到对象的实例</a> <a href="/tags/es6/" style="font-size: 15.56px;">es6</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/idea/" style="font-size: 11.11px;">idea</a> <a href="/tags/ioc/" style="font-size: 10px;">ioc</a> <a href="/tags/javaGui/" style="font-size: 10px;">javaGui</a> <a href="/tags/junit/" style="font-size: 10px;">junit</a> <a href="/tags/linux/" style="font-size: 11.11px;">linux</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/rem插件/" style="font-size: 10px;">rem插件</a> <a href="/tags/spring/" style="font-size: 16.67px;">spring</a> <a href="/tags/sql/" style="font-size: 10px;">sql</a> <a href="/tags/sql-server/" style="font-size: 10px;">sql server</a> <a href="/tags/sqlse/" style="font-size: 10px;">sqlse</a> <a href="/tags/vue/" style="font-size: 17.78px;">vue</a> <a href="/tags/vue-cli/" style="font-size: 15.56px;">vue-cli</a> <a href="/tags/中文乱码/" style="font-size: 10px;">中文乱码</a> <a href="/tags/中文类库/" style="font-size: 10px;">中文类库</a> <a href="/tags/入栈/" style="font-size: 10px;">入栈</a> <a href="/tags/公司模板/" style="font-size: 10px;">公司模板</a> <a href="/tags/其他主题/" style="font-size: 10px;">其他主题</a> <a href="/tags/冒泡排序/" style="font-size: 10px;">冒泡排序</a> <a href="/tags/分布式/" style="font-size: 10px;">分布式</a> <a href="/tags/前端/" style="font-size: 11.11px;">前端</a> <a href="/tags/单例模式/" style="font-size: 10px;">单例模式</a> <a href="/tags/原创/" style="font-size: 13.33px;">原创</a> <a href="/tags/古风/" style="font-size: 10px;">古风</a> <a href="/tags/图片/" style="font-size: 10px;">图片</a> <a href="/tags/多线程/" style="font-size: 11.11px;">多线程</a> <a href="/tags/好听/" style="font-size: 10px;">好听</a> <a href="/tags/娱乐/" style="font-size: 10px;">娱乐</a> <a href="/tags/小米/" style="font-size: 10px;">小米</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a> <a href="/tags/情书/" style="font-size: 10px;">情书</a> <a href="/tags/支烟IP扫描器/" style="font-size: 10px;">支烟IP扫描器</a> <a href="/tags/支烟类库/" style="font-size: 10px;">支烟类库</a> <a href="/tags/教程/" style="font-size: 11.11px;">教程</a> <a href="/tags/数据库/" style="font-size: 12.22px;">数据库</a> <a href="/tags/新技术/" style="font-size: 10px;">新技术</a> <a href="/tags/易代码转换/" style="font-size: 10px;">易代码转换</a> <a href="/tags/枚举/" style="font-size: 10px;">枚举</a> <a href="/tags/社团管理系统/" style="font-size: 10px;">社团管理系统</a> <a href="/tags/程序/" style="font-size: 10px;">程序</a> <a href="/tags/系统/" style="font-size: 10px;">系统</a> <a href="/tags/网络/" style="font-size: 10px;">网络</a> <a href="/tags/美图/" style="font-size: 10px;">美图</a> <a href="/tags/荒野行动/" style="font-size: 10px;">荒野行动</a> <a href="/tags/视频软件/" style="font-size: 10px;">视频软件</a> <a href="/tags/语音合成/" style="font-size: 10px;">语音合成</a> <a href="/tags/超级CS/" style="font-size: 10px;">超级CS</a> <a href="/tags/超级类库/" style="font-size: 10px;">超级类库</a> <a href="/tags/软件/" style="font-size: 13.33px;">软件</a> <a href="/tags/软件开发/" style="font-size: 11.11px;">软件开发</a> <a href="/tags/逻辑思维训练/" style="font-size: 10px;">逻辑思维训练</a> <a href="/tags/面试题/" style="font-size: 13.33px;">面试题</a> <a href="/tags/音乐/" style="font-size: 11.11px;">音乐</a>
     </div>
   </div>
 
@@ -717,14 +1050,6 @@
       <ul>
         
           <li>
-            <a href="/2019/02/28/测试文件/">测试文件</a>
-          </li>
-        
-          <li>
-            <a href="/2019/02/27/hello-world/">Hello World</a>
-          </li>
-        
-          <li>
             <a href="/2019/02/25/10-e5-88-86-e9-92-9f-e5-ad-a6-e4-bc-9aes7es8/">10分钟学会ES7+ES8</a>
           </li>
         
@@ -734,6 +1059,14 @@
         
           <li>
             <a href="/2019/01/24/springmybatis-e6-95-b4-e5-90-88-e7-ac-94-e8-ae-b0-e4-bd-bf-e7-94-a8-e6-b3-a8-e8-a7-a3-e6-a0-87-e7-ad-be-e5-ae-9e-e7-8e-b0-e4-ba-8b-e5-8a-a1-e5-92-8c-e4-ba-8b-e5-8a-a1-e7-9a-84-e5-8f-82-e6-95-b0/">Spring+Mybatis整合笔记-使用注解标签实现事务和事务的参数</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/22/vue-router-e5-86-99-e5-ba-95-e9-83-a8-e5-af-bc-e8-88-aa-e6-a0-8f-e9-81-87-e5-88-b0-e7-9a-84-e5-9d-91router-replace/">vue-router写底部导航栏遇到的坑router.replace</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/22/e4-bd-bf-e7-94-a8vue-cli-e7-bc-96-e5-86-99-e7-bb-84-e4-bb-b6-e5-b9-b6-e5-8f-91-e5-b8-83-e5-88-b0npm-e4-b8-8a/">使用vue-cli编写组件并发布到npm上</a>
           </li>
         
       </ul>

@@ -70,482 +70,6 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-cdatagridview-e5-b8-b8-e7-94-a8-e5-b1-9e-e6-80-a7" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/08/19/cdatagridview-e5-b8-b8-e7-94-a8-e5-b1-9e-e6-80-a7/" class="article-date">
-  <time datetime="2017-08-19T15:09:10.000Z" itemprop="datePublished">2017-08-19</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/C/">C#</a>►<a class="article-category-link" href="/categories/C/软件开发/">软件开发</a>►<a class="article-category-link" href="/categories/C/软件开发/首页/">首页</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/19/cdatagridview-e5-b8-b8-e7-94-a8-e5-b1-9e-e6-80-a7/">C#DataGridView常用属性</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="http://img3.imgtn.bdimg.com/it/u=3242709860,2221903223&amp;fm=214&amp;gp=0.jpg" alt></p>
-<p>只读属性设定</p>
-<p>datagridview.ReadOnly = True</p>
-<p>行自动追加</p>
-<p>datagridview.AllowUserToAddRows = False</p>
-<p>删除行允许</p>
-<p>datagridview.AllowUserToDeleteRows = False</p>
-<p>行幅设置</p>
-<p>datagridview.AllowUserToResizeRows = False</p>
-<p>datagridview.ColumnHeadersHeightSizeMode =DataGridViewColumnHeadersHeightSizeMode.DisableResizing</p>
-<p>行表示</p>
-<p>datagridview.RowHeadersVisible = False</p>
-<p>行选择模式</p>
-<p>datagridview.SelectionMode = DataGridViewSelectionMode.FullRowSelect</p>
-<p>复数行选择</p>
-<p>datagridview.MultiSelect = True</p>
-<p>选择状态解除</p>
-<p>datagridview.ClearSelection()</p>
-<p>文字设置位置</p>
-<p>datagridview.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter</p>
-<p>选择后行的颜色</p>
-<p>datagridview.DefaultCellStyle.SelectionBackColor = Color.GreenYellow</p>
-<p>datagridview.DefaultCellStyle.SelectionForeColor = Color.Black</p>
-<p>行幅自动调整</p>
-<p>datagridview.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill</p>
-<p>DataGridView常用属性、方法</p>
-<p>1、自定义列</p>
-<p>Customize Cells and Columns in the Windows Forms DataGridView Control by Extending Their</p>
-<p>Behavior and Appearance</p>
-<p>Host Controls in Windows Forms DataGridView Cells</p>
-<p>继承 DataGridViewTextBoxCell 类生成新的Cell类，然后再继承 DataGridViewColumn 生成新的Column类，并指定</p>
-<p>CellTemplate为新的Cell类。新生成的Column便可以增加到DataGridView中去。</p>
-<p>2、自动适应列宽</p>
-<p>Programmatically Resize Cells to Fit Content in the Windows Forms DataGridView Control</p>
-<p>Samples：</p>
-<p>DataGridView.AutoSizeColumns(</p>
-<p>DataGridViewAutoSizeColumnCriteria.HeaderAndDisplayedRows);</p>
-<p>DataGridView.AutoSizeColumn(</p>
-<p>DataGridViewAutoSizeColumnCriteria.HeaderOnly,</p>
-<p>2, false);</p>
-<p>DataGridView.AutoSizeRow(</p>
-<p>DataGridViewAutoSizeRowCriteria.Columns,</p>
-<p>2, false);</p>
-<p>DataGridView.AutoSizeRows(</p>
-<p>DataGridViewAutoSizeRowCriteria.HeaderAndColumns,</p>
-<p>0, dataGridView1.Rows.Count, false);</p>
-<p>3、可以绑定并显示对象</p>
-<p>Bind Objects to Windows Forms DataGridView Controls</p>
-<p>4、可以改变表格线条风格</p>
-<p>Change the Border and Gridline Styles in the Windows Forms DataGridView Control</p>
-<p>Samples:</p>
-<p>this.dataGridView1.GridColor = Color.BlueViolet;</p>
-<p>this.dataGridView1.BorderStyle = BorderStyle.Fixed3D;</p>
-<p>this.dataGridView1.CellBorderStyle = DataGridViewCellBorderStyle.None;</p>
-<p>this.dataGridView1.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;</p>
-<p>this.dataGridView1.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;</p>
-<p>5、动态改变列是否显示，和动态改变列的显示顺序</p>
-<p>Change the Order of the Columns in the Windows Forms DataGridView Control</p>
-<p>Samples：</p>
-<p>customersDataGridView.Columns[“CustomerID”].Visible = false;</p>
-<p>customersDataGridView.Columns[“ContactName”].DisplayIndex = 0;</p>
-<p>customersDataGridView.Columns[“ContactTitle”].DisplayIndex = 1;</p>
-<p>customers</p>
-<p>DataGridView.Columns[“City”].DisplayIndex = 2;</p>
-<p>customersDataGridView.Columns[“Country”].DisplayIndex = 3;</p>
-<p>customersDataGridView.Columns[“CompanyName”].DisplayIndex = 4;</p>
-<p>6、可以在列中显示图像</p>
-<p>Display Images in Cells of the Windows Forms DataGridView Control</p>
-<p>Samples：</p>
-<p>Icon treeIcon = new Icon(this.GetType(), “tree.ico”);</p>
-<p>DataGridViewImageColumn iconColumn = new DataGridViewImageColumn ();</p>
-<p>iconColumn.Image = treeIcon.ToBitmap();</p>
-<p>iconColumn.Name = “Tree”;</p>
-<p>iconColumn.HeaderText = “Nice tree”;</p>
-<p>dataGridView1.Columns.Insert(2, iconColumn);</p>
-<p>7、格式化显示内容:</p>
-<p>Format Data in the Windows Forms DataGridView Control</p>
-<p>Samples:</p>
-<p>this.dataGridView1.Columns[“UnitPrice”].DefaultCellStyle.Format = “c”;</p>
-<p>this.dataGridView1.Columns[“ShipDate”].DefaultCellStyle.Format = “d”;</p>
-<p>this.dataGridView1.DefaultCellStyle.NullValue = “no entry”;</p>
-<p>this.dataGridView1.DefaultCellStyle.WrapMode = DataGridViewWrapMode.Wrap;</p>
-<p>this.dataGridView1.Columns[“CustomerName”].DefaultCellStyle.Alignment =</p>
-<p>DataGridViewContentAlignment.MiddleRight;</p>
-<p>8、在拖动列的滚动条时可以将指定的列冻结</p>
-<p>Freeze Columns in the Windows Forms DataGridView Control</p>
-<p>Samples：将指定列及以前的列固定不动</p>
-<p>this.dataGridView1.Columns[“AddToCartButton”].Frozen = true;</p>
-<p>9、获取选择的单元格,行,列</p>
-<p>Get the Selected Cells, Rows, and Columns in the Windows Forms DataGridView Control</p>
-<p>Samples:</p>
-<p>见msdn。</p>
-<p>10、显示录入时出现的错误信息</p>
-<p>Handle Errors that Occur During Data Entry in the Windows Forms DataGridView Control</p>
-<p>Samples：</p>
-<p>private void dataGridView1_DataError(object sender,</p>
-<p>DataGridViewDataErrorEventArgs e)</p>
-<p>{</p>
-<p>// If the data source raises an exception when a cell value is</p>
-<p>// commited, display an error message.</p>
-<p>if (e.Exception != null &amp;&amp;</p>
-<p>e.Context == DataGridViewDataErrorContext.Commit)</p>
-<p>{</p>
-<p>MessageBox.Show(“CustomerID value must be unique.”);</p>
-<p>}</p>
-<p>}</p>
-<p>11、大数据量显示采用Virtual Mode</p>
-<p>Implement Virtual Mode in the Windows Forms DataGridView Control</p>
-<p>12、设置指定的列只读</p>
-<p>Make Columns in the Windows Forms DataGridView Control Read-Only</p>
-<p>Samples：</p>
-<p>dataGridView1.Columns[“CompanyName”].ReadOnly = true;</p>
-<p>13、移去自动生成的列</p>
-<p>Remove Autogenerated Columns from a Windows Forms DataGridView Control</p>
-<p>Sample:</p>
-<p>dataGridView1.AutoGenerateColumns = true;</p>
-<p>dataGridView1.DataSource = customerDataSet;</p>
-<p>dataGridView1.Columns.Remove (“Fax”);</p>
-<p>或：</p>
-<p>dataGridView1.Columns[“CustomerID”].Visible = false;</p>
-<p>14、自定义选择模式</p>
-<p>Set the Selection Mode of the Windows Forms DataGridView Control</p>
-<p>Sample：</p>
-<p>this.dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;</p>
-<p>this.dataGridView1.MultiSelect = false;</p>
-<p>15、自定义设定光标进入单元格是否编辑模式（编辑模式）</p>
-<p>Specify the Edit Mode for the Windows Forms DataGridView Control</p>
-<p>this.dataGridView1.EditMode = DataGridViewEditMode.EditOnEnter;</p>
-<p>16、新行指定默认值</p>
-<p>Specify Default Values for New Rows in the Windows Forms DataG</p>
-<p>ridView Control</p>
-<p>Sample：</p>
-<p>private void dataGridView1_DefaultValuesNeeded(object sender, System.Windows.Forms.DataGridViewRowEventArgs e)</p>
-<p>{</p>
-<p>e.Row.Cells[“Region”].Value = “WA”;</p>
-<p>e.Row.Cells[“City”].Value = “Redmond”;</p>
-<p>e.Row.Cells[“PostalCode”].Value = “98052-6399”;</p>
-<p>e.Row.Cells[“Region”].Value = “NA”;</p>
-<p>e.Row.Cells[“Country”].Value = “USA”;</p>
-<p>e.Row.Cells[“CustomerID”].Value = NewCustomerId();</p>
-<p>}</p>
-<p>17、数据验证</p>
-<p>Validate Data in the Windows Forms DataGridView Control</p>
-<p>Samples：</p>
-<p>private void dataGridView1_CellValidating(object sender,</p>
-<p>DataGridViewCellValidatingEventArgs e)</p>
-<p>{</p>
-<p>// Validate the CompanyName entry by disallowing empty strings.</p>
-<p>if (dataGridView1.Columns[e.ColumnIndex].Name == “CompanyName”)</p>
-<p>{</p>
-<p>if (e.FormattedValue.ToString() == String.Empty)</p>
-<p>{</p>
-<p>dataGridView1.Rows[e.RowIndex].ErrorText =</p>
-<p>“Company Name must not be empty”;</p>
-<p>e.Cancel = true;</p>
-<p>}</p>
-<p>}</p>
-<p>}</p>
-<p>1） 行、列的隐藏</p>
-<p>[VB.NET]</p>
-<p>‘ DataGridView1的第一列隐藏</p>
-<p>DataGridView1.Columns(0).Visible = False</p>
-<p>‘ DataGridView1的第一行隐藏</p>
-<p>DataGridView1.Rows(0).Visible = False</p>
-<p>2） 行头、列头的隐藏</p>
-<p>[VB.NET]</p>
-<p>‘ 列头隐藏</p>
-<p>DataGridView1.ColumnHeadersVisible = False</p>
-<p>‘ 行头隐藏</p>
-<p>DataGridView1.RowHeadersVisible = False</p>
-<p>3） 行和列的删除</p>
-<p>[VB.NET]</p>
-<p>‘ 删除名为”Column1”的列</p>
-<p>DataGridView1.Columns.Remove(“Column1”)</p>
-<p>‘ 删除第一列</p>
-<p>DataGridView1.Columns.RemoveAt(0)</p>
-<p>‘ 删除第一行</p>
-<p>DataGridView1.Rows.RemoveAt(0)</p>
-<p>4） 删除选中行</p>
-<p>[VB.NET]</p>
-<p>For Each r As DataGridViewRow In DataGridView1.SelectedRows</p>
-<p>If Not r.IsNewRow Then</p>
-<p>DataGridView1.Rows.Remove(r)</p>
-<p>End If</p>
-<p>Next</p>
-<p>⑦ DataGridView 禁止列或者行的Resize：</p>
-<p>1） 禁止所有的列或者行的Resize</p>
-<p>[VB.NET]</p>
-<p>‘ 禁止用户改变DataGridView1的所有列的列宽</p>
-<p>DataGridView1.AllowUserToResizeColumns = False</p>
-<p>‘禁止用户改变DataGridView1の所有行的行高</p>
-<p>DataGridView1.AllowUserToResizeRows = False</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://www.1zyan.cc/2017/08/19/cdatagridview-e5-b8-b8-e7-94-a8-e5-b1-9e-e6-80-a7/" data-id="cjtbs4mdm000se05subwkf3gz" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-margin-e8-ae-be-e7-bd-ae-e4-b8-ba-e8-b4-9f-e6-95-b0" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/08/12/margin-e8-ae-be-e7-bd-ae-e4-b8-ba-e8-b4-9f-e6-95-b0/" class="article-date">
-  <time datetime="2017-08-12T03:30:00.000Z" itemprop="datePublished">2017-08-12</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/HTML/">HTML</a>►<a class="article-category-link" href="/categories/HTML/WEB/">WEB</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/12/margin-e8-ae-be-e7-bd-ae-e4-b8-ba-e8-b4-9f-e6-95-b0/">margin设置为负数</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="1、为负margin“平反”"><a href="#1、为负margin“平反”" class="headerlink" title="1、为负margin“平反”"></a>1、为负margin“平反”</h4><p>我们在CSS中都会使用margin，但将margin设置成负数，那可能就不大好处理了。在网页设计中，人们对负margin用法的态度大相径庭，有的人非常喜欢，而有的人则认为这是魔鬼的工作。 一个负margin应该是这样设置的：</p>
-<p>#content {margin-left:-100px;}</p>
-<p>通常人们很少使用负margin但随后你会了解到，它能做的其实有很多。以下是几条有关负margin需要注意的地方：</p>
-<p>A、负margin是绝对标准的CSS</p>
-<p>这不是开玩笑。W3C甚至标注过：对于margin属性来说，负值是被允许的。这是Nuff说的，查看这篇<a href="http://www.w3.org/TR/CSS2/box.html#margin-properties" target="_blank" rel="noopener">文章</a>会有更多详细内容。</p>
-<p>B、负maring不是一种hack方法</p>
-<p>千真万确，不能因为缺乏对负marign的理解，或者因为它长得像hack，就认为它是一种hack方法。除非你是用来修复自己在其他地方造成的错误。</p>
-<p>C、不脱离文档流</p>
-<p>不使用float的话，负margin元素是不会破坏页面的文档流。所以如果你使用负margin上移一个元素，所有跟随的元素都会被上移。</p>
-<p>D、完全兼容</p>
-<p>所有现代浏览器都完全支持负margin（IE6在大多数情况下也支持）。</p>
-<p>E、浮动会影响负margin的使用</p>
-<p>负margin不是你每天都用的CSS属性，应用时应小心谨慎。</p>
-<p>F、Dreamweaver不解析负margin</p>
-<p>DW的设计视图不会解析负margin。但问题是你为什么要在设计视图中检查你的网站呢？</p>
-<h4 id="2、使用负margin"><a href="#2、使用负margin" class="headerlink" title="2、使用负margin"></a>2、使用负margin</h4><p>如果使用得当，负margin是非常强大的属性，以下是2种（负margin占主导位置）的场景。 <strong>作用于static元素上的负margin属性</strong>   Static元素是没有设定成浮动的元素，下图说明了负margin对static元素的作用 当static元素的margin-top/margin-left被赋予负值时，元素将被拉进指定的方向。例如：</p>
-<p>/* 元素向上移10px*/</p>
-<p>#mydiv1 {margin-top:-10px;}</p>
-<p>但如果你设置margin-bottom/right为负数，元素并不会如你所想的那样向下/右移动，而是将后续的元素拖拉进来，覆盖本来的元素。</p>
-<p>/*<br>* #mydiv1后续元素向上移10px, #mydiv1 本身不移动<br>*/</p>
-<p>#mydiv1 {margin-bottom:-10px;}</p>
-<p>如果没有设定width属性，设定负margin-left/right会将元素拖向对应的方向，并增加宽度，此时的margin的作用就像padding一样。</p>
-<h4 id="3、浮动元素上的负margin"><a href="#3、浮动元素上的负margin" class="headerlink" title="3、浮动元素上的负margin"></a>3、浮动元素上的负margin</h4><p>考虑下以下这种情况 HTML</p>
-<div id="mydiv1">First</div><br><div id="mydiv2">Second</div>
-
-<p>如果给一个浮动元素加上相反方向的负margin，则会使行间距为0且内容重叠。这对于创建1列是100%宽度而其他列是固定宽度（比如100px）的自适应布局来说是非常有用的方法。</p>
-<p>/* 应用在与浮动相反方向的负margin */</p>
-<p>#mydiv1 {float:left; margin-right:-100px;}</p>
-<p>若两个元素都为浮动，且#mydiv1的元素设定margin-right为20px。这样#mydiv2会认为#mydiv1的宽度比原来宽度缩短了20px（因此会导致重叠）。但有意思的是，#mydiv1的内容不受影响，保持原有的宽度。 如果负margin等于实际宽度，则元素会被完全覆盖。这是因为元素的完全宽度等于margin，padding，border，width相加而成，所以如果负margin等于余下三者的和，那元素的实际宽度也就变成了0px。</p>
-<h4 id="4、实用技巧"><a href="#4、实用技巧" class="headerlink" title="4、实用技巧"></a>4、实用技巧</h4><p>自从知道使用负margin是符合CSS2标准的代码后，我们利用这个特性创建了一些有趣的CSS技术。 <strong>制作包含3列的单个<ul></ul></strong> 如果你有一列项目太长而无法垂直显示时，为什么不试试用分列的方式来代替它？负margin可以让你在不添加任何浮动元素或标签的情况下达到这种效果。如下，如此简单的操作就可以把集合分成三列，真是太令人惊叹了！ <strong>HTML</strong></p>
-<p><img src="http://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
-<p><img src="http://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
-<ul><br>  <li class="col1">Eggs</li><br>  <li class="col1">Ham</li><br>  <li class="col2 top">Bread</li><br>  <li class="col2">Butter</li><br>  <li class="col3 top">Flour</li><br>  <li class="col3">Cream</li><br></ul>
-
-<p><img src="http://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
-<p><img src="http://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
-<p><strong>CSS</strong></p>
-<p>ul {list-style:none;}<br>li {line-height:1.3em;}<br>.col2 {margin-left:100px;}<br>.col3 {margin-left:200px;}<br>.top {margin-top:-2.6em;} /<em> the clincher </em>/</p>
-<p>通过在类top中设置margin-top:-2.6em(<li>标签的2倍行高)，所有元素都完美的对齐了。你只需要将负margin应用到每列的第一个标签上，而不是设置每个</li><li>的相对位置，这样用起来会合适很多，很酷吧？ <strong>使用重叠产生强调</strong> 刻意重叠元素也是一种很好的设计比喻，这样能产生一种深度错觉，从而突出特定的元素。<a href="http://phlashers.com/blog/?p=180" target="_blank" rel="noopener">Phlashers.com</a>的评论模块就是一个很好的例子，使用了重叠技术突出了评论数目。利用负margin和z-index 属性，外加一点点创意，你也可以做到。 <strong>优秀的3D文字特效</strong> 这是一种创建类似于Safari字体的巧妙方法：使用2种颜色创建两版相同，略微倾斜的文字，然后使用负margin将一版文字覆盖到另一版上，并留出1-2像素的差异。这样你就获得了具有可选性，而且对机器人爬虫友好的文字！从此再也不需要那臃肿又消耗带宽的jpeg和gif了。 <strong>简单2列布局</strong> 负margin也是一种创建简单2列自适应布局的好方法。2列自适应布局是一种拥有一个自适应宽度（liquid width）为100%的内容列和一个固定宽度侧边栏的布局。 <strong>HTML</strong></li></p>
-<div id="content"> <p>Main content in here</p> </div><br><div id="sidebar"> <p>I’m the Sidebar! </p> </div>
-
-<p><strong>CSS</strong></p>
-<p>#content {width:100%; float:left; margin-right:-200px;}</p>
-<p>#sidebar {width:200px; float:left;}</p>
-<p>这样你就拥有了一个简单的两列布局，即使在IE6下也能无错的运行。现在，为了避免#sidebar被#content中的文字覆盖，加上</p>
-<p>/* 防止文本被重叠 */</p>
-<p>#content p {margin-right:210px;}<br>/* 它是 200px + 10px, 10px是他们的间距*/</p>
-<p>如果运用得当，负margin也可以完全代替table标签，来构成灵活文档结构。这种结构是一种具有可访问性的SEO技术，可以完全按照你的意愿按几乎任何顺序来排列标记。Tom写了一篇<a href="http://www.severnsolutions.co.uk/twblog/archive/2004/07/01/cssnegativemarginsalgebra" target="_blank" rel="noopener">文章</a>，专门讨论用负margin来实现多列布局。 <strong>微调元素位置</strong> 这是负margin最常用，也是最简单的方法。如果你在9个div中插入第十个div，有时候可能因为某些原因无法对齐，使用负margin可以仅对第十个进行微调，而不用必须去修改其他9个元素。</p>
-<h4 id="4、Bug修复"><a href="#4、Bug修复" class="headerlink" title="4、Bug修复"></a>4、Bug修复</h4><p><strong>文字和链接的问题</strong> 当浮动元素使用负margin时，在一些旧的浏览器中可能会出现问题，问题现象包括：</p>
-<ol>
-<li>链接无法点击;</li>
-<li>文字难以选中；</li>
-<li>失去焦点后，tab任何链接都会消失；</li>
-</ol>
-<p><strong>解决方法：</strong>给元素添加position:relative，便能正常运行！ <strong>图片被截断</strong> 如果你不幸在办公室使用IE6的话，有时候会发现重叠和浮动的元素中内容会被突然截断。 <strong>解决方法：</strong>同样，给浮动元素加上position:relative，一切将会恢复正常。</p>
-<h4 id="5、总结"><a href="#5、总结" class="headerlink" title="5、总结"></a>5、总结</h4><p>负margin因其自身不添加额外标记就能定位元素的能力在现代网页设计中占有一席之地。随着更多的用户升级浏览器（包括IE8）， 这项技术的前途看起来会非常光明，更多的网站也会依赖于它。 如果你对负margin有任何独到的经历，欢迎留言告诉我。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://www.1zyan.cc/2017/08/12/margin-e8-ae-be-e7-bd-ae-e4-b8-ba-e8-b4-9f-e6-95-b0/" data-id="cjtbs4mhy005je05sje2ufi0m" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/html/">html</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-sqlserver-e6-97-b6-e9-97-b4-e6-a0-bc-e5-bc-8f-e5-87-bd-e6-95-b0-e8-af-a6-e7-bb-86" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/08/07/sqlserver-e6-97-b6-e9-97-b4-e6-a0-bc-e5-bc-8f-e5-87-bd-e6-95-b0-e8-af-a6-e7-bb-86/" class="article-date">
-  <time datetime="2017-08-07T01:14:30.000Z" itemprop="datePublished">2017-08-07</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/SqlServer/">SqlServer</a>►<a class="article-category-link" href="/categories/SqlServer/数据库/">数据库</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/07/sqlserver-e6-97-b6-e9-97-b4-e6-a0-bc-e5-bc-8f-e5-87-bd-e6-95-b0-e8-af-a6-e7-bb-86/">sqlserver 时间格式函数详细</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p> 在使用存储过程，sql函数的时候，会遇到一些对时间的处理。比如时间的获取与加减。这里就用到了sql自带的时间函数。下面我列出这些函数，方便日后记忆，使用。</p>
-<p>–getdate 获取当前时间<br> select getdate()</p>
-<p> –dateadd 原有时间加： 2013-02-17 13:20:16 此时间加12个月<br> select dateadd(MONTH,12,’2013-02-17 13:20:16’)  –返回：2014-02-17 13:20:16.000  （参数month可以改为 day，year等日期加相应的值）</p>
-<p> –datediff 两个时间的差 （后面-前面=返回值）<br> select datediff(day,’2013-02-01’,’2013-02-18’)   –返回：17  （参数day可以改为 month，year等日期加相应的值）</p>
-<p> –datepart 获取日期的某个部分整数<br> select DATEPART(month, ‘2013-2-17’)  –返回 2    （参数month可以改为 day，year等日期加相应的值）</p>
-<p> –datename 获取指定部位的字符串<br> select datename(weekday, ‘2013-2-17’)  –返回 星期日 （参数weekday可以改为 day，year等日期加相应的值）</p>
-<p> –day(), month(),year() 获取指定部位的字符串<br> select day(‘2013-2-15’) –返回15</p>
-<hr>
-<p><strong>二、时间格式转换</strong></p>
-<hr>
-<pre><code>select CONVERT(varchar, getdate(), 120 )  --返回 2013-02-17 13:37:54
-
-select replace(replace(replace(CONVERT(varchar, getdate(), 120 ),&apos;-&apos;,&apos;&apos;),&apos; &apos;,&apos;&apos;),&apos;:&apos;,&apos;&apos;) --返回 20130217133828
-
-select CONVERT(varchar(12) , getdate(), 111 )  --返回 2013/02/17
-
-select CONVERT(varchar(12) , getdate(), 112 )  --返回 20130217
-
-select CONVERT(varchar(12) , getdate(), 102 )  --返回 2013.02.17
-
-select CONVERT(varchar(12) , getdate(), 101 )  --返回 02/17/2013
-
-select CONVERT(varchar(12) , getdate(), 103 )  --返回 17/02/2013
-
-select CONVERT(varchar(12) , getdate(), 104 )  --返回 17.02.2013
-
-select CONVERT(varchar(12) , getdate(), 105 )  --返回 17-02-2013
-
-select CONVERT(varchar(12) , getdate(), 106 )  --返回 17 02 2013
-
-select CONVERT(varchar(12) , getdate(), 107 )  --返回 02 17, 2013
-
-select CONVERT(varchar(12) , getdate(), 108 )  --返回 13:42:50
-
-select CONVERT(varchar(12) , getdate(), 109 )  --返回 02 17 2013  
-
-select CONVERT(varchar(12) , getdate(), 110 )  --返回 02-17-2013
-
-select CONVERT(varchar(12) , getdate(), 113 )  --返回 17 02 2013 1
-
-select CONVERT(varchar(12) , getdate(), 114 )  --返回 13:42:24:743
-</code></pre><hr>
-<p>三、时间格式相关表格</p>
-<hr>
-<p><strong>函数</strong></p>
-<p><strong>参数/功能</strong></p>
-<p>GetDate( )</p>
-<p>返回系统目前的日期与时间</p>
-<p>DateDiff (interval,date1,date2)</p>
-<p>以interval 指定的方式，返回date2 与date1两个日期之间的差值 date2-date1</p>
-<p>DateAdd (interval,number,date)</p>
-<p>以interval指定的方式，加上number之后的日期</p>
-<p>DatePart (interval,date)</p>
-<p>返回日期date中，interval指定部分所对应的整数值</p>
-<p>DateName (interval,date)</p>
-<p>返回日期date中，interval指定部分所对应的字符串名称</p>
-<p><strong>值</strong></p>
-<p><strong>缩 写（Sql Server）</strong></p>
-<p><strong>Access 和 ASP</strong></p>
-<p><strong>说明</strong></p>
-<p>Year</p>
-<p>Yy</p>
-<p>yyyy</p>
-<p>年 1753 ~ 9999</p>
-<p>Quarter</p>
-<p>Qq</p>
-<p>q </p>
-<p>季 1 ~ 4</p>
-<p>Month</p>
-<p>Mm</p>
-<p>m </p>
-<p>月1 ~ 12</p>
-<p>Day of year</p>
-<p>Dy</p>
-<p>y</p>
-<p>一年的日数,一年中的第几日 1-366</p>
-<p>Day</p>
-<p>Dd</p>
-<p>d </p>
-<p>日，1-31</p>
-<p>Weekday</p>
-<p>Dw</p>
-<p>w</p>
-<p>一周的日数，一周中的第几日 1-7</p>
-<p>Week</p>
-<p>Wk</p>
-<p>ww</p>
-<p>周，一年中的第几周 0 ~ 51</p>
-<p>Hour</p>
-<p>Hh</p>
-<p>h </p>
-<p>时0 ~ 23</p>
-<p>Minute</p>
-<p>Mi</p>
-<p>n </p>
-<p>分钟0 ~ 59</p>
-<p>Second</p>
-<p>Ss</p>
-<p>s</p>
-<p>秒 0 ~ 59</p>
-<p>Millisecond</p>
-<p>Ms</p>
-<p>-</p>
-<p>毫秒 0 ~ 999</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://www.1zyan.cc/2017/08/07/sqlserver-e6-97-b6-e9-97-b4-e6-a0-bc-e5-bc-8f-e5-87-bd-e6-95-b0-e8-af-a6-e7-bb-86/" data-id="cjtbs4mit007qe05sfvkfo60k" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sql-server/">sql server</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
     <article id="post-show-e4-b8-8eshowdialog-e7-9a-84-e5-8c-ba-e5-88-ab" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/08/06/show-e4-b8-8eshowdialog-e7-9a-84-e5-8c-ba-e5-88-ab/" class="article-date">
@@ -577,7 +101,7 @@ select CONVERT(varchar(12) , getdate(), 114 )  --返回 13:42:24:743
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.1zyan.cc/2017/08/06/show-e4-b8-8eshowdialog-e7-9a-84-e5-8c-ba-e5-88-ab/" data-id="cjtbs4mhy006be05s727ybypy" class="article-share-link">Share</a>
+      <a data-url="http://www.1zyan.cc/2017/08/06/show-e4-b8-8eshowdialog-e7-9a-84-e5-8c-ba-e5-88-ab/" data-id="cjtbshsh0006eu85sgzdb5jgx" class="article-share-link">Share</a>
       
       
     </footer>
@@ -618,7 +142,7 @@ select CONVERT(varchar(12) , getdate(), 114 )  --返回 13:42:24:743
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.1zyan.cc/2017/08/05/e6-88-91-e6-9c-89-e4-b8-80-e4-b8-aa-e9-81-93-e5-a7-91-e6-9c-8b-e5-8f-8b-mv-e6-8e-a8-e4-bb-8b/" data-id="cjtbs4mex0025e05snp6k58tu" class="article-share-link">Share</a>
+      <a data-url="http://www.1zyan.cc/2017/08/05/e6-88-91-e6-9c-89-e4-b8-80-e4-b8-aa-e9-81-93-e5-a7-91-e6-9c-8b-e5-8f-8b-mv-e6-8e-a8-e4-bb-8b/" data-id="cjtbshsdj0028u85s4xuzl2k5" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MV/">MV</a></li></ul>
@@ -661,7 +185,7 @@ select CONVERT(varchar(12) , getdate(), 114 )  --返回 13:42:24:743
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.1zyan.cc/2017/08/05/e5-8f-a4-e9-a3-8e-e6-83-85-e4-b9-a6-e7-be-8e-e5-9b-be-e8-b5-b0-e4-b8-80-e6-b3-a2/" data-id="cjtbs4meh001qe05sh3r69w9k" class="article-share-link">Share</a>
+      <a data-url="http://www.1zyan.cc/2017/08/05/e5-8f-a4-e9-a3-8e-e6-83-85-e4-b9-a6-e7-be-8e-e5-9b-be-e8-b5-b0-e4-b8-80-e6-b3-a2/" data-id="cjtbshsd3001qu85sudrm01gu" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/古风/">古风</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/图片/">图片</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/情书/">情书</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/美图/">美图</a></li></ul>
@@ -704,7 +228,7 @@ select CONVERT(varchar(12) , getdate(), 114 )  --返回 13:42:24:743
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.1zyan.cc/2017/08/04/e7-9c-8b-e4-ba-86-e8-bf-99-e6-9c-9f-e7-9a-84-e6-95-b4-e8-9b-8a-e5-a4-a7-e5-b8-88-e4-bd-a0-e8-bf-98-e6-95-a2-e5-87-ba-e5-8e-bb-e6-b5-aa-e5-90-97-ef-bc-9f-ef-bc-9f/" data-id="cjtbs4mg8003he05sm92yyx3c" class="article-share-link">Share</a>
+      <a data-url="http://www.1zyan.cc/2017/08/04/e7-9c-8b-e4-ba-86-e8-bf-99-e6-9c-9f-e7-9a-84-e6-95-b4-e8-9b-8a-e5-a4-a7-e5-b8-88-e4-bd-a0-e8-bf-98-e6-95-a2-e5-87-ba-e5-8e-bb-e6-b5-aa-e5-90-97-ef-bc-9f-ef-bc-9f/" data-id="cjtbshseu003du85sd6616a1w" class="article-share-link">Share</a>
       
       
     </footer>
@@ -745,7 +269,7 @@ select CONVERT(varchar(12) , getdate(), 114 )  --返回 13:42:24:743
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.1zyan.cc/2017/08/04/myschool-e5-ad-a6-e7-94-9f-e7-ae-a1-e7-90-86-e7-b3-bb-e7-bb-9f-e7-ae-a1-e7-90-86-e5-91-98-e5-8a-9f-e8-83-bd-e4-bb-8b-e7-bb-8d/" data-id="cjtbs4mhy005ze05sbngc4zar" class="article-share-link">Share</a>
+      <a data-url="http://www.1zyan.cc/2017/08/04/myschool-e5-ad-a6-e7-94-9f-e7-ae-a1-e7-90-86-e7-b3-bb-e7-bb-9f-e7-ae-a1-e7-90-86-e5-91-98-e5-8a-9f-e8-83-bd-e4-bb-8b-e7-bb-8d/" data-id="cjtbshsgk0061u85snz8esfq3" class="article-share-link">Share</a>
       
       
     </footer>
@@ -911,7 +435,7 @@ select CONVERT(varchar(12) , getdate(), 114 )  --返回 13:42:24:743
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.1zyan.cc/2017/08/04/vs2012-e5-8f-91-e5-b8-83web-e5-ba-94-e7-94-a8-e7-a8-8b-e5-ba-8f/" data-id="cjtbs4mog00k3e05sm4gq35v1" class="article-share-link">Share</a>
+      <a data-url="http://www.1zyan.cc/2017/08/04/vs2012-e5-8f-91-e5-b8-83web-e5-ba-94-e7-94-a8-e7-a8-8b-e5-ba-8f/" data-id="cjtbshsn300jxu85sznlh6ast" class="article-share-link">Share</a>
       
       
     </footer>
@@ -951,7 +475,135 @@ select CONVERT(varchar(12) , getdate(), 114 )  --返回 13:42:24:743
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.1zyan.cc/2017/08/04/e6-af-8f-e6-97-a5-e4-b8-80-e8-af-ad/" data-id="cjtbs4mfs0036e05s9oyyzp1j" class="article-share-link">Share</a>
+      <a data-url="http://www.1zyan.cc/2017/08/04/e6-af-8f-e6-97-a5-e4-b8-80-e8-af-ad/" data-id="cjtbshsee0038u85sy1v4p0iv" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-c-e8-bf-9e-e6-8e-a5sqlserver-e5-92-8c-e6-93-8d-e4-bd-9c" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/07/31/c-e8-bf-9e-e6-8e-a5sqlserver-e5-92-8c-e6-93-8d-e4-bd-9c/" class="article-date">
+  <time datetime="2017-07-31T12:15:26.000Z" itemprop="datePublished">2017-07-31</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/C/">C#</a>►<a class="article-category-link" href="/categories/C/SqlServer/">SqlServer</a>►<a class="article-category-link" href="/categories/C/SqlServer/数据库/">数据库</a>►<a class="article-category-link" href="/categories/C/SqlServer/数据库/软件开发/">软件开发</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/07/31/c-e8-bf-9e-e6-8e-a5sqlserver-e5-92-8c-e6-93-8d-e4-bd-9c/">C#连接sqlserver和操作</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>用C#sqlserver实现增删改查</strong> <a href="http://www.worlduc.com/blog2012.aspx?bid=730767" target="_blank" rel="noopener">http://www.worlduc.com/blog2012.aspx?bid=730767</a>   using System.Data; using System.Data.SqlClient; //先打开两个类库文件 SqlConnection con = new SqlConnection(); // con.ConnectionString = “server=505-03;database=ttt;user=sa;pwd=123”; con.ConnectionString = “server=.;database=stu;uid=sa;pwd=sa”; con.Open(); /<em> SqlDataAdapter 对象。 用于填充DataSet （数据集）。 SqlDataReader 对象。 从数据库中读取流.. 后面要做增删改查还需要用到 DataSet 对象。 </em>/ SqlCommand com = new SqlCommand(); com.Connection = con; com.CommandType = CommandType.Text; com.CommandText = “SQL的语句”; SqlDataReader dr = com.ExecuteReader();//执行SQL语句 dr.Close();//关闭执行 con.Close();//关闭数据库 —————— <strong>使用ASP.NET连接SQLSERVER的步骤</strong>： 1.确定你的电脑安装了ASP.NET和SQLSERVER 2.在你需要连接数据库的页面的.aspx页面中添加命名空间using system.data和using system.data.sqlclient 3.实例化常用的类对象：sqlconnection具体方法如下： SqlConnection SQlConn = new SqlConnection(“server = .;uid = sa;pwd = ; database = 你要连接的数据库名称”); 这样你就能实现最基本的C#连接数据库了，后面还要实例化SqlCommand对象和DataSet对象，这两个分别是你对数据库实现增，删，改，查的基本操作和生成数据集。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.1zyan.cc/2017/07/31/c-e8-bf-9e-e6-8e-a5sqlserver-e5-92-8c-e6-93-8d-e4-bd-9c/" data-id="cjtbshsc8000ku85s42p7fpy8" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C#</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sql/">sql</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-wordpress-e7-b3-bb-e7-bb-9f" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/07/29/wordpress-e7-b3-bb-e7-bb-9f/" class="article-date">
+  <time datetime="2017-07-29T10:02:59.000Z" itemprop="datePublished">2017-07-29</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/首页/">首页</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/07/29/wordpress-e7-b3-bb-e7-bb-9f/">WordPress系统</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="http://bk.1zyan.cc/?tag=wordpress" title="浏览关于“WordPress”的文章" target="_blank" rel="noopener">WordPress</a>是一个注重美学、易用性和网络标准的个人信息发布平台。WordPress虽为免费的开源软件，但其价值无法用金钱来衡量。 WordPress的图形设计在性能上易于操作、易于浏览；在外观上优雅大方、风格清新、色彩诱人。 使用WordPress可以搭建功能强大的网络信息发布平台，但更多的是应用于个性化的博客。针对博客的应用，WordPress能让您省却对后台技术的担心，集中精力做好网站的内容。  </p>
+<h3 id="下载和安装"><a href="#下载和安装" class="headerlink" title="下载和安装"></a>下载和安装</h3><p>在右侧下载WordPress简体中文版本。 下载压缩包到本地，解压缩，双击解开的文件夹中的<code>readme.html</code>文件，即可查看WordPress的介绍、安装，和升级方法。在您将程序文件上传至服务器相应目录后，安装过程只需5分钟。 已经在使用WordPress英文版本的用户，无需重新安装，也可<a href="https://cn.wordpress.org/switching/" target="_blank" rel="noopener">轻松将您的WordPress切换为中文</a>。若您有特殊需要，亦可使用<a href="https://i18n.svn.wordpress.org/zh_CN/" target="_blank" rel="noopener">SVN</a> checkout所需的<code>po</code>和<code>mo</code>文件。简体中文WordPress压缩包是基于<a href="https://core.svn.wordpress.org/" target="_blank" rel="noopener">英文SVN源</a>自动构建的。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.1zyan.cc/2017/07/29/wordpress-e7-b3-bb-e7-bb-9f/" data-id="cjtbshsj6009ju85sqpilctmk" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/WEB/">WEB</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/WordPress/">WordPress</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-e4-b8-96-e7-95-8c-ef-bc-8c-e6-82-a8-e5-a5-bd-ef-bc-81" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/07/29/e4-b8-96-e7-95-8c-ef-bc-8c-e6-82-a8-e5-a5-bd-ef-bc-81/" class="article-date">
+  <time datetime="2017-07-29T10:01:52.000Z" itemprop="datePublished">2017-07-29</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/其他/">其他</a>►<a class="article-category-link" href="/categories/其他/首页/">首页</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/07/29/e4-b8-96-e7-95-8c-ef-bc-8c-e6-82-a8-e5-a5-bd-ef-bc-81/">世界，您好！</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>空飘着小雨，还有一点冷，但是这还是一个激动人心的夜晚，哈！哈！哈！哈！——-易丨支烟<img src="http://img.mp.itc.cn/upload/20170315/8d6c2fd476a2493198b8f75363c8416d_th.jpg" alt></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.1zyan.cc/2017/07/29/e4-b8-96-e7-95-8c-ef-bc-8c-e6-82-a8-e5-a5-bd-ef-bc-81/" data-id="cjtbshsco0014u85s8h4lp7lk" class="article-share-link">Share</a>
       
       
     </footer>
@@ -996,7 +648,7 @@ select CONVERT(varchar(12) , getdate(), 114 )  --返回 13:42:24:743
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/C/" style="font-size: 20px;">C#</a> <a href="/tags/EXCEL写数据/" style="font-size: 10px;">EXCEL写数据</a> <a href="/tags/JAVA/" style="font-size: 19px;">JAVA</a> <a href="/tags/Jquery/" style="font-size: 10px;">Jquery</a> <a href="/tags/MV/" style="font-size: 10px;">MV</a> <a href="/tags/MyBatis/" style="font-size: 15px;">MyBatis</a> <a href="/tags/PHP/" style="font-size: 10px;">PHP</a> <a href="/tags/PS/" style="font-size: 10px;">PS</a> <a href="/tags/SqlServer/" style="font-size: 11px;">SqlServer</a> <a href="/tags/WEB/" style="font-size: 13px;">WEB</a> <a href="/tags/Webpack/" style="font-size: 17px;">Webpack</a> <a href="/tags/WordPress/" style="font-size: 13px;">WordPress</a> <a href="/tags/aop/" style="font-size: 10px;">aop</a> <a href="/tags/app/" style="font-size: 10px;">app</a> <a href="/tags/c-未将对象引用设置到对象的实例/" style="font-size: 10px;">c#未将对象引用设置到对象的实例</a> <a href="/tags/es6/" style="font-size: 16px;">es6</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/idea/" style="font-size: 11px;">idea</a> <a href="/tags/ioc/" style="font-size: 10px;">ioc</a> <a href="/tags/javaGui/" style="font-size: 10px;">javaGui</a> <a href="/tags/junit/" style="font-size: 10px;">junit</a> <a href="/tags/linux/" style="font-size: 11px;">linux</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/rem插件/" style="font-size: 10px;">rem插件</a> <a href="/tags/spring/" style="font-size: 17px;">spring</a> <a href="/tags/sql/" style="font-size: 10px;">sql</a> <a href="/tags/sql-server/" style="font-size: 10px;">sql server</a> <a href="/tags/sqlse/" style="font-size: 10px;">sqlse</a> <a href="/tags/vue/" style="font-size: 18px;">vue</a> <a href="/tags/vue-cli/" style="font-size: 16px;">vue-cli</a> <a href="/tags/中文乱码/" style="font-size: 10px;">中文乱码</a> <a href="/tags/中文类库/" style="font-size: 10px;">中文类库</a> <a href="/tags/入栈/" style="font-size: 10px;">入栈</a> <a href="/tags/公司模板/" style="font-size: 10px;">公司模板</a> <a href="/tags/其他主题/" style="font-size: 10px;">其他主题</a> <a href="/tags/冒泡排序/" style="font-size: 10px;">冒泡排序</a> <a href="/tags/分布式/" style="font-size: 10px;">分布式</a> <a href="/tags/前端/" style="font-size: 11px;">前端</a> <a href="/tags/单例模式/" style="font-size: 10px;">单例模式</a> <a href="/tags/原创/" style="font-size: 14px;">原创</a> <a href="/tags/古风/" style="font-size: 10px;">古风</a> <a href="/tags/图片/" style="font-size: 10px;">图片</a> <a href="/tags/多线程/" style="font-size: 11px;">多线程</a> <a href="/tags/好听/" style="font-size: 10px;">好听</a> <a href="/tags/娱乐/" style="font-size: 10px;">娱乐</a> <a href="/tags/小米/" style="font-size: 10px;">小米</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a> <a href="/tags/情书/" style="font-size: 10px;">情书</a> <a href="/tags/支烟IP扫描器/" style="font-size: 10px;">支烟IP扫描器</a> <a href="/tags/支烟类库/" style="font-size: 10px;">支烟类库</a> <a href="/tags/教程/" style="font-size: 11px;">教程</a> <a href="/tags/数据库/" style="font-size: 12px;">数据库</a> <a href="/tags/新技术/" style="font-size: 10px;">新技术</a> <a href="/tags/易代码转换/" style="font-size: 10px;">易代码转换</a> <a href="/tags/枚举/" style="font-size: 10px;">枚举</a> <a href="/tags/社团管理系统/" style="font-size: 10px;">社团管理系统</a> <a href="/tags/程序/" style="font-size: 10px;">程序</a> <a href="/tags/系统/" style="font-size: 10px;">系统</a> <a href="/tags/网络/" style="font-size: 10px;">网络</a> <a href="/tags/美图/" style="font-size: 10px;">美图</a> <a href="/tags/荒野行动/" style="font-size: 10px;">荒野行动</a> <a href="/tags/视频软件/" style="font-size: 10px;">视频软件</a> <a href="/tags/语音合成/" style="font-size: 10px;">语音合成</a> <a href="/tags/超级CS/" style="font-size: 10px;">超级CS</a> <a href="/tags/超级类库/" style="font-size: 10px;">超级类库</a> <a href="/tags/软件/" style="font-size: 13px;">软件</a> <a href="/tags/软件开发/" style="font-size: 11px;">软件开发</a> <a href="/tags/逻辑思维训练/" style="font-size: 10px;">逻辑思维训练</a> <a href="/tags/面试题/" style="font-size: 13px;">面试题</a> <a href="/tags/音乐/" style="font-size: 11px;">音乐</a>
+      <a href="/tags/C/" style="font-size: 20px;">C#</a> <a href="/tags/EXCEL写数据/" style="font-size: 10px;">EXCEL写数据</a> <a href="/tags/JAVA/" style="font-size: 18.89px;">JAVA</a> <a href="/tags/Jquery/" style="font-size: 10px;">Jquery</a> <a href="/tags/MV/" style="font-size: 10px;">MV</a> <a href="/tags/MyBatis/" style="font-size: 14.44px;">MyBatis</a> <a href="/tags/PHP/" style="font-size: 10px;">PHP</a> <a href="/tags/PS/" style="font-size: 10px;">PS</a> <a href="/tags/SqlServer/" style="font-size: 11.11px;">SqlServer</a> <a href="/tags/WEB/" style="font-size: 13.33px;">WEB</a> <a href="/tags/Webpack/" style="font-size: 16.67px;">Webpack</a> <a href="/tags/WordPress/" style="font-size: 13.33px;">WordPress</a> <a href="/tags/aop/" style="font-size: 10px;">aop</a> <a href="/tags/app/" style="font-size: 10px;">app</a> <a href="/tags/c-未将对象引用设置到对象的实例/" style="font-size: 10px;">c#未将对象引用设置到对象的实例</a> <a href="/tags/es6/" style="font-size: 15.56px;">es6</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/idea/" style="font-size: 11.11px;">idea</a> <a href="/tags/ioc/" style="font-size: 10px;">ioc</a> <a href="/tags/javaGui/" style="font-size: 10px;">javaGui</a> <a href="/tags/junit/" style="font-size: 10px;">junit</a> <a href="/tags/linux/" style="font-size: 11.11px;">linux</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/rem插件/" style="font-size: 10px;">rem插件</a> <a href="/tags/spring/" style="font-size: 16.67px;">spring</a> <a href="/tags/sql/" style="font-size: 10px;">sql</a> <a href="/tags/sql-server/" style="font-size: 10px;">sql server</a> <a href="/tags/sqlse/" style="font-size: 10px;">sqlse</a> <a href="/tags/vue/" style="font-size: 17.78px;">vue</a> <a href="/tags/vue-cli/" style="font-size: 15.56px;">vue-cli</a> <a href="/tags/中文乱码/" style="font-size: 10px;">中文乱码</a> <a href="/tags/中文类库/" style="font-size: 10px;">中文类库</a> <a href="/tags/入栈/" style="font-size: 10px;">入栈</a> <a href="/tags/公司模板/" style="font-size: 10px;">公司模板</a> <a href="/tags/其他主题/" style="font-size: 10px;">其他主题</a> <a href="/tags/冒泡排序/" style="font-size: 10px;">冒泡排序</a> <a href="/tags/分布式/" style="font-size: 10px;">分布式</a> <a href="/tags/前端/" style="font-size: 11.11px;">前端</a> <a href="/tags/单例模式/" style="font-size: 10px;">单例模式</a> <a href="/tags/原创/" style="font-size: 13.33px;">原创</a> <a href="/tags/古风/" style="font-size: 10px;">古风</a> <a href="/tags/图片/" style="font-size: 10px;">图片</a> <a href="/tags/多线程/" style="font-size: 11.11px;">多线程</a> <a href="/tags/好听/" style="font-size: 10px;">好听</a> <a href="/tags/娱乐/" style="font-size: 10px;">娱乐</a> <a href="/tags/小米/" style="font-size: 10px;">小米</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a> <a href="/tags/情书/" style="font-size: 10px;">情书</a> <a href="/tags/支烟IP扫描器/" style="font-size: 10px;">支烟IP扫描器</a> <a href="/tags/支烟类库/" style="font-size: 10px;">支烟类库</a> <a href="/tags/教程/" style="font-size: 11.11px;">教程</a> <a href="/tags/数据库/" style="font-size: 12.22px;">数据库</a> <a href="/tags/新技术/" style="font-size: 10px;">新技术</a> <a href="/tags/易代码转换/" style="font-size: 10px;">易代码转换</a> <a href="/tags/枚举/" style="font-size: 10px;">枚举</a> <a href="/tags/社团管理系统/" style="font-size: 10px;">社团管理系统</a> <a href="/tags/程序/" style="font-size: 10px;">程序</a> <a href="/tags/系统/" style="font-size: 10px;">系统</a> <a href="/tags/网络/" style="font-size: 10px;">网络</a> <a href="/tags/美图/" style="font-size: 10px;">美图</a> <a href="/tags/荒野行动/" style="font-size: 10px;">荒野行动</a> <a href="/tags/视频软件/" style="font-size: 10px;">视频软件</a> <a href="/tags/语音合成/" style="font-size: 10px;">语音合成</a> <a href="/tags/超级CS/" style="font-size: 10px;">超级CS</a> <a href="/tags/超级类库/" style="font-size: 10px;">超级类库</a> <a href="/tags/软件/" style="font-size: 13.33px;">软件</a> <a href="/tags/软件开发/" style="font-size: 11.11px;">软件开发</a> <a href="/tags/逻辑思维训练/" style="font-size: 10px;">逻辑思维训练</a> <a href="/tags/面试题/" style="font-size: 13.33px;">面试题</a> <a href="/tags/音乐/" style="font-size: 11.11px;">音乐</a>
     </div>
   </div>
 
@@ -1018,14 +670,6 @@ select CONVERT(varchar(12) , getdate(), 114 )  --返回 13:42:24:743
       <ul>
         
           <li>
-            <a href="/2019/02/28/测试文件/">测试文件</a>
-          </li>
-        
-          <li>
-            <a href="/2019/02/27/hello-world/">Hello World</a>
-          </li>
-        
-          <li>
             <a href="/2019/02/25/10-e5-88-86-e9-92-9f-e5-ad-a6-e4-bc-9aes7es8/">10分钟学会ES7+ES8</a>
           </li>
         
@@ -1035,6 +679,14 @@ select CONVERT(varchar(12) , getdate(), 114 )  --返回 13:42:24:743
         
           <li>
             <a href="/2019/01/24/springmybatis-e6-95-b4-e5-90-88-e7-ac-94-e8-ae-b0-e4-bd-bf-e7-94-a8-e6-b3-a8-e8-a7-a3-e6-a0-87-e7-ad-be-e5-ae-9e-e7-8e-b0-e4-ba-8b-e5-8a-a1-e5-92-8c-e4-ba-8b-e5-8a-a1-e7-9a-84-e5-8f-82-e6-95-b0/">Spring+Mybatis整合笔记-使用注解标签实现事务和事务的参数</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/22/vue-router-e5-86-99-e5-ba-95-e9-83-a8-e5-af-bc-e8-88-aa-e6-a0-8f-e9-81-87-e5-88-b0-e7-9a-84-e5-9d-91router-replace/">vue-router写底部导航栏遇到的坑router.replace</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/22/e4-bd-bf-e7-94-a8vue-cli-e7-bc-96-e5-86-99-e7-bb-84-e4-bb-b6-e5-b9-b6-e5-8f-91-e5-b8-83-e5-88-b0npm-e4-b8-8a/">使用vue-cli编写组件并发布到npm上</a>
           </li>
         
       </ul>

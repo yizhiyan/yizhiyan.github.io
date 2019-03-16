@@ -70,153 +70,6 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-java-e5-85-a5-e6-a0-88-e5-87-ba-e6-a0-88-e6-a8-a1-e6-8b-9f" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/07/20/java-e5-85-a5-e6-a0-88-e5-87-ba-e6-a0-88-e6-a8-a1-e6-8b-9f/" class="article-date">
-  <time datetime="2018-07-20T03:54:23.000Z" itemprop="datePublished">2018-07-20</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/JAVA/">JAVA</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/20/java-e5-85-a5-e6-a0-88-e5-87-ba-e6-a0-88-e6-a8-a1-e6-8b-9f/">java入栈出栈模拟</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>package com.push.text;</p>
-<p>public class InStacks {<br>    private int max=20;<br>    private Object[] stacks=null;<br>    private int size=-1;<br>    public InStacks(){<br>        stacks=new Object[max];<br>    }<br>    public void push(Object obj){<br>        //判断入栈个数是否大于储存结构的最大个数<br>        if(size&gt;=stacks.length){<br>            //扩充数组<br>            Object[] new_obj=new Object[stacks.length+max];<br>            //copy数组中的内容到新数组中取<br>            System.arraycopy(stacks, 0, new_obj, 0, stacks.length);<br>            stacks=new_obj;<br>        }<br>                stacks[size++]=obj;</p>
-<pre><code>}
-public Object pop(){
-    try{
-        return stacks\[--size\];
-    }catch (Exception e) {
-        return null;
-    }
-}
-</code></pre><p>}</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://www.1zyan.cc/2018/07/20/java-e5-85-a5-e6-a0-88-e5-87-ba-e6-a0-88-e6-a8-a1-e6-8b-9f/" data-id="cjtbs4mhi004we05sedbqyoqs" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/入栈/">入栈</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-e7-90-86-e8-a7-a3java-e4-b8-ad-e7-9a-84-e4-ba-94-e4-b8-ad-e5-8d-95-e4-be-8b-e6-a8-a1-e5-bc-8f" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/07/20/e7-90-86-e8-a7-a3java-e4-b8-ad-e7-9a-84-e4-ba-94-e4-b8-ad-e5-8d-95-e4-be-8b-e6-a8-a1-e5-bc-8f/" class="article-date">
-  <time datetime="2018-07-20T02:04:02.000Z" itemprop="datePublished">2018-07-20</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/JAVA/">JAVA</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/20/e7-90-86-e8-a7-a3java-e4-b8-ad-e7-9a-84-e4-ba-94-e4-b8-ad-e5-8d-95-e4-be-8b-e6-a8-a1-e5-bc-8f/">理解java中的五中单例模式</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>解法一：只适合单线程环境（不好）</p>
-<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
-<p>package test; /*<em> \</em> @author xiaoping<br> * */ public class Singleton { private static Singleton instance=null; private Singleton(){</p>
-<pre><code>} public static Singleton getInstance(){ if(instance==null){
-        instance=new Singleton();
-    } return instance;
-}
-</code></pre><p>}</p>
-<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
-<p>注解:Singleton的静态属性instance中，只有instance为null的时候才创建一个实例，构造函数私有，确保每次都只创建一个，避免重复创建。<br>缺点：只在单线程的情况下正常运行，在多线程的情况下，就会出问题。例如：当两个线程同时运行到判断instance是否为空的if语句，并且instance确实没有创建好时，那么两个线程都会创建一个实例。</p>
-<p>解法二：多线程的情况可以用。（懒汉式，不好）</p>
-<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
-<p>public class Singleton { private static Singleton instance=null; private Singleton(){</p>
-<pre><code>} public static synchronized Singleton getInstance(){ if(instance==null){
-        instance=new Singleton();
-    } return instance;
-}
-</code></pre><p>}</p>
-<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
-<p>注解：在解法一的基础上加上了同步锁，使得在多线程的情况下可以用。例如：当两个线程同时想创建实例，由于在一个时刻只有一个线程能得到同步锁，当第一个线程加上锁以后，第二个线程只能等待。第一个线程发现实例没有创建，创建之。第一个线程释放同步锁，第二个线程才可以加上同步锁，执行下面的代码。由于第一个线程已经创建了实例，所以第二个线程不需要创建实例。保证在多线程的环境下也只有一个实例。<br>缺点：每次通过getInstance方法得到singleton实例的时候都有一个试图去获取同步锁的过程。而众所周知，加锁是很耗时的。能避免则避免。</p>
-<p>解法三：加同步锁时，前后两次判断实例是否存在（可行）</p>
-<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
-<p>public class Singleton { private static Singleton instance=null; private Singleton(){</p>
-<pre><code>} public static Singleton getInstance(){ if(instance==null){ synchronized(Singleton.class){ if(instance==null){
-                instance=new Singleton();
-            }
-        }
-    } return instance;
-}
-</code></pre><p>}</p>
-<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
-<p>注解：只有当instance为null时，需要获取同步锁，创建一次实例。当实例被创建，则无需试图加锁。<br>缺点：用双重if判断，复杂，容易出错。</p>
-<p>解法四：饿汉式（建议使用）</p>
-<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
-<p>public class Singleton { private static Singleton instance=new Singleton(); private Singleton(){</p>
-<pre><code>} public static Singleton getInstance(){ return instance;
-}
-</code></pre><p>}</p>
-<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
-<p>注解：初试化静态的instance创建一次。如果我们在Singleton类里面写一个静态的方法不需要创建实例，它仍然会早早的创建一次实例。而降低内存的使用率。</p>
-<p>缺点：没有lazy loading的效果，从而降低内存的使用率。</p>
-<p>解法五：静态内部内。（建议使用）</p>
-<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
-<p>public class Singleton { private Singleton(){</p>
-<pre><code>} private static class SingletonHolder{ private final static Singleton instance=new Singleton();
-} public static Singleton getInstance(){ return SingletonHolder.instance;
-}
-</code></pre><p>}</p>
-<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
-<p>注解：定义一个私有的内部类，在第一次用这个嵌套类时，会创建一个实例。而类型为SingletonHolder的类，只有在Singleton.getInstance()中调用，由于私有的属性，他人无法使用SingleHolder，不调用Singleton.getInstance()就不会创建实例。  </p>
-<p>优点：达到了lazy loading的效果，即按需创建实例。</p>
-<p>本文转至：<a href="https://www.cnblogs.com/hupp/p/4487521.html" target="_blank" rel="noopener">原文地址</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://www.1zyan.cc/2018/07/20/e7-90-86-e8-a7-a3java-e4-b8-ad-e7-9a-84-e4-ba-94-e4-b8-ad-e5-8d-95-e4-be-8b-e6-a8-a1-e5-bc-8f/" data-id="cjtbs4mg8003de05stbnb5d3s" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/单例模式/">单例模式</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
     <article id="post-javagui-e7-bc-96-e5-86-99-e4-b8-80-ef-bc-9a-e5-88-9b-e5-bb-ba-e4-b8-80-e4-b8-aagui-e7-a8-8b-e5-ba-8f" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/07/14/javagui-e7-bc-96-e5-86-99-e4-b8-80-ef-bc-9a-e5-88-9b-e5-bb-ba-e4-b8-80-e4-b8-aagui-e7-a8-8b-e5-ba-8f/" class="article-date">
@@ -256,7 +109,7 @@ public Object pop(){
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.1zyan.cc/2018/07/14/javagui-e7-bc-96-e5-86-99-e4-b8-80-ef-bc-9a-e5-88-9b-e5-bb-ba-e4-b8-80-e4-b8-aagui-e7-a8-8b-e5-ba-8f/" data-id="cjtbs4mhi005de05s4qfnui5i" class="article-share-link">Share</a>
+      <a data-url="http://www.1zyan.cc/2018/07/14/javagui-e7-bc-96-e5-86-99-e4-b8-80-ef-bc-9a-e5-88-9b-e5-bb-ba-e4-b8-80-e4-b8-aagui-e7-a8-8b-e5-ba-8f/" data-id="cjtbshsgk005bu85szpdsn1b7" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javaGui/">javaGui</a></li></ul>
@@ -305,7 +158,7 @@ public Object pop(){
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.1zyan.cc/2018/07/07/e6-94-af-e7-83-9fip-e6-ae-b5-e6-89-b9-e9-87-8f-e6-89-ab-e6-8f-8f-e5-b7-a5-e5-85-b7/" data-id="cjtbs4mfs002qe05s8p474yi0" class="article-share-link">Share</a>
+      <a data-url="http://www.1zyan.cc/2018/07/07/e6-94-af-e7-83-9fip-e6-ae-b5-e6-89-b9-e9-87-8f-e6-89-ab-e6-8f-8f-e5-b7-a5-e5-85-b7/" data-id="cjtbshsdz002su85sebiyw7gt" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/支烟IP扫描器/">支烟IP扫描器</a></li></ul>
@@ -355,7 +208,7 @@ public Object pop(){
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.1zyan.cc/2018/07/04/wordpress-e6-96-87-e7-ab-a0-e8-af-a6-e6-83-85-e9-a1-b5-e9-9d-a2-e5-86-85-e5-ae-b9-e6-97-a0-e6-b3-95-e6-98-be-e7-a4-ba-e9-97-ae-e9-a2-98/" data-id="cjtbs4mj90098e05szge7lkmp" class="article-share-link">Share</a>
+      <a data-url="http://www.1zyan.cc/2018/07/04/wordpress-e6-96-87-e7-ab-a0-e8-af-a6-e6-83-85-e9-a1-b5-e9-9d-a2-e5-86-85-e5-ae-b9-e6-97-a0-e6-b3-95-e6-98-be-e7-a4-ba-e9-97-ae-e9-a2-98/" data-id="cjtbshsiq009bu85soj8qkjxd" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/WordPress/">WordPress</a></li></ul>
@@ -399,7 +252,7 @@ public Object pop(){
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.1zyan.cc/2018/02/25/e6-94-af-e7-83-9f-e6-98-93-e4-bb-a3-e7-a0-81-e8-bd-ac-e6-8d-a2-e4-b8-bac-e4-bb-a3-e7-a0-81/" data-id="cjtbs4mex002de05s6omd4ntu" class="article-share-link">Share</a>
+      <a data-url="http://www.1zyan.cc/2018/02/25/e6-94-af-e7-83-9f-e6-98-93-e4-bb-a3-e7-a0-81-e8-bd-ac-e6-8d-a2-e4-b8-bac-e4-bb-a3-e7-a0-81/" data-id="cjtbshsdj002bu85smzxd0yn9" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C#</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/原创/">原创</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/易代码转换/">易代码转换</a></li></ul>
@@ -458,7 +311,7 @@ public Object pop(){
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.1zyan.cc/2018/02/18/e6-94-af-e7-83-9f-e8-b6-85-e7-ba-a7-e7-b1-bb-e5-ba-93v0-03/" data-id="cjtbs4mfc002ke05smhgme4e7" class="article-share-link">Share</a>
+      <a data-url="http://www.1zyan.cc/2018/02/18/e6-94-af-e7-83-9f-e8-b6-85-e7-ba-a7-e7-b1-bb-e5-ba-93v0-03/" data-id="cjtbshsdz002lu85sg8903cue" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/支烟类库/">支烟类库</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/超级类库/">超级类库</a></li></ul>
@@ -508,7 +361,7 @@ public Object pop(){
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.1zyan.cc/2018/01/08/e6-94-af-e7-83-9f-e8-af-ad-e9-9f-b3-e5-9c-a8-e7-ba-bf-e5-90-88-e6-88-90-e7-b3-bb-e7-bb-9f/" data-id="cjtbs4mfc002ie05s6zthu7kk" class="article-share-link">Share</a>
+      <a data-url="http://www.1zyan.cc/2018/01/08/e6-94-af-e7-83-9f-e8-af-ad-e9-9f-b3-e5-9c-a8-e7-ba-bf-e5-90-88-e6-88-90-e7-b3-bb-e7-bb-9f/" data-id="cjtbshsdz002hu85sr537w7sw" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C#</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/语音合成/">语音合成</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/软件/">软件</a></li></ul>
@@ -568,7 +421,7 @@ public Object pop(){
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.1zyan.cc/2018/01/05/c-e8-b6-85-e7-ba-a7-e7-b1-bb-e5-ba-93-zy-ec-0-02/" data-id="cjtbs4mdm000je05sm3xebkes" class="article-share-link">Share</a>
+      <a data-url="http://www.1zyan.cc/2018/01/05/c-e8-b6-85-e7-ba-a7-e7-b1-bb-e5-ba-93-zy-ec-0-02/" data-id="cjtbshsc8000iu85s4b1rm4e5" class="article-share-link">Share</a>
       
       
     </footer>
@@ -608,10 +461,120 @@ public Object pop(){
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.1zyan.cc/2018/01/04/e7-ba-afc-e5-86-99-e7-9a-84-e8-8d-92-e9-87-8e-e8-a1-8c-e5-8a-a8-e5-a4-96-e6-8c-82-c-e5-a4-96-e6-8c-82/" data-id="cjtbs4mg8003pe05s7yw0a7pd" class="article-share-link">Share</a>
+      <a data-url="http://www.1zyan.cc/2018/01/04/e7-ba-afc-e5-86-99-e7-9a-84-e8-8d-92-e9-87-8e-e8-a1-8c-e5-8a-a8-e5-a4-96-e6-8c-82-c-e5-a4-96-e6-8c-82/" data-id="cjtbshseu003nu85sd3ph6c17" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C#</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/荒野行动/">荒野行动</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-e6-94-af-e7-83-9f-e8-bf-9b-e7-a8-8b-e7-ba-bf-e7-a8-8b-e7-ae-a1-e7-90-86-e5-99-a8" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/11/21/e6-94-af-e7-83-9f-e8-bf-9b-e7-a8-8b-e7-ba-bf-e7-a8-8b-e7-ae-a1-e7-90-86-e5-99-a8/" class="article-date">
+  <time datetime="2017-11-21T09:09:58.000Z" itemprop="datePublished">2017-11-21</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/C/">C#</a>►<a class="article-category-link" href="/categories/C/软件开发/">软件开发</a>►<a class="article-category-link" href="/categories/C/软件开发/首页/">首页</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/11/21/e6-94-af-e7-83-9f-e8-bf-9b-e7-a8-8b-e7-ba-bf-e7-a8-8b-e7-ae-a1-e7-90-86-e5-99-a8/">支烟进程线程管理器</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="支烟进程线程管理器"><a href="#支烟进程线程管理器" class="headerlink" title="支烟进程线程管理器"></a>支烟进程线程管理器</h1><h1 id="软件说明："><a href="#软件说明：" class="headerlink" title="软件说明："></a>软件说明：</h1><pre><code>1.软件使用c#写的
+
+2.软件支持查看线程
+
+3.可以强制结束线程
+
+4.挂起和恢复线程
+
+5.可以管理进程
+
+6.强制结束进程
+</code></pre><p>下载地址：</p>
+<pre><code>[http://pan.baidu.com/s/1ge3d6N5](http://pan.baidu.com/s/1ge3d6N5)  
+</code></pre><p>软件截图：</p>
+<pre><code>![](/wp-content/uploads/2017/11/20171121170819_45332.png)![](/wp-content/uploads/2017/11/20171121170819_84215.png)![](/wp-content/uploads/2017/11/20171121170820_73446.png)
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.1zyan.cc/2017/11/21/e6-94-af-e7-83-9f-e8-bf-9b-e7-a8-8b-e7-ba-bf-e7-a8-8b-e7-ae-a1-e7-90-86-e5-99-a8/" data-id="cjtbshsdz002ou85sy2kwjusl" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C#</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/原创/">原创</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/软件/">软件</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-e4-b8-ad-e6-96-87-e7-b1-bb-e5-ba-930-01-e6-b5-8b-e8-af-95-e7-89-88" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/11/10/e4-b8-ad-e6-96-87-e7-b1-bb-e5-ba-930-01-e6-b5-8b-e8-af-95-e7-89-88/" class="article-date">
+  <time datetime="2017-11-10T05:24:46.000Z" itemprop="datePublished">2017-11-10</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/C/">C#</a>►<a class="article-category-link" href="/categories/C/原创/">原创</a>►<a class="article-category-link" href="/categories/C/原创/首页/">首页</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/11/10/e4-b8-ad-e6-96-87-e7-b1-bb-e5-ba-930-01-e6-b5-8b-e8-af-95-e7-89-88/">中文类库0.01测试版</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="更新内容："><a href="#更新内容：" class="headerlink" title="更新内容："></a>更新内容：</h1><pre><code>1.将cs文件封装成了类库
+</code></pre><p>=================</p>
+<pre><code>2.将所有操作进行了分类
+</code></pre><p>================</p>
+<pre><code>3.添加了csv文件和excel文件的读取操作
+</code></pre><p>===========================</p>
+<pre><code>4.添加常用的sqlserver操作
+</code></pre><p>======================</p>
+<pre><code>5.完善了一些已知BUG
+</code></pre><p>================</p>
+<h1 id="如有意见请联系作者，还有如果有什么好的提议或者想法也可以联系我"><a href="#如有意见请联系作者，还有如果有什么好的提议或者想法也可以联系我" class="headerlink" title="如有意见请联系作者，还有如果有什么好的提议或者想法也可以联系我"></a>如有意见请联系作者，还有如果有什么好的提议或者想法也可以联系我</h1><h1 id="类库下载地址：http-pan-baidu-com-s-1bzj27k"><a href="#类库下载地址：http-pan-baidu-com-s-1bzj27k" class="headerlink" title="类库下载地址：http://pan.baidu.com/s/1bzj27k"></a>类库下载地址：<a href="http://pan.baidu.com/s/1bzj27k" target="_blank" rel="noopener">http://pan.baidu.com/s/1bzj27k</a></h1><h1 id="文件帮助文档：等待更新"><a href="#文件帮助文档：等待更新" class="headerlink" title="文件帮助文档：等待更新"></a>文件帮助文档：等待更新</h1><p><img src="http://www.1zyan.cc/wp-content/uploads/2017/11/43a889211096071eeb99.png" alt></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.1zyan.cc/2017/11/10/e4-b8-ad-e6-96-87-e7-b1-bb-e5-ba-930-01-e6-b5-8b-e8-af-95-e7-89-88/" data-id="cjtbshsco0017u85s7tkls8ib" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C#</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/中文类库/">中文类库</a></li></ul>
 
     </footer>
   </div>
@@ -655,7 +618,7 @@ public Object pop(){
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/C/" style="font-size: 20px;">C#</a> <a href="/tags/EXCEL写数据/" style="font-size: 10px;">EXCEL写数据</a> <a href="/tags/JAVA/" style="font-size: 19px;">JAVA</a> <a href="/tags/Jquery/" style="font-size: 10px;">Jquery</a> <a href="/tags/MV/" style="font-size: 10px;">MV</a> <a href="/tags/MyBatis/" style="font-size: 15px;">MyBatis</a> <a href="/tags/PHP/" style="font-size: 10px;">PHP</a> <a href="/tags/PS/" style="font-size: 10px;">PS</a> <a href="/tags/SqlServer/" style="font-size: 11px;">SqlServer</a> <a href="/tags/WEB/" style="font-size: 13px;">WEB</a> <a href="/tags/Webpack/" style="font-size: 17px;">Webpack</a> <a href="/tags/WordPress/" style="font-size: 13px;">WordPress</a> <a href="/tags/aop/" style="font-size: 10px;">aop</a> <a href="/tags/app/" style="font-size: 10px;">app</a> <a href="/tags/c-未将对象引用设置到对象的实例/" style="font-size: 10px;">c#未将对象引用设置到对象的实例</a> <a href="/tags/es6/" style="font-size: 16px;">es6</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/idea/" style="font-size: 11px;">idea</a> <a href="/tags/ioc/" style="font-size: 10px;">ioc</a> <a href="/tags/javaGui/" style="font-size: 10px;">javaGui</a> <a href="/tags/junit/" style="font-size: 10px;">junit</a> <a href="/tags/linux/" style="font-size: 11px;">linux</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/rem插件/" style="font-size: 10px;">rem插件</a> <a href="/tags/spring/" style="font-size: 17px;">spring</a> <a href="/tags/sql/" style="font-size: 10px;">sql</a> <a href="/tags/sql-server/" style="font-size: 10px;">sql server</a> <a href="/tags/sqlse/" style="font-size: 10px;">sqlse</a> <a href="/tags/vue/" style="font-size: 18px;">vue</a> <a href="/tags/vue-cli/" style="font-size: 16px;">vue-cli</a> <a href="/tags/中文乱码/" style="font-size: 10px;">中文乱码</a> <a href="/tags/中文类库/" style="font-size: 10px;">中文类库</a> <a href="/tags/入栈/" style="font-size: 10px;">入栈</a> <a href="/tags/公司模板/" style="font-size: 10px;">公司模板</a> <a href="/tags/其他主题/" style="font-size: 10px;">其他主题</a> <a href="/tags/冒泡排序/" style="font-size: 10px;">冒泡排序</a> <a href="/tags/分布式/" style="font-size: 10px;">分布式</a> <a href="/tags/前端/" style="font-size: 11px;">前端</a> <a href="/tags/单例模式/" style="font-size: 10px;">单例模式</a> <a href="/tags/原创/" style="font-size: 14px;">原创</a> <a href="/tags/古风/" style="font-size: 10px;">古风</a> <a href="/tags/图片/" style="font-size: 10px;">图片</a> <a href="/tags/多线程/" style="font-size: 11px;">多线程</a> <a href="/tags/好听/" style="font-size: 10px;">好听</a> <a href="/tags/娱乐/" style="font-size: 10px;">娱乐</a> <a href="/tags/小米/" style="font-size: 10px;">小米</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a> <a href="/tags/情书/" style="font-size: 10px;">情书</a> <a href="/tags/支烟IP扫描器/" style="font-size: 10px;">支烟IP扫描器</a> <a href="/tags/支烟类库/" style="font-size: 10px;">支烟类库</a> <a href="/tags/教程/" style="font-size: 11px;">教程</a> <a href="/tags/数据库/" style="font-size: 12px;">数据库</a> <a href="/tags/新技术/" style="font-size: 10px;">新技术</a> <a href="/tags/易代码转换/" style="font-size: 10px;">易代码转换</a> <a href="/tags/枚举/" style="font-size: 10px;">枚举</a> <a href="/tags/社团管理系统/" style="font-size: 10px;">社团管理系统</a> <a href="/tags/程序/" style="font-size: 10px;">程序</a> <a href="/tags/系统/" style="font-size: 10px;">系统</a> <a href="/tags/网络/" style="font-size: 10px;">网络</a> <a href="/tags/美图/" style="font-size: 10px;">美图</a> <a href="/tags/荒野行动/" style="font-size: 10px;">荒野行动</a> <a href="/tags/视频软件/" style="font-size: 10px;">视频软件</a> <a href="/tags/语音合成/" style="font-size: 10px;">语音合成</a> <a href="/tags/超级CS/" style="font-size: 10px;">超级CS</a> <a href="/tags/超级类库/" style="font-size: 10px;">超级类库</a> <a href="/tags/软件/" style="font-size: 13px;">软件</a> <a href="/tags/软件开发/" style="font-size: 11px;">软件开发</a> <a href="/tags/逻辑思维训练/" style="font-size: 10px;">逻辑思维训练</a> <a href="/tags/面试题/" style="font-size: 13px;">面试题</a> <a href="/tags/音乐/" style="font-size: 11px;">音乐</a>
+      <a href="/tags/C/" style="font-size: 20px;">C#</a> <a href="/tags/EXCEL写数据/" style="font-size: 10px;">EXCEL写数据</a> <a href="/tags/JAVA/" style="font-size: 18.89px;">JAVA</a> <a href="/tags/Jquery/" style="font-size: 10px;">Jquery</a> <a href="/tags/MV/" style="font-size: 10px;">MV</a> <a href="/tags/MyBatis/" style="font-size: 14.44px;">MyBatis</a> <a href="/tags/PHP/" style="font-size: 10px;">PHP</a> <a href="/tags/PS/" style="font-size: 10px;">PS</a> <a href="/tags/SqlServer/" style="font-size: 11.11px;">SqlServer</a> <a href="/tags/WEB/" style="font-size: 13.33px;">WEB</a> <a href="/tags/Webpack/" style="font-size: 16.67px;">Webpack</a> <a href="/tags/WordPress/" style="font-size: 13.33px;">WordPress</a> <a href="/tags/aop/" style="font-size: 10px;">aop</a> <a href="/tags/app/" style="font-size: 10px;">app</a> <a href="/tags/c-未将对象引用设置到对象的实例/" style="font-size: 10px;">c#未将对象引用设置到对象的实例</a> <a href="/tags/es6/" style="font-size: 15.56px;">es6</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/idea/" style="font-size: 11.11px;">idea</a> <a href="/tags/ioc/" style="font-size: 10px;">ioc</a> <a href="/tags/javaGui/" style="font-size: 10px;">javaGui</a> <a href="/tags/junit/" style="font-size: 10px;">junit</a> <a href="/tags/linux/" style="font-size: 11.11px;">linux</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/rem插件/" style="font-size: 10px;">rem插件</a> <a href="/tags/spring/" style="font-size: 16.67px;">spring</a> <a href="/tags/sql/" style="font-size: 10px;">sql</a> <a href="/tags/sql-server/" style="font-size: 10px;">sql server</a> <a href="/tags/sqlse/" style="font-size: 10px;">sqlse</a> <a href="/tags/vue/" style="font-size: 17.78px;">vue</a> <a href="/tags/vue-cli/" style="font-size: 15.56px;">vue-cli</a> <a href="/tags/中文乱码/" style="font-size: 10px;">中文乱码</a> <a href="/tags/中文类库/" style="font-size: 10px;">中文类库</a> <a href="/tags/入栈/" style="font-size: 10px;">入栈</a> <a href="/tags/公司模板/" style="font-size: 10px;">公司模板</a> <a href="/tags/其他主题/" style="font-size: 10px;">其他主题</a> <a href="/tags/冒泡排序/" style="font-size: 10px;">冒泡排序</a> <a href="/tags/分布式/" style="font-size: 10px;">分布式</a> <a href="/tags/前端/" style="font-size: 11.11px;">前端</a> <a href="/tags/单例模式/" style="font-size: 10px;">单例模式</a> <a href="/tags/原创/" style="font-size: 13.33px;">原创</a> <a href="/tags/古风/" style="font-size: 10px;">古风</a> <a href="/tags/图片/" style="font-size: 10px;">图片</a> <a href="/tags/多线程/" style="font-size: 11.11px;">多线程</a> <a href="/tags/好听/" style="font-size: 10px;">好听</a> <a href="/tags/娱乐/" style="font-size: 10px;">娱乐</a> <a href="/tags/小米/" style="font-size: 10px;">小米</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a> <a href="/tags/情书/" style="font-size: 10px;">情书</a> <a href="/tags/支烟IP扫描器/" style="font-size: 10px;">支烟IP扫描器</a> <a href="/tags/支烟类库/" style="font-size: 10px;">支烟类库</a> <a href="/tags/教程/" style="font-size: 11.11px;">教程</a> <a href="/tags/数据库/" style="font-size: 12.22px;">数据库</a> <a href="/tags/新技术/" style="font-size: 10px;">新技术</a> <a href="/tags/易代码转换/" style="font-size: 10px;">易代码转换</a> <a href="/tags/枚举/" style="font-size: 10px;">枚举</a> <a href="/tags/社团管理系统/" style="font-size: 10px;">社团管理系统</a> <a href="/tags/程序/" style="font-size: 10px;">程序</a> <a href="/tags/系统/" style="font-size: 10px;">系统</a> <a href="/tags/网络/" style="font-size: 10px;">网络</a> <a href="/tags/美图/" style="font-size: 10px;">美图</a> <a href="/tags/荒野行动/" style="font-size: 10px;">荒野行动</a> <a href="/tags/视频软件/" style="font-size: 10px;">视频软件</a> <a href="/tags/语音合成/" style="font-size: 10px;">语音合成</a> <a href="/tags/超级CS/" style="font-size: 10px;">超级CS</a> <a href="/tags/超级类库/" style="font-size: 10px;">超级类库</a> <a href="/tags/软件/" style="font-size: 13.33px;">软件</a> <a href="/tags/软件开发/" style="font-size: 11.11px;">软件开发</a> <a href="/tags/逻辑思维训练/" style="font-size: 10px;">逻辑思维训练</a> <a href="/tags/面试题/" style="font-size: 13.33px;">面试题</a> <a href="/tags/音乐/" style="font-size: 11.11px;">音乐</a>
     </div>
   </div>
 
@@ -677,14 +640,6 @@ public Object pop(){
       <ul>
         
           <li>
-            <a href="/2019/02/28/测试文件/">测试文件</a>
-          </li>
-        
-          <li>
-            <a href="/2019/02/27/hello-world/">Hello World</a>
-          </li>
-        
-          <li>
             <a href="/2019/02/25/10-e5-88-86-e9-92-9f-e5-ad-a6-e4-bc-9aes7es8/">10分钟学会ES7+ES8</a>
           </li>
         
@@ -694,6 +649,14 @@ public Object pop(){
         
           <li>
             <a href="/2019/01/24/springmybatis-e6-95-b4-e5-90-88-e7-ac-94-e8-ae-b0-e4-bd-bf-e7-94-a8-e6-b3-a8-e8-a7-a3-e6-a0-87-e7-ad-be-e5-ae-9e-e7-8e-b0-e4-ba-8b-e5-8a-a1-e5-92-8c-e4-ba-8b-e5-8a-a1-e7-9a-84-e5-8f-82-e6-95-b0/">Spring+Mybatis整合笔记-使用注解标签实现事务和事务的参数</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/22/vue-router-e5-86-99-e5-ba-95-e9-83-a8-e5-af-bc-e8-88-aa-e6-a0-8f-e9-81-87-e5-88-b0-e7-9a-84-e5-9d-91router-replace/">vue-router写底部导航栏遇到的坑router.replace</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/22/e4-bd-bf-e7-94-a8vue-cli-e7-bc-96-e5-86-99-e7-bb-84-e4-bb-b6-e5-b9-b6-e5-8f-91-e5-b8-83-e5-88-b0npm-e4-b8-8a/">使用vue-cli编写组件并发布到npm上</a>
           </li>
         
       </ul>

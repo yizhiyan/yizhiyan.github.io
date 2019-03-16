@@ -70,426 +70,6 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-mybatis-e9-85-8d-e7-bd-ae-e6-96-87-e4-bb-b6-e5-92-8cmybatis-e6-a0-b8-e5-bf-83-e5-af-b9-e8-b1-a1-e8-af-a6-e8-a7-a3" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/07/25/mybatis-e9-85-8d-e7-bd-ae-e6-96-87-e4-bb-b6-e5-92-8cmybatis-e6-a0-b8-e5-bf-83-e5-af-b9-e8-b1-a1-e8-af-a6-e8-a7-a3/" class="article-date">
-  <time datetime="2018-07-25T01:41:18.000Z" itemprop="datePublished">2018-07-25</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/JAVA/">JAVA</a>►<a class="article-category-link" href="/categories/JAVA/原创/">原创</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/25/mybatis-e9-85-8d-e7-bd-ae-e6-96-87-e4-bb-b6-e5-92-8cmybatis-e6-a0-b8-e5-bf-83-e5-af-b9-e8-b1-a1-e8-af-a6-e8-a7-a3/">Mybatis配置文件和mybatis核心对象详解</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>一、MyBatis概念</p>
-<blockquote>
-<blockquote>
-<p>Mybatis 是一个半自动化的orm框架。源码Ibatis。</p>
-</blockquote>
-</blockquote>
-<blockquote>
-<p>1.ORM  </p>
-</blockquote>
-<blockquote>
-<blockquote>
-<p>ORM：Object(对象) relation(关系) mapping(映射)</p>
-</blockquote>
-<blockquote>
-<p>ORM就是将实体类的属性与数据库中标的字段一一对应。</p>
-</blockquote>
-</blockquote>
-<blockquote>
-<p>2.半自动化  </p>
-</blockquote>
-<blockquote>
-<blockquote>
-<p>MyBatis只是将从数据库中查询的数据自动封装为对象(实体类)。但是没用实现增删改等操作是将实体类自动转换为数据。</p>
-</blockquote>
-<blockquote>
-<p>所以Mybatis只是一个半自动框架。</p>
-</blockquote>
-</blockquote>
-<blockquote>
-<p>3.持久化  </p>
-</blockquote>
-<blockquote>
-<blockquote>
-<p>持久化指数据在瞬时状态与持久状态之间转换的过程。</p>
-</blockquote>
-</blockquote>
-<blockquote>
-<blockquote>
-<p>1)瞬时状态</p>
-</blockquote>
-</blockquote>
-<blockquote>
-<blockquote>
-<blockquote>
-<p>数据在缓存或内存中，则数据处于瞬时状态。</p>
-</blockquote>
-</blockquote>
-<blockquote>
-<blockquote>
-<p>如：</p>
-</blockquote>
-</blockquote>
-<blockquote>
-<blockquote>
-<p>打开记事本文件，文件处于编辑状态，数据处于内存中——临时储存</p>
-</blockquote>
-</blockquote>
-<blockquote>
-<blockquote>
-<p>数据库读取出来，处于操作状态，数据处于内存中——临时储存</p>
-</blockquote>
-</blockquote>
-</blockquote>
-<blockquote>
-<blockquote>
-<p>2)持久状态</p>
-</blockquote>
-</blockquote>
-<blockquote>
-<blockquote>
-<blockquote>
-<p>数据处于硬盘上，则数据处于持久状态。</p>
-</blockquote>
-</blockquote>
-<blockquote>
-<blockquote>
-<p>如：</p>
-</blockquote>
-</blockquote>
-</blockquote>
-<blockquote>
-<blockquote>
-<blockquote>
-<blockquote>
-<p>记事本文件，及未打开状态，数据处于硬盘中——永久储存</p>
-</blockquote>
-</blockquote>
-</blockquote>
-<blockquote>
-<blockquote>
-<blockquote>
-<p>数据库文件，及未打开状态，数据处于硬盘中——永久储存</p>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-<blockquote>
-<blockquote>
-<p>3)持久化</p>
-</blockquote>
-</blockquote>
-<blockquote>
-<blockquote>
-<blockquote>
-<p>数据由瞬时-&gt;持久</p>
-</blockquote>
-</blockquote>
-<blockquote>
-<blockquote>
-<p>如：</p>
-</blockquote>
-</blockquote>
-</blockquote>
-<blockquote>
-<blockquote>
-<blockquote>
-<blockquote>
-<p>记事本保存数据——保存</p>
-</blockquote>
-</blockquote>
-</blockquote>
-<blockquote>
-<blockquote>
-<blockquote>
-<p>数据库保存数据——保存</p>
-</blockquote>
-</blockquote>
-</blockquote>
-<blockquote>
-<blockquote>
-<blockquote>
-<p>数据由持久-&gt;瞬时</p>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-<blockquote>
-<blockquote>
-<blockquote>
-<p>如：</p>
-</blockquote>
-</blockquote>
-</blockquote>
-<blockquote>
-<blockquote>
-<blockquote>
-<blockquote>
-<p>读取记事本数据——读取</p>
-</blockquote>
-</blockquote>
-</blockquote>
-<blockquote>
-<blockquote>
-<blockquote>
-<p>读取数据库数据——读取</p>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-<p>二、MyBatis核心对象  </p>
-<blockquote>
-<p>1.SqlSessionFactoryBuilder  </p>
-</blockquote>
-<blockquote>
-<blockquote>
-<p>用来启动MyBatis的。通过build方法来启动。</p>
-</blockquote>
-<blockquote>
-<p>一个web项目只有一个该类型的对象</p>
-</blockquote>
-</blockquote>
-<blockquote>
-<p>2.SqlSessionFactory  </p>
-</blockquote>
-<blockquote>
-<blockquote>
-<p>通过openSession来新开一个session。</p>
-</blockquote>
-<blockquote>
-<p>一个web项目只有一个该类型的对象。</p>
-</blockquote>
-</blockquote>
-<blockquote>
-<p>3.SqlSession  </p>
-</blockquote>
-<blockquote>
-<blockquote>
-<p>用于操作数据库的增删改查。</p>
-</blockquote>
-<blockquote>
-<p>每一次操作前都需要新打开一个，用完后关闭SqlSession对象。</p>
-</blockquote>
-<blockquote>
-<p>SqlSession对象线程级别的，多个session之间是独立的。</p>
-</blockquote>
-</blockquote>
-<p>三、Mybatis核心配置文件  </p>
-<blockquote>
-<p>Mybatis核心配置文件：Mybatis-config.xml  </p>
-</blockquote>
-<blockquote>
-<blockquote>
-<p>1.configuration——Mybatis根节点，所有配置都在这个节点下 。</p>
-</blockquote>
-<blockquote>
-<p>2.properties——引入外部配置文件</p>
-</blockquote>
-<blockquote>
-<blockquote>
-<p>如下：<properties resource="database.properties"></properties></p>
-</blockquote>
-</blockquote>
-<blockquote>
-<p>3.typeAliases——别名设置</p>
-</blockquote>
-<blockquote>
-<blockquote>
-<p>1)没个实体类都取一个别名，以后可以通过使用别名代替这个实体类。 type:被起别名的类 alias：别名 </p>
-</blockquote>
-</blockquote>
-<blockquote>
-<blockquote>
-<blockquote>
-<p>如：<typealias type="cn.jbit.pojo.User" alias="User"></typealias></p>
-</blockquote>
-</blockquote>
-</blockquote>
-<blockquote>
-<blockquote>
-<p>2)指定实体类所在包</p>
-</blockquote>
-</blockquote>
-<blockquote>
-<blockquote>
-<blockquote>
-<p>在mapper.xml 使用实体类名等同于使用权限定名。</p>
-</blockquote>
-</blockquote>
-</blockquote>
-<blockquote>
-<blockquote>
-<blockquote>
-<p>如 resultType=”User” 等同于 resultType=”cn.jbit.pojo.User”</p>
-</blockquote>
-</blockquote>
-</blockquote>
-<blockquote>
-<blockquote>
-<blockquote>
-<package name="cn.jbit.pojo">
-</package></blockquote>
-</blockquote>
-</blockquote>
-<blockquote>
-<p>4.environments——数据库环境配置</p>
-</blockquote>
-<blockquote>
-<blockquote>
-<p>default：使用已配置的数据库环境的id值</p>
-</blockquote>
-</blockquote>
-<blockquote>
-<p>5.environment——一套数据库的配置</p>
-</blockquote>
-<blockquote>
-<blockquote>
-<p>id：是当前数据库环境的唯一标识符,主要在environments节点的default使用。</p>
-</blockquote>
-</blockquote>
-<blockquote>
-<blockquote>
-<p>1)transactionManager——用于处理增删改的事物提交方式(commit)</p>
-</blockquote>
-</blockquote>
-<blockquote>
-<blockquote>
-<blockquote>
-<transactionmanager type="JDBC">
-</transactionmanager></blockquote>
-</blockquote>
-</blockquote>
-<blockquote>
-<blockquote>
-<p>2)数据源(和数据库的连接) type:连接方式，pooled:缓冲池方式</p>
-</blockquote>
-</blockquote>
-<blockquote>
-<p>6.mapper节点</p>
-</blockquote>
-<blockquote>
-<blockquote>
-<p>关联mapper.xml配置文件</p>
-</blockquote>
-</blockquote>
-</blockquote>
-<p>&lt;?xml version=”1.0” encoding=”UTF-8”?&gt;<br>&lt;!DOCTYPE configuration PUBLIC “-//mybatis.org//DTD Config 3.0//EN”<br>“<a href="http://mybatis.org/dtd/mybatis-3-config.dtd&quot;&gt;" target="_blank" rel="noopener">http://mybatis.org/dtd/mybatis-3-config.dtd&quot;&gt;</a></p>
-<configuration><br>    &lt;!-- 导入外部文件 –&gt;<br>    <properties resource="database.properties"><br>    &lt;!-- 取别名 –&gt;<br>    <typealiases><br>        <package name="com.smbms.pojo"><br>    </package></typealiases><br>    &lt;!-- 配置文件 –&gt;<br>    <environments default="mysqlSmbms"><br>        <environment id="mysqlSmbms"><br>            <transactionmanager type="JDBC"><br>            <datasource type="POOLED"><br>                <property name="driver" value="${driver}"><br>                <property name="url" value="${url}"><br>                <property name="username" value="${user}"><br>                <property name="password" value="${password}"><br>            </property></property></property></property></datasource><br>        </transactionmanager></environment><br>    </environments><br>    <mappers><br>        <mapper resource="com/smbms/dao/UserMapper.xml"><br>    </mapper></mappers><br></properties></configuration>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://www.1zyan.cc/2018/07/25/mybatis-e9-85-8d-e7-bd-ae-e6-96-87-e4-bb-b6-e5-92-8cmybatis-e6-a0-b8-e5-bf-83-e5-af-b9-e8-b1-a1-e8-af-a6-e8-a7-a3/" data-id="cjtbs4mhy005re05scq7zjb4j" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JAVA/">JAVA</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-java-e5-a4-9a-e7-ba-bf-e7-a8-8b" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/07/25/java-e5-a4-9a-e7-ba-bf-e7-a8-8b/" class="article-date">
-  <time datetime="2018-07-25T01:00:24.000Z" itemprop="datePublished">2018-07-25</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/JAVA/">JAVA</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/25/java-e5-a4-9a-e7-ba-bf-e7-a8-8b/">JAVA多线程</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Thread-方法"><a href="#Thread-方法" class="headerlink" title="Thread 方法"></a>Thread 方法</h2><p>下表列出了Thread类的一些重要方法：</p>
-<p><strong>序号</strong></p>
-<p><strong>方法描述</strong></p>
-<p>1</p>
-<p><strong>public void start()</strong><br>使该线程开始执行；<strong>Java</strong> 虚拟机调用该线程的 run 方法。</p>
-<p>2</p>
-<p><strong>public void run()</strong>  </p>
-<p>如果该线程是使用独立的 Runnable 运行对象构造的，则调用该 Runnable 对象的 run 方法；否则，该方法不执行任何操作并返回。</p>
-<p>3</p>
-<p><strong>public final void setName(String name)</strong><br>改变线程名称，使之与参数 name 相同。</p>
-<p>4</p>
-<p><strong>public final void setPriority(int priority)</strong><br> 更改线程的优先级。</p>
-<p>5</p>
-<p><strong>public final void setDaemon(boolean on)</strong><br>将该线程标记为守护线程或用户线程。</p>
-<p>6</p>
-<p><strong>public final void join(long millisec)</strong><br>等待该线程终止的时间最长为 millis 毫秒。</p>
-<p>7</p>
-<p><strong>public void interrupt()</strong><br>中断线程。</p>
-<p>8</p>
-<p><strong>public final boolean isAlive()</strong><br>测试线程是否处于活动状态。</p>
-<p>测试线程是否处于活动状态。 上述方法是被Thread对象调用的。下面的方法是Thread类的静态方法。</p>
-<p><strong>序号</strong></p>
-<p><strong>方法描述</strong></p>
-<p>1</p>
-<p><strong>public static void yield()</strong><br>暂停当前正在执行的线程对象，并执行其他线程。</p>
-<p>2</p>
-<p><strong>public static void sleep(long millisec)</strong><br>在指定的毫秒数内让当前正在执行的线程休眠（暂停执行），此操作受到系统计时器和调度程序精度和准确性的影响。</p>
-<p>3</p>
-<p><strong>public static boolean holdsLock(Object x)</strong><br>当且仅当当前线程在指定的对象上保持监视器锁时，才返回 true。</p>
-<p>4</p>
-<p><strong>public static Thread currentThread()</strong><br>返回对当前正在执行的线程对象的引用。</p>
-<p>5</p>
-<p><strong>public static void dumpStack()</strong><br>将当前线程的堆栈跟踪打印至标准错误流。</p>
-<p>以上转至：<a href="http://www.runoob.com/java/java-multithreading.html" target="_blank" rel="noopener">http://www.runoob.com/java/java-multithreading.html</a></p>
-<p>样例如下：</p>
-<p>package org.junit.Ts;</p>
-<p>import javassist.compiler.ProceedHandler;</p>
-<p>import org.junit.Test;</p>
-<p>import com.sun.xml.internal.stream.events.ProcessingInstructionEvent;</p>
-<p>public class ThreadTest {<br>    @Test<br>    public void fun1(){<br>        ThreadOpen t1=new ThreadOpen();<br>        t1.setName(“t1”);<br>        t1.setDaemon(true);<br>        t1.start();<br>        ThreadOpen t2=new ThreadOpen();<br>        t2.setName(“t2”);<br>        t2.setDaemon(true);<br>        t2.start();<br>        System.out.println(“执行结束！！”);<br>    }<br>}<br>class ThreadOpen extends Thread{<br>    @Override<br>    public void run() {<br>        Thread thisThread=Thread.currentThread();<br>        System.out.println(“当前线程：”+thisThread.getName()+” ID:”+thisThread.getId());<br>        for (int i = 0; i &lt; 20; i++) {<br>            System.out.println(thisThread.getName()+” :”+i);<br>        }<br>    }<br>}</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://www.1zyan.cc/2018/07/25/java-e5-a4-9a-e7-ba-bf-e7-a8-8b/" data-id="cjtbs4mhi005ae05sulac4a9u" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JAVA/">JAVA</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/多线程/">多线程</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
     <article id="post-linux-e5-9f-ba-e7-a1-80-e5-91-bd-e4-bb-a4" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/07/24/linux-e5-9f-ba-e7-a1-80-e5-91-bd-e4-bb-a4/" class="article-date">
@@ -686,7 +266,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.1zyan.cc/2018/07/24/linux-e5-9f-ba-e7-a1-80-e5-91-bd-e4-bb-a4/" data-id="cjtbs4mog00jse05sukg47xge" class="article-share-link">Share</a>
+      <a data-url="http://www.1zyan.cc/2018/07/24/linux-e5-9f-ba-e7-a1-80-e5-91-bd-e4-bb-a4/" data-id="cjtbshsmn00jmu85s0mexjzmb" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li></ul>
@@ -735,7 +315,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.1zyan.cc/2018/07/23/java-e5-86-99excel-e6-95-b0-e6-8d-ae/" data-id="cjtbs4mhi0053e05sylb823c3" class="article-share-link">Share</a>
+      <a data-url="http://www.1zyan.cc/2018/07/23/java-e5-86-99excel-e6-95-b0-e6-8d-ae/" data-id="cjtbshsg50052u85sep3fueru" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/EXCEL写数据/">EXCEL写数据</a></li></ul>
@@ -784,7 +364,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.1zyan.cc/2018/07/23/spring-e6-a6-82-e5-bf-b5-e6-b7-b1-e5-85-a5-e5-ad-a6-e4-b9-a0/" data-id="cjtbs4mhy006je05s32k81gt9" class="article-share-link">Share</a>
+      <a data-url="http://www.1zyan.cc/2018/07/23/spring-e6-a6-82-e5-bf-b5-e6-b7-b1-e5-85-a5-e5-ad-a6-e4-b9-a0/" data-id="cjtbshsh0006mu85skp9sju6q" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/面试题/">面试题</a></li></ul>
@@ -827,7 +407,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.1zyan.cc/2018/07/21/e4-b8-80-e6-ac-a1-e6-84-8f-e5-a4-96-e7-9a-84-e5-9d-90-e8-bd-a6/" data-id="cjtbs4mdm0013e05sw4gimfw9" class="article-share-link">Share</a>
+      <a data-url="http://www.1zyan.cc/2018/07/21/e4-b8-80-e6-ac-a1-e6-84-8f-e5-a4-96-e7-9a-84-e5-9d-90-e8-bd-a6/" data-id="cjtbshsco0011u85skekxn8cs" class="article-share-link">Share</a>
       
       
     </footer>
@@ -869,7 +449,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.1zyan.cc/2018/07/21/e4-b8-ba-e4-bb-80-e4-b9-88jsp-e7-ac-ac-e4-b8-80-e6-ac-a1-e8-bf-90-e8-a1-8c-e6-af-94servlet-e6-85-a2-ef-bc-9f/" data-id="cjtbs4mdm0019e05swyokillr" class="article-share-link">Share</a>
+      <a data-url="http://www.1zyan.cc/2018/07/21/e4-b8-ba-e4-bb-80-e4-b9-88jsp-e7-ac-ac-e4-b8-80-e6-ac-a1-e8-bf-90-e8-a1-8c-e6-af-94servlet-e6-85-a2-ef-bc-9f/" data-id="cjtbshsco0019u85spoz7nh1w" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/面试题/">面试题</a></li></ul>
@@ -915,7 +495,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.1zyan.cc/2018/07/21/e4-b8-80-e4-b8-aa5-e5-8d-87-e7-9a-84-e6-9d-af-e5-ad-90-e4-b8-80-e4-b8-aa3-e5-8d-87-e7-9a-84-e6-9d-af-e5-ad-90-e6-80-8e-e4-b9-88-e8-a1-a1-e9-87-8f-e5-87-ba4-e5-8d-87-e7-9a-84-e6-b0-b4/" data-id="cjtbs4mdm000ze05sadhponlu" class="article-share-link">Share</a>
+      <a data-url="http://www.1zyan.cc/2018/07/21/e4-b8-80-e4-b8-aa5-e5-8d-87-e7-9a-84-e6-9d-af-e5-ad-90-e4-b8-80-e4-b8-aa3-e5-8d-87-e7-9a-84-e6-9d-af-e5-ad-90-e6-80-8e-e4-b9-88-e8-a1-a1-e9-87-8f-e5-87-ba4-e5-8d-87-e7-9a-84-e6-b0-b4/" data-id="cjtbshsco000yu85sw54xt0p5" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/逻辑思维训练/">逻辑思维训练</a></li></ul>
@@ -1008,7 +588,7 @@ SpringMvc整个的执行流程：
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.1zyan.cc/2018/07/20/e4-bb-80-e4-b9-88-e6-98-afspring-e3-80-81springmvc-e3-80-81mybatis/" data-id="cjtbs4me1001ce05s2hgjm99l" class="article-share-link">Share</a>
+      <a data-url="http://www.1zyan.cc/2018/07/20/e4-bb-80-e4-b9-88-e6-98-afspring-e3-80-81springmvc-e3-80-81mybatis/" data-id="cjtbshsco001bu85sq4kf5n3c" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/面试题/">面试题</a></li></ul>
@@ -1053,10 +633,157 @@ SpringMvc整个的执行流程：
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.1zyan.cc/2018/07/20/java-e5-86-92-e6-b3-a1-e6-8e-92-e5-ba-8f/" data-id="cjtbs4mhi004ye05s1a3jyxb2" class="article-share-link">Share</a>
+      <a data-url="http://www.1zyan.cc/2018/07/20/java-e5-86-92-e6-b3-a1-e6-8e-92-e5-ba-8f/" data-id="cjtbshsg5004zu85ss3p38bpa" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/冒泡排序/">冒泡排序</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/面试题/">面试题</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-java-e5-85-a5-e6-a0-88-e5-87-ba-e6-a0-88-e6-a8-a1-e6-8b-9f" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/07/20/java-e5-85-a5-e6-a0-88-e5-87-ba-e6-a0-88-e6-a8-a1-e6-8b-9f/" class="article-date">
+  <time datetime="2018-07-20T03:54:23.000Z" itemprop="datePublished">2018-07-20</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/JAVA/">JAVA</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/20/java-e5-85-a5-e6-a0-88-e5-87-ba-e6-a0-88-e6-a8-a1-e6-8b-9f/">java入栈出栈模拟</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>package com.push.text;</p>
+<p>public class InStacks {<br>    private int max=20;<br>    private Object[] stacks=null;<br>    private int size=-1;<br>    public InStacks(){<br>        stacks=new Object[max];<br>    }<br>    public void push(Object obj){<br>        //判断入栈个数是否大于储存结构的最大个数<br>        if(size&gt;=stacks.length){<br>            //扩充数组<br>            Object[] new_obj=new Object[stacks.length+max];<br>            //copy数组中的内容到新数组中取<br>            System.arraycopy(stacks, 0, new_obj, 0, stacks.length);<br>            stacks=new_obj;<br>        }<br>                stacks[size++]=obj;</p>
+<pre><code>}
+public Object pop(){
+    try{
+        return stacks\[--size\];
+    }catch (Exception e) {
+        return null;
+    }
+}
+</code></pre><p>}</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.1zyan.cc/2018/07/20/java-e5-85-a5-e6-a0-88-e5-87-ba-e6-a0-88-e6-a8-a1-e6-8b-9f/" data-id="cjtbshsfp004vu85sl98w27yw" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/入栈/">入栈</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-e7-90-86-e8-a7-a3java-e4-b8-ad-e7-9a-84-e4-ba-94-e4-b8-ad-e5-8d-95-e4-be-8b-e6-a8-a1-e5-bc-8f" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/07/20/e7-90-86-e8-a7-a3java-e4-b8-ad-e7-9a-84-e4-ba-94-e4-b8-ad-e5-8d-95-e4-be-8b-e6-a8-a1-e5-bc-8f/" class="article-date">
+  <time datetime="2018-07-20T02:04:02.000Z" itemprop="datePublished">2018-07-20</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/JAVA/">JAVA</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/20/e7-90-86-e8-a7-a3java-e4-b8-ad-e7-9a-84-e4-ba-94-e4-b8-ad-e5-8d-95-e4-be-8b-e6-a8-a1-e5-bc-8f/">理解java中的五中单例模式</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>解法一：只适合单线程环境（不好）</p>
+<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<p>package test; /*<em> \</em> @author xiaoping<br> * */ public class Singleton { private static Singleton instance=null; private Singleton(){</p>
+<pre><code>} public static Singleton getInstance(){ if(instance==null){
+        instance=new Singleton();
+    } return instance;
+}
+</code></pre><p>}</p>
+<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<p>注解:Singleton的静态属性instance中，只有instance为null的时候才创建一个实例，构造函数私有，确保每次都只创建一个，避免重复创建。<br>缺点：只在单线程的情况下正常运行，在多线程的情况下，就会出问题。例如：当两个线程同时运行到判断instance是否为空的if语句，并且instance确实没有创建好时，那么两个线程都会创建一个实例。</p>
+<p>解法二：多线程的情况可以用。（懒汉式，不好）</p>
+<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<p>public class Singleton { private static Singleton instance=null; private Singleton(){</p>
+<pre><code>} public static synchronized Singleton getInstance(){ if(instance==null){
+        instance=new Singleton();
+    } return instance;
+}
+</code></pre><p>}</p>
+<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<p>注解：在解法一的基础上加上了同步锁，使得在多线程的情况下可以用。例如：当两个线程同时想创建实例，由于在一个时刻只有一个线程能得到同步锁，当第一个线程加上锁以后，第二个线程只能等待。第一个线程发现实例没有创建，创建之。第一个线程释放同步锁，第二个线程才可以加上同步锁，执行下面的代码。由于第一个线程已经创建了实例，所以第二个线程不需要创建实例。保证在多线程的环境下也只有一个实例。<br>缺点：每次通过getInstance方法得到singleton实例的时候都有一个试图去获取同步锁的过程。而众所周知，加锁是很耗时的。能避免则避免。</p>
+<p>解法三：加同步锁时，前后两次判断实例是否存在（可行）</p>
+<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<p>public class Singleton { private static Singleton instance=null; private Singleton(){</p>
+<pre><code>} public static Singleton getInstance(){ if(instance==null){ synchronized(Singleton.class){ if(instance==null){
+                instance=new Singleton();
+            }
+        }
+    } return instance;
+}
+</code></pre><p>}</p>
+<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<p>注解：只有当instance为null时，需要获取同步锁，创建一次实例。当实例被创建，则无需试图加锁。<br>缺点：用双重if判断，复杂，容易出错。</p>
+<p>解法四：饿汉式（建议使用）</p>
+<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<p>public class Singleton { private static Singleton instance=new Singleton(); private Singleton(){</p>
+<pre><code>} public static Singleton getInstance(){ return instance;
+}
+</code></pre><p>}</p>
+<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<p>注解：初试化静态的instance创建一次。如果我们在Singleton类里面写一个静态的方法不需要创建实例，它仍然会早早的创建一次实例。而降低内存的使用率。</p>
+<p>缺点：没有lazy loading的效果，从而降低内存的使用率。</p>
+<p>解法五：静态内部内。（建议使用）</p>
+<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<p>public class Singleton { private Singleton(){</p>
+<pre><code>} private static class SingletonHolder{ private final static Singleton instance=new Singleton();
+} public static Singleton getInstance(){ return SingletonHolder.instance;
+}
+</code></pre><p>}</p>
+<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></p>
+<p>注解：定义一个私有的内部类，在第一次用这个嵌套类时，会创建一个实例。而类型为SingletonHolder的类，只有在Singleton.getInstance()中调用，由于私有的属性，他人无法使用SingleHolder，不调用Singleton.getInstance()就不会创建实例。  </p>
+<p>优点：达到了lazy loading的效果，即按需创建实例。</p>
+<p>本文转至：<a href="https://www.cnblogs.com/hupp/p/4487521.html" target="_blank" rel="noopener">原文地址</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.1zyan.cc/2018/07/20/e7-90-86-e8-a7-a3java-e4-b8-ad-e7-9a-84-e4-ba-94-e4-b8-ad-e5-8d-95-e4-be-8b-e6-a8-a1-e5-bc-8f/" data-id="cjtbshseu003cu85s61if0wuz" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/单例模式/">单例模式</a></li></ul>
 
     </footer>
   </div>
@@ -1100,7 +827,7 @@ SpringMvc整个的执行流程：
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/C/" style="font-size: 20px;">C#</a> <a href="/tags/EXCEL写数据/" style="font-size: 10px;">EXCEL写数据</a> <a href="/tags/JAVA/" style="font-size: 19px;">JAVA</a> <a href="/tags/Jquery/" style="font-size: 10px;">Jquery</a> <a href="/tags/MV/" style="font-size: 10px;">MV</a> <a href="/tags/MyBatis/" style="font-size: 15px;">MyBatis</a> <a href="/tags/PHP/" style="font-size: 10px;">PHP</a> <a href="/tags/PS/" style="font-size: 10px;">PS</a> <a href="/tags/SqlServer/" style="font-size: 11px;">SqlServer</a> <a href="/tags/WEB/" style="font-size: 13px;">WEB</a> <a href="/tags/Webpack/" style="font-size: 17px;">Webpack</a> <a href="/tags/WordPress/" style="font-size: 13px;">WordPress</a> <a href="/tags/aop/" style="font-size: 10px;">aop</a> <a href="/tags/app/" style="font-size: 10px;">app</a> <a href="/tags/c-未将对象引用设置到对象的实例/" style="font-size: 10px;">c#未将对象引用设置到对象的实例</a> <a href="/tags/es6/" style="font-size: 16px;">es6</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/idea/" style="font-size: 11px;">idea</a> <a href="/tags/ioc/" style="font-size: 10px;">ioc</a> <a href="/tags/javaGui/" style="font-size: 10px;">javaGui</a> <a href="/tags/junit/" style="font-size: 10px;">junit</a> <a href="/tags/linux/" style="font-size: 11px;">linux</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/rem插件/" style="font-size: 10px;">rem插件</a> <a href="/tags/spring/" style="font-size: 17px;">spring</a> <a href="/tags/sql/" style="font-size: 10px;">sql</a> <a href="/tags/sql-server/" style="font-size: 10px;">sql server</a> <a href="/tags/sqlse/" style="font-size: 10px;">sqlse</a> <a href="/tags/vue/" style="font-size: 18px;">vue</a> <a href="/tags/vue-cli/" style="font-size: 16px;">vue-cli</a> <a href="/tags/中文乱码/" style="font-size: 10px;">中文乱码</a> <a href="/tags/中文类库/" style="font-size: 10px;">中文类库</a> <a href="/tags/入栈/" style="font-size: 10px;">入栈</a> <a href="/tags/公司模板/" style="font-size: 10px;">公司模板</a> <a href="/tags/其他主题/" style="font-size: 10px;">其他主题</a> <a href="/tags/冒泡排序/" style="font-size: 10px;">冒泡排序</a> <a href="/tags/分布式/" style="font-size: 10px;">分布式</a> <a href="/tags/前端/" style="font-size: 11px;">前端</a> <a href="/tags/单例模式/" style="font-size: 10px;">单例模式</a> <a href="/tags/原创/" style="font-size: 14px;">原创</a> <a href="/tags/古风/" style="font-size: 10px;">古风</a> <a href="/tags/图片/" style="font-size: 10px;">图片</a> <a href="/tags/多线程/" style="font-size: 11px;">多线程</a> <a href="/tags/好听/" style="font-size: 10px;">好听</a> <a href="/tags/娱乐/" style="font-size: 10px;">娱乐</a> <a href="/tags/小米/" style="font-size: 10px;">小米</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a> <a href="/tags/情书/" style="font-size: 10px;">情书</a> <a href="/tags/支烟IP扫描器/" style="font-size: 10px;">支烟IP扫描器</a> <a href="/tags/支烟类库/" style="font-size: 10px;">支烟类库</a> <a href="/tags/教程/" style="font-size: 11px;">教程</a> <a href="/tags/数据库/" style="font-size: 12px;">数据库</a> <a href="/tags/新技术/" style="font-size: 10px;">新技术</a> <a href="/tags/易代码转换/" style="font-size: 10px;">易代码转换</a> <a href="/tags/枚举/" style="font-size: 10px;">枚举</a> <a href="/tags/社团管理系统/" style="font-size: 10px;">社团管理系统</a> <a href="/tags/程序/" style="font-size: 10px;">程序</a> <a href="/tags/系统/" style="font-size: 10px;">系统</a> <a href="/tags/网络/" style="font-size: 10px;">网络</a> <a href="/tags/美图/" style="font-size: 10px;">美图</a> <a href="/tags/荒野行动/" style="font-size: 10px;">荒野行动</a> <a href="/tags/视频软件/" style="font-size: 10px;">视频软件</a> <a href="/tags/语音合成/" style="font-size: 10px;">语音合成</a> <a href="/tags/超级CS/" style="font-size: 10px;">超级CS</a> <a href="/tags/超级类库/" style="font-size: 10px;">超级类库</a> <a href="/tags/软件/" style="font-size: 13px;">软件</a> <a href="/tags/软件开发/" style="font-size: 11px;">软件开发</a> <a href="/tags/逻辑思维训练/" style="font-size: 10px;">逻辑思维训练</a> <a href="/tags/面试题/" style="font-size: 13px;">面试题</a> <a href="/tags/音乐/" style="font-size: 11px;">音乐</a>
+      <a href="/tags/C/" style="font-size: 20px;">C#</a> <a href="/tags/EXCEL写数据/" style="font-size: 10px;">EXCEL写数据</a> <a href="/tags/JAVA/" style="font-size: 18.89px;">JAVA</a> <a href="/tags/Jquery/" style="font-size: 10px;">Jquery</a> <a href="/tags/MV/" style="font-size: 10px;">MV</a> <a href="/tags/MyBatis/" style="font-size: 14.44px;">MyBatis</a> <a href="/tags/PHP/" style="font-size: 10px;">PHP</a> <a href="/tags/PS/" style="font-size: 10px;">PS</a> <a href="/tags/SqlServer/" style="font-size: 11.11px;">SqlServer</a> <a href="/tags/WEB/" style="font-size: 13.33px;">WEB</a> <a href="/tags/Webpack/" style="font-size: 16.67px;">Webpack</a> <a href="/tags/WordPress/" style="font-size: 13.33px;">WordPress</a> <a href="/tags/aop/" style="font-size: 10px;">aop</a> <a href="/tags/app/" style="font-size: 10px;">app</a> <a href="/tags/c-未将对象引用设置到对象的实例/" style="font-size: 10px;">c#未将对象引用设置到对象的实例</a> <a href="/tags/es6/" style="font-size: 15.56px;">es6</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/idea/" style="font-size: 11.11px;">idea</a> <a href="/tags/ioc/" style="font-size: 10px;">ioc</a> <a href="/tags/javaGui/" style="font-size: 10px;">javaGui</a> <a href="/tags/junit/" style="font-size: 10px;">junit</a> <a href="/tags/linux/" style="font-size: 11.11px;">linux</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/rem插件/" style="font-size: 10px;">rem插件</a> <a href="/tags/spring/" style="font-size: 16.67px;">spring</a> <a href="/tags/sql/" style="font-size: 10px;">sql</a> <a href="/tags/sql-server/" style="font-size: 10px;">sql server</a> <a href="/tags/sqlse/" style="font-size: 10px;">sqlse</a> <a href="/tags/vue/" style="font-size: 17.78px;">vue</a> <a href="/tags/vue-cli/" style="font-size: 15.56px;">vue-cli</a> <a href="/tags/中文乱码/" style="font-size: 10px;">中文乱码</a> <a href="/tags/中文类库/" style="font-size: 10px;">中文类库</a> <a href="/tags/入栈/" style="font-size: 10px;">入栈</a> <a href="/tags/公司模板/" style="font-size: 10px;">公司模板</a> <a href="/tags/其他主题/" style="font-size: 10px;">其他主题</a> <a href="/tags/冒泡排序/" style="font-size: 10px;">冒泡排序</a> <a href="/tags/分布式/" style="font-size: 10px;">分布式</a> <a href="/tags/前端/" style="font-size: 11.11px;">前端</a> <a href="/tags/单例模式/" style="font-size: 10px;">单例模式</a> <a href="/tags/原创/" style="font-size: 13.33px;">原创</a> <a href="/tags/古风/" style="font-size: 10px;">古风</a> <a href="/tags/图片/" style="font-size: 10px;">图片</a> <a href="/tags/多线程/" style="font-size: 11.11px;">多线程</a> <a href="/tags/好听/" style="font-size: 10px;">好听</a> <a href="/tags/娱乐/" style="font-size: 10px;">娱乐</a> <a href="/tags/小米/" style="font-size: 10px;">小米</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a> <a href="/tags/情书/" style="font-size: 10px;">情书</a> <a href="/tags/支烟IP扫描器/" style="font-size: 10px;">支烟IP扫描器</a> <a href="/tags/支烟类库/" style="font-size: 10px;">支烟类库</a> <a href="/tags/教程/" style="font-size: 11.11px;">教程</a> <a href="/tags/数据库/" style="font-size: 12.22px;">数据库</a> <a href="/tags/新技术/" style="font-size: 10px;">新技术</a> <a href="/tags/易代码转换/" style="font-size: 10px;">易代码转换</a> <a href="/tags/枚举/" style="font-size: 10px;">枚举</a> <a href="/tags/社团管理系统/" style="font-size: 10px;">社团管理系统</a> <a href="/tags/程序/" style="font-size: 10px;">程序</a> <a href="/tags/系统/" style="font-size: 10px;">系统</a> <a href="/tags/网络/" style="font-size: 10px;">网络</a> <a href="/tags/美图/" style="font-size: 10px;">美图</a> <a href="/tags/荒野行动/" style="font-size: 10px;">荒野行动</a> <a href="/tags/视频软件/" style="font-size: 10px;">视频软件</a> <a href="/tags/语音合成/" style="font-size: 10px;">语音合成</a> <a href="/tags/超级CS/" style="font-size: 10px;">超级CS</a> <a href="/tags/超级类库/" style="font-size: 10px;">超级类库</a> <a href="/tags/软件/" style="font-size: 13.33px;">软件</a> <a href="/tags/软件开发/" style="font-size: 11.11px;">软件开发</a> <a href="/tags/逻辑思维训练/" style="font-size: 10px;">逻辑思维训练</a> <a href="/tags/面试题/" style="font-size: 13.33px;">面试题</a> <a href="/tags/音乐/" style="font-size: 11.11px;">音乐</a>
     </div>
   </div>
 
@@ -1122,14 +849,6 @@ SpringMvc整个的执行流程：
       <ul>
         
           <li>
-            <a href="/2019/02/28/测试文件/">测试文件</a>
-          </li>
-        
-          <li>
-            <a href="/2019/02/27/hello-world/">Hello World</a>
-          </li>
-        
-          <li>
             <a href="/2019/02/25/10-e5-88-86-e9-92-9f-e5-ad-a6-e4-bc-9aes7es8/">10分钟学会ES7+ES8</a>
           </li>
         
@@ -1139,6 +858,14 @@ SpringMvc整个的执行流程：
         
           <li>
             <a href="/2019/01/24/springmybatis-e6-95-b4-e5-90-88-e7-ac-94-e8-ae-b0-e4-bd-bf-e7-94-a8-e6-b3-a8-e8-a7-a3-e6-a0-87-e7-ad-be-e5-ae-9e-e7-8e-b0-e4-ba-8b-e5-8a-a1-e5-92-8c-e4-ba-8b-e5-8a-a1-e7-9a-84-e5-8f-82-e6-95-b0/">Spring+Mybatis整合笔记-使用注解标签实现事务和事务的参数</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/22/vue-router-e5-86-99-e5-ba-95-e9-83-a8-e5-af-bc-e8-88-aa-e6-a0-8f-e9-81-87-e5-88-b0-e7-9a-84-e5-9d-91router-replace/">vue-router写底部导航栏遇到的坑router.replace</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/22/e4-bd-bf-e7-94-a8vue-cli-e7-bc-96-e5-86-99-e7-bb-84-e4-bb-b6-e5-b9-b6-e5-8f-91-e5-b8-83-e5-88-b0npm-e4-b8-8a/">使用vue-cli编写组件并发布到npm上</a>
           </li>
         
       </ul>
